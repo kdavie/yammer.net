@@ -548,7 +548,7 @@ namespace Yammer
                 {
                     case ObjectType.MESSAGE:
                         Message message = (Message)Deserialize(typeof(Message), "<message>" + node.InnerXml + "</message>");
-                        SetMessageReference(messages.Find(delegate(Message m) { return m.Id == message.Id; }), message);
+                        SetMessageReference(messages.Find(delegate(Message m) { return m.RepliedToId == message.Id; }), message);
                         break;
                     case ObjectType.USER:
                         User user = (User)Deserialize(typeof(User), node.OuterXml);
