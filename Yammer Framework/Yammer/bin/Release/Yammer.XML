@@ -1,0 +1,1163 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Yammer</name>
+    </assembly>
+    <members>
+        <member name="M:Yammer.ApiWrapper.GetAllMessages(Yammer.Session)">
+            <summary>
+            All messages in this network. Corresponds to the "All" tab on the website.
+            </summary>
+            <param name="session"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Yammer.ApiWrapper.GetAllMessages(Yammer.PageFlag,System.Int32,Yammer.Session)">
+            <summary>
+            Corresponds to the "All" tab on the website. 
+            </summary>
+            <param name="newer_than"></param>
+            <param name="session"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Yammer.ApiWrapper.GetSentMessages(Yammer.Session)">
+            <summary>
+            Corresponds to the "Sent" tab on the website.
+            </summary>
+            <param name="session"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Yammer.ApiWrapper.GetSentMessages(Yammer.PageFlag,System.Int32,Yammer.Session)">
+            <summary>
+            Corresponds to the "Sent" tab on the website.
+            </summary>
+            <param name="flag"></param>
+            <param name="thread"></param>
+            <param name="session"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Yammer.ApiWrapper.GetReceivedMessages(Yammer.Session)">
+            <summary>
+            Messages received by the logged-in user. Corresponds to the "Received" tab on the website.
+            </summary>
+            <param name="session"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Yammer.ApiWrapper.GetReceivedMessages(Yammer.PageFlag,System.Int32,Yammer.Session)">
+            <summary>
+            Messages received by the logged-in user. Corresponds to the "Received" tab on the website.
+            </summary>
+            <param name="flag"></param>
+            <param name="thread"></param>
+            <param name="session"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Yammer.ApiWrapper.GetFollowingMessages(Yammer.Session)">
+            <summary>
+            Messages followed by the logged-in user. Corresponds to the "Following" tab on the website.
+            </summary>
+            <param name="session"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Yammer.ApiWrapper.GetFollowingMessages(Yammer.PageFlag,System.Int32,Yammer.Session)">
+            <summary>
+            Messages followed by the logged-in user. Corresponds to the "Following" tab on the website.
+            </summary>
+            <param name="flag"></param>
+            <param name="date"></param>
+            <param name="session"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Yammer.ApiWrapper.GetMessagesSentBy(System.Int32,Yammer.Session)">
+            <summary>
+            Messages sent by the user with the given ID. Corresponds to the messages on a user profile page on the website.
+            </summary>
+            <param name="id"></param>
+            <param name="session"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Yammer.ApiWrapper.GetMessagesTaggedWith(System.Int32,Yammer.Session)">
+            <summary>
+            Messages including the tag with given ID. Corresponds to the messages on a tag's page on the website.
+            </summary>
+            <param name="id"></param>
+            <param name="session"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Yammer.ApiWrapper.GetMessagesInThread(System.Int32,Yammer.Session)">
+            <summary>
+            Messages in the thread with the given ID. Corresponds to the page you'd see when clicking on "in reply to" on the website.
+            </summary>
+            <param name="id"></param>
+            <param name="session"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Yammer.ApiWrapper.GetMessagesInGroup(System.Int32,Yammer.Session)">
+            <summary>
+            Messages in the group with the given ID. Corresponds to the messages you'd see on a group's profile page.
+            </summary>
+            <param name="id"></param>
+            <param name="session"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Yammer.ApiWrapper.GetMessagesFavoritesOf(System.Int32,Yammer.Session)">
+            <summary>
+            Favorite messages of the given user ID. Can pass 'current' in place of user_id for currently logged in user
+            </summary>
+            <param name="id"></param>
+            <param name="session"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Yammer.ApiWrapper.PostMessage(System.String,Yammer.Session,System.Collections.Generic.List{System.String})">
+            <summary>
+            Create a new message.
+            </summary>
+            <param name="body"></param>
+            <param name="session"></param>
+        </member>
+        <member name="M:Yammer.ApiWrapper.PostMessage(System.String,System.Int32,Yammer.Session,System.Collections.Generic.List{System.String})">
+            <summary>
+            Create a new message in reply to message of given id
+            </summary>
+            <param name="body"></param>
+            <param name="reply"></param>
+            <param name="session"></param>
+        </member>
+        <member name="M:Yammer.ApiWrapper.DeleteMessage(System.Int32,Yammer.Session)">
+            <summary>
+            Delete a message owned by the current user.
+            </summary>
+            <param name="id"></param>
+            <param name="session"></param>
+        </member>
+        <member name="M:Yammer.ApiWrapper.GetAllGroups(Yammer.Session)">
+            <summary>
+            Retrieves a list of all groups
+            </summary>
+            <param name="session"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Yammer.ApiWrapper.GetGroupById(System.Int32,Yammer.Session)">
+            <summary>
+            Retrieves data about group of given id
+            </summary>
+            <param name="id"></param>
+            <param name="session"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Yammer.ApiWrapper.JoinGroup(System.Int32,Yammer.Session)">
+            <summary>
+            Join a group.
+            </summary>
+            <param name="id"></param>
+            <param name="session"></param>
+        </member>
+        <member name="M:Yammer.ApiWrapper.LeaveGroup(System.Int32,Yammer.Session)">
+            <summary>
+            Leave a group.
+            </summary>
+            <param name="id"></param>
+            <param name="session"></param>
+        </member>
+        <member name="M:Yammer.ApiWrapper.GetCurrentUser(Yammer.Session)">
+            <summary>
+            Retreives data about current user
+            </summary>
+            <param name="session"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Yammer.ApiWrapper.GetUserById(System.Int32,Yammer.Session)">
+            <summary>
+            Retrieves data about user of given id
+            </summary>
+            <param name="id"></param>
+            <param name="session"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Yammer.ApiWrapper.GetAllUsers(Yammer.Session)">
+            <summary>
+            Retrieves list of users in network
+            </summary>
+            <param name="session"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Yammer.ApiWrapper.GetAllRelationships(Yammer.Session)">
+            <summary>
+            Retrieves org chart relationships.
+            </summary>
+            <param name="session"></param>
+        </member>
+        <member name="M:Yammer.ApiWrapper.CreateRelationship(Yammer.RelationshipType,System.String,Yammer.Session)">
+            <summary>
+            Creates a new org chart relationship
+            </summary>
+            <param name="type"></param>
+            <param name="email"></param>
+            <param name="session"></param>
+        </member>
+        <member name="M:Yammer.ApiWrapper.DeleteRelationship">
+            <summary>
+            Deletes org chart relationship
+            NOT YET IMPLEMENTED
+            </summary>
+        </member>
+        <member name="M:Yammer.ApiWrapper.GetAllSuggestions(Yammer.Session)">
+            <summary>
+            Returns list of all suggested groups and users
+            NOT YET IMPLEMENTED
+            </summary>
+            <param name="session"></param>
+        </member>
+        <member name="M:Yammer.ApiWrapper.SubscribeToUser(System.Int32,Yammer.Session)">
+            <summary>
+            Subscribe to user
+            </summary>
+            <param name="id"></param>
+            <param name="session"></param>
+        </member>
+        <member name="M:Yammer.ApiWrapper.SubscribeToTag(System.Int32,Yammer.Session)">
+            <summary>
+            Subscribe to tag
+            </summary>
+            <param name="id"></param>
+            <param name="session"></param>
+        </member>
+        <member name="M:Yammer.ApiWrapper.DeleteSubscriptionToUser(System.Int32,Yammer.Session)">
+            <summary>
+            Unsubscribe to user
+            </summary>
+            <param name="id"></param>
+            <param name="session"></param>
+        </member>
+        <member name="M:Yammer.ApiWrapper.DeleteSubscriptionToTag(System.Int32,Yammer.Session)">
+            <summary>
+            Unsubscribe to tag
+            </summary>
+            <param name="id"></param>
+            <param name="session"></param>
+        </member>
+        <member name="P:Yammer.Guide.Type">
+            <summary>
+            The object type.
+            </summary>
+        </member>
+        <member name="P:Yammer.Guide.Id">
+            <summary>
+            The ID number for this object. Note that IDs are not unique across all object types: 
+            there may be a user and tag with the same numerical ID.
+            </summary>
+        </member>
+        <member name="P:Yammer.Guide.Name">
+            <summary>
+            The name of this guide
+            </summary>
+        </member>
+        <member name="P:Yammer.Guide.FullName">
+            <summary>
+            The guide's full name.
+            </summary>
+        </member>
+        <member name="P:Yammer.Guide.MugshotUrl">
+            <summary>
+            The URL of this guide's picture.
+            </summary>
+        </member>
+        <member name="P:Yammer.Guide.WebUrl">
+            <summary>
+            The URL for viewing this object on the main Yammer website.
+            </summary>
+        </member>
+        <member name="M:Yammer.Utility.GetAppDirectory">
+            <summary>
+            Retrieves application directory collection
+            </summary>
+            <returns>application directory collection</returns>
+        </member>
+        <member name="M:Yammer.Utility.GetApplicationData">
+            <summary>
+            Retrieves application variables
+            </summary>
+            <returns>application<see cref="T:Yammer.Variables"/>variables</returns>
+        </member>
+        <member name="M:Yammer.Utility.SetApplicationData(System.String)">
+            <summary>
+            Writes application variables to client computer
+            </summary>
+            <param name="lastMessageId"></param>
+        </member>
+        <member name="M:Yammer.Auth.GetRequestTokenQuery(System.String,System.String)">
+            <summary>
+            Retrieves the OAuth request token
+            </summary>
+            <param name="consumerKey">The client's consumer key</param>
+            <param name="consumerSecret">The client's consumer secret</param>
+            <returns>the request token query string</returns>
+        </member>
+        <member name="M:Yammer.Auth.GetAuthorizeQuery(System.String,System.String)">
+            <summary>
+            Retrieves the OAuth authorization token
+            </summary>
+            <param name="tokenKey">The generated OAuth Token</param>
+            <param name="callback">The callback URL for the client</param>
+            <returns>the OAuth authorization query string</returns>
+        </member>
+        <member name="M:Yammer.Auth.GetAccessTokenQuery">
+            <summary>
+            Retrieves OAuth access token
+            </summary>
+            <returns>the OAuth access token query string</returns>
+        </member>
+        <member name="M:Yammer.Auth.GetRequestToken(System.Net.WebProxy,System.String,System.String)">
+            <summary>
+            retrieves the <see cref="T:Yammer.Auth">authorization object</see>
+            </summary>
+            <param name="proxy"></param>
+            <param name="consumerKey"></param>
+            <param name="consumerSecret"></param>
+            <returns>The <see cref="T:Yammer.Auth">authorization object</see></returns>
+        </member>
+        <member name="M:Yammer.Auth.Authorize(System.String)">
+            <summary>
+            Opens web browser for authorization
+            </summary>
+            <param name="callbackUrl"></param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Yammer.Auth.GetAccessToken" -->
+        <member name="M:Yammer.Auth.ReadResponse(System.String,System.String@,System.String@)">
+            <summary>
+            Splits the Yammer token key and token secret from the response
+            </summary>
+            <param name="response">The http web response</param>
+            <param name="tokenKey">the token key to save to</param>
+            <param name="tokenSecret">the token secret to save to</param>
+        </member>
+        <member name="P:Yammer.Auth.Proxy">
+            <summary>
+            The client Web Proxy.  Can be null
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="P:Yammer.Auth.Key">
+            <summary>
+            The OAuth key to use
+            </summary>
+        </member>
+        <member name="P:Yammer.Auth.ConsumerKey">
+            <summary>
+            The client's consumer key
+            </summary>
+        </member>
+        <member name="P:Yammer.Auth.ConsumerSecret">
+            <summary>
+            The client's consumer secret
+            </summary>
+        </member>
+        <member name="P:Yammer.Auth.Settings">
+            <summary>
+            The persisted client settings file.
+            </summary>
+        </member>
+        <member name="P:Yammer.Auth.Success">
+            <summary>
+            Connection success indicator
+            </summary>
+        </member>
+        <member name="P:Yammer.Thread.Type">
+            <summary>
+            The object type, such as user, tag, etc.
+            </summary>
+        </member>
+        <member name="P:Yammer.Thread.Id">
+            <summary>
+            The ID number for this object. Note that IDs are not unique across all object types: 
+            there may be a user and tag with the same numerical ID.
+            </summary>
+        </member>
+        <member name="P:Yammer.Thread.Url">
+            <summary>
+            The API resource for fetching this object.
+            </summary>
+        </member>
+        <member name="P:Yammer.Thread.WebUrl">
+            <summary>
+            The URL for viewing this object on the main Yammer website.
+            </summary>
+        </member>
+        <member name="P:Yammer.Thread.Stats">
+            <summary>
+            Thread stats
+            </summary>
+        </member>
+        <member name="F:Yammer.MultipartForm.coFormFields">
+            <summary>
+            Holds any form fields and values that you
+            wish to transfer with your data.
+            </summary>
+        </member>
+        <member name="F:Yammer.MultipartForm.coRequest">
+            <summary>
+            Used mainly to avoid passing parameters to other routines.
+            Could have been local to sendFile().
+            </summary>
+        </member>
+        <member name="F:Yammer.MultipartForm.coFileStream">
+            <summary>
+            Used if we are testing and want to output the raw
+            request, minus http headers, out to a file.
+            </summary>
+        </member>
+        <member name="F:Yammer.MultipartForm.CONTENT_DISP">
+            <summary>
+            Difined to build the form field data that is being
+            passed along with the request.
+            </summary>
+        </member>
+        <member name="M:Yammer.MultipartForm.#ctor(System.String)">
+            <summary>
+            Initialize our class for use to send data files.
+            </summary>
+            <param name="url">The web address of the recipient of the data transfer.</param>
+        </member>
+        <member name="M:Yammer.MultipartForm.setFilename(System.String)">
+            <summary>
+            Used to signal we want the output to go to a
+            text file verses being transfered to a URL.
+            </summary>
+            <param name="path"></param>
+        </member>
+        <member name="M:Yammer.MultipartForm.setField(System.String,System.String)">
+            <summary>
+            Allows you to add some additional field data to be
+            sent along with the transfer. This is usually used
+            for things like userid and password to validate the
+            transfer.
+            </summary>
+            <param name="key">The form field name</param>
+            <param name="str">The form field value</param>
+        </member>
+        <member name="M:Yammer.MultipartForm.getStream">
+            <summary>
+            Determines if we have a file stream set, and returns either
+            the HttpWebRequest stream of the file.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Yammer.MultipartForm.getResponse">
+            <summary>
+            Here we actually make the request to the web server and
+            retrieve it's response into a text buffer.
+            </summary>
+        </member>
+        <member name="M:Yammer.MultipartForm.sendFile(System.String,Yammer.Session)">
+            <summary>
+            Transmits a file to the web server stated in the
+            URL property. You may call this several times and it
+            will use the values previously set for fields and URL.
+            </summary>
+            <param name="aFilename">The full path of file being transfered.</param>
+        </member>
+        <member name="M:Yammer.MultipartForm.writeString(System.IO.Stream,System.String)">
+            <summary>
+            Mainly used to turn the string into a byte buffer and then
+            write it to our IO stream.
+            </summary>
+            <param name="io">The io stream for output.</param>
+            <param name="str">The data to write.</param>
+        </member>
+        <member name="M:Yammer.MultipartForm.getFormfields">
+            <summary>
+            Builds the proper format of the multipart data that
+            contains the form fields and their respective values.
+            </summary>
+            <returns>The data to send in the multipart upload.</returns>
+        </member>
+        <member name="M:Yammer.MultipartForm.getFileheader(System.String,System.Int32)">
+            <summary>
+            Returns the proper content information for the
+            file we are sending.
+            </summary>
+            <remarks>
+            Hits Patel reported a bug when used with ActiveFile.
+            Added semicolon after sendfile to resolve that issue.
+            Tested for compatibility with IIS 5.0 and Java.
+            </remarks>
+            <param name="aFilename"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Yammer.MultipartForm.getFiletrailer">
+            <summary>
+            Creates the proper ending boundary for the multipart upload.
+            </summary>
+            <returns>The ending boundary.</returns>
+        </member>
+        <member name="M:Yammer.MultipartForm.writeFile(System.IO.Stream,System.String)">
+            <summary>
+            Reads in the file a chunck at a time then sends it to the
+            output stream.
+            </summary>
+            <param name="io">The io stream to write the file to.</param>
+            <param name="aFilename">The name of the file to transfer.</param>
+        </member>
+        <member name="P:Yammer.MultipartForm.TransferHttpVersion">
+            <summary>
+            Allows you to specify the specific version of HTTP to use for uploads.
+            The dot NET stuff currently does not allow you to remove the continue-100 header
+            from 1.1 and 1.0 currently has a bug in it where it adds the continue-100. MS
+            has sent a patch to remove the continue-100 in HTTP 1.0.
+            </summary>
+        </member>
+        <member name="P:Yammer.MultipartForm.FileContentType">
+            <summary>
+            Used to change the content type of the file being sent.
+            Currently defaults to: text/xml. Other options are
+            text/plain or binary
+            </summary>
+        </member>
+        <member name="P:Yammer.MultipartForm.BeginBoundary">
+            <summary>
+            The string that defines the begining boundary of
+            our multipart transfer as defined in the w3c specs.
+            This method also sets the Content and Ending
+            boundaries as defined by the w3c specs.
+            </summary>
+        </member>
+        <member name="P:Yammer.MultipartForm.ContentBoundary">
+            <summary>
+            The string that defines the content boundary of
+            our multipart transfer as defined in the w3c specs.
+            </summary>
+        </member>
+        <member name="P:Yammer.MultipartForm.EndingBoundary">
+            <summary>
+            The string that defines the ending boundary of
+            our multipart transfer as defined in the w3c specs.
+            </summary>
+        </member>
+        <member name="P:Yammer.MultipartForm.ResponseText">
+            <summary>
+            The data returned to us after the transfer is completed.
+            </summary>
+        </member>
+        <member name="P:Yammer.MultipartForm.URL">
+            <summary>
+            The web address of the recipient of the transfer.
+            </summary>
+        </member>
+        <member name="P:Yammer.MultipartForm.BufferSize">
+            <summary>
+            Allows us to determine the size of the buffer used
+            to send a piece of the file at a time out the IO
+            stream. Defaults to 1024 * 10.
+            </summary>
+        </member>
+        <member name="F:Yammer.Attachment.filename">
+            <summary>
+            The filename of the filepart to be uploaded.
+            </summary>
+        </member>
+        <member name="F:Yammer.Attachment.startPos">
+            <summary>
+            The starting position in the stream.
+            </summary>
+        </member>
+        <member name="F:Yammer.Attachment.endPos">
+            <summary>
+            The ending position in the stream.
+            </summary>
+        </member>
+        <member name="F:Yammer.Attachment.totalFileLength">
+            <summary>
+            The total file length.
+            </summary>
+        </member>
+        <member name="F:Yammer.Attachment.binaryStream">
+            <summary>
+            The stream of the file to be sent.
+            </summary>
+        </member>
+        <member name="P:Yammer.Attachment.Type">
+            <summary>
+            Indicates the type of attachment. Current options: image and file
+            </summary>
+        </member>
+        <member name="P:Yammer.Attachment.Id">
+            <summary>
+            Numerical idenifier for this attachment.
+            </summary>
+        </member>
+        <member name="P:Yammer.Attachment.Name">
+            <summary>
+            Short text identifier which may not be unique.
+            </summary>
+        </member>
+        <member name="P:Yammer.Attachment.WebUrl">
+            <summary>
+            Where the attachment can be viewed on the Yammer website
+            </summary>
+        </member>
+        <member name="P:Yammer.Attachment.Image">
+            <summary>
+            Image attachment
+            </summary>
+        </member>
+        <member name="P:Yammer.Attachment.File">
+            <summary>
+            File attachment
+            </summary>
+        </member>
+        <member name="P:Yammer.Attachment.Length">
+            <summary>
+            Gets the length of the data to be sent.
+            </summary>
+        </member>
+        <member name="P:Yammer.Body.Plain">
+            <summary>
+            A plaintext version of the message body.
+            </summary>
+        </member>
+        <member name="P:Yammer.Body.Parsed">
+            <summary>
+            A version of the message body with #tags and @users replaced by [[object:id]]. 
+            This is not present in the reference version of a message.
+            </summary>
+        </member>
+        <member name="P:Yammer.User.Type">
+            <summary>
+            The object type.
+            </summary>
+        </member>
+        <member name="P:Yammer.User.Id">
+            <summary>
+            The ID number for this object. Note that IDs are not unique across all object types: 
+            there may be a user and tag with the same numerical ID.
+            </summary>
+        </member>
+        <member name="P:Yammer.User.Name">
+            <summary>
+            The username of this user.
+            </summary>
+        </member>
+        <member name="P:Yammer.User.FullName">
+            <summary>
+            The user's full name.
+            </summary>
+        </member>
+        <member name="P:Yammer.User.MugshotUrl">
+            <summary>
+            The URL of this user's picture.
+            </summary>
+        </member>
+        <member name="P:Yammer.User.Url">
+            <summary>
+            The API resource for fetching this object.
+            </summary>
+        </member>
+        <member name="P:Yammer.User.WebUrl">
+            <summary>
+            The URL for viewing this object on the main Yammer website.
+            </summary>
+        </member>
+        <member name="P:Yammer.User.JobTitle">
+            <summary>
+            User's job title
+            </summary>
+        </member>
+        <member name="P:Yammer.User.Contact">
+            <summary>
+            User's contact information
+            </summary>
+        </member>
+        <member name="P:Yammer.User.NetworkId">
+            <summary>
+            The network id of the user
+            </summary>
+        </member>
+        <member name="P:Yammer.User.HireDate">
+            <summary>
+            User's date of hire
+            </summary>
+        </member>
+        <member name="P:Yammer.User.NetworkName">
+            <summary>
+            The network name of the user
+            </summary>
+        </member>
+        <member name="P:Yammer.User.Stats">
+            <summary>
+            User's stats
+            </summary>
+        </member>
+        <member name="P:Yammer.User.Location">
+            <summary>
+            User location
+            </summary>
+        </member>
+        <member name="P:Yammer.Subscription.Url">
+            <summary>
+            The API resource for fetching this object.
+            </summary>
+        </member>
+        <member name="P:Yammer.Subscription.Type">
+            <summary>
+            The object type, such as user, tag, etc.
+            </summary>
+        </member>
+        <member name="P:Yammer.Message.Id">
+            <summary>
+            The ID number for this object. Note that IDs are not unique across all object types: 
+            there may be a user and tag with the same numerical ID.
+            </summary>
+        </member>
+        <member name="P:Yammer.Message.GroupId">
+            <summary>
+            (Optional) When a message is posted into a group, that group's ID will appear here 
+            and the group will be available in the references section.
+            </summary>
+        </member>
+        <member name="P:Yammer.Message.DirectToId">
+            <summary>
+            (Optional) When a message is a private 1-to-1 (or "direct") message, this will 
+            indicate the intended recipient.
+            </summary>
+        </member>
+        <member name="P:Yammer.Message.Url">
+            <summary>
+            The API resource for fetching this object.
+            </summary>
+        </member>
+        <member name="P:Yammer.Message.WebUrl">
+            <summary>
+            The URL for viewing this object on the main Yammer website.
+            </summary>
+        </member>
+        <member name="P:Yammer.Message.RepliedToId">
+            <summary>
+            The ID of the message this message is in reply to, if applicable.
+            </summary>
+        </member>
+        <member name="P:Yammer.Message.ThreadId">
+            <summary>
+            The thread in which this message appears.
+            </summary>
+        </member>
+        <member name="P:Yammer.Message.Body">
+            <summary>
+            Message body
+            </summary>
+        </member>
+        <member name="P:Yammer.Message.Attachments">
+            <summary>
+            A list of attachments for this message.
+            </summary>
+        </member>
+        <member name="P:Yammer.Message.MessageType">
+            <summary>
+            This will be system or update. A system message is automatically generated by the 
+            system and describes an action, such as "Kris Gale has joined the Geni network." 
+            An update message is a regular message posted by a user such as "Kris Gale: Hi everyone." 
+            Put simply, this indicates whether a colon will separate the body of the message 
+            from the sender's name in the web interface.
+            </summary>
+        </member>
+        <member name="P:Yammer.Message.SenderId">
+            <summary>
+            The ID of the message's sender.
+            </summary>
+        </member>
+        <member name="P:Yammer.Message.SenderType">
+            <summary>
+            The sender's object type: user or guide. The guide is virtual user that exists 
+            in the system to send messages such as the tips and initial welcome message.
+            </summary>
+        </member>
+        <member name="P:Yammer.Message.CreatedAt">
+            <summary>
+            The time and date this resource was created. This would indicate when a 
+            user joined the network or when a message was posted.
+            </summary>
+        </member>
+        <member name="P:Yammer.Tag.Type">
+            <summary>
+            The object type, such as user, tag, etc.
+            </summary>
+        </member>
+        <member name="P:Yammer.Tag.Id">
+            <summary>
+            The ID number for this object. Note that IDs are not unique across all object types: 
+            there may be a user and tag with the same numerical ID.
+            </summary>
+        </member>
+        <member name="P:Yammer.Tag.Stats">
+            <summary>
+            Tag stats
+            </summary>
+        </member>
+        <member name="P:Yammer.Tag.Name">
+            <summary>
+            Short text identifier
+            </summary>
+        </member>
+        <member name="P:Yammer.Tag.Url">
+            <summary>
+            The API resource for fetching this object.
+            </summary>
+        </member>
+        <member name="P:Yammer.Tag.WebUrl">
+            <summary>
+            The URL for viewing this object on the main Yammer website.
+            </summary>
+        </member>
+        <member name="T:Yammer.AutoComplete">
+            <summary>
+            NOT YET IMPLEMENTED
+            </summary>
+        </member>
+        <member name="M:Yammer.Settings.CheckConfiguration">
+            <summary>
+            Checks if the persisted <see cref="T:Yammer.Settings">settings</see> file exists on the client
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Yammer.Settings.SaveConfiguration(System.String,System.String,OAuth.OAuthKey,System.Net.WebProxy)">
+            <summary>
+            Saves the <see cref="T:Yammer.Settings">settings</see> file to the client
+            </summary>
+            <param name="tokenKey"></param>
+            <param name="tokenSecret"></param>
+        </member>
+        <member name="F:Yammer.Resources.YAMMER_MESSAGES_ALL">
+            <summary>
+            All messages in this network. Corresponds to the "All" tab on the website
+            </summary>
+        </member>
+        <member name="F:Yammer.Resources.YAMMER_MESSAGES_SENT">
+            <summary>
+            Alias for /api/v1/messages/from_user/logged-in_user_id.format Corresponds to the "Sent" tab on the website.
+            </summary>
+        </member>
+        <member name="F:Yammer.Resources.YAMMER_MESSAGES_RECEIVED">
+            <summary>
+            Messages received by the logged-in user. Corresponds to the "Received" tab on the website.
+            </summary>
+        </member>
+        <member name="F:Yammer.Resources.YAMMER_MESSAGES_FOLLOWING">
+            <summary>
+            Messages sent by the user with the given ID. Corresponds to the messages on a user profile page on the website.
+            </summary>
+        </member>
+        <member name="F:Yammer.Resources.YAMMER_MESSAGES_SENT_BY">
+            <summary>
+            Messages sent by the user with the given ID. Corresponds to the messages on a user profile page on the website.
+            </summary>
+        </member>
+        <member name="F:Yammer.Resources.YAMMER_MESSAGES_TAGGED_WITH">
+            <summary>
+            Messages including the tag with given ID. Corresponds to the messages on a tag's page on the website.
+            </summary>
+        </member>
+        <member name="F:Yammer.Resources.YAMMER_MESSAGES_IN_THREAD">
+            <summary>
+            Messages in the thread with the given ID. Corresponds to the page you'd see when clicking on "in reply to" on the website.
+            </summary>
+        </member>
+        <member name="F:Yammer.Resources.YAMMER_MESSAGES_IN_GROUP">
+            <summary>
+            Messages in the group with the given ID. Corresponds to the messages you'd see on a group's profile page.
+            </summary>
+        </member>
+        <member name="F:Yammer.Resources.YAMMER_MESSAGES_FAVORITES_OF">
+            <summary>
+            Favorite messages of the given user ID. Can pass 'current' in place of user_id for currently logged in user
+            </summary>
+        </member>
+        <member name="F:Yammer.Resources.YAMMER_MESSAGES_CREATE">
+            <summary>
+            Create a new message.
+            </summary>
+        </member>
+        <member name="F:Yammer.Resources.YAMMER_MESSAGES_DELETE">
+            <summary>
+            Delete a message owned by the current user.
+            </summary>
+        </member>
+        <member name="F:Yammer.Resources.YAMMER_MESSAGES_ADD_FAVORITE">
+            <summary>
+            Add a message to user_id's favorite messages.
+            </summary>
+        </member>
+        <member name="F:Yammer.Resources.YAMMER_MESSAGES_DELETE_FAVORITE">
+            <summary>
+            Remove a favorite.
+            </summary>
+        </member>
+        <member name="F:Yammer.Resources.YAMMER_GROUP_LIST">
+            <summary>
+            A list of groups. 
+            </summary>
+        </member>
+        <member name="F:Yammer.Resources.YAMMER_GROUP_DATA">
+            <summary>
+            https://www.yammer.com/api/v1/groups/id.format
+            </summary>
+        </member>
+        <member name="F:Yammer.Resources.YAMMER_TAGS">
+            <summary>
+            Tags in this network. NOT YET IMPLEMENTED
+            </summary>
+        </member>
+        <member name="F:Yammer.Resources.YAMMER_TAGS_DATA">
+            <summary>
+            View data about one tag.
+            </summary>
+        </member>
+        <member name="F:Yammer.Resources.YAMMER_USERS_ALL">
+            <summary>
+            Users in this network.
+            </summary>
+        </member>
+        <member name="F:Yammer.Resources.YAMMER_USERS_SINGLE">
+            <summary>
+            View data about one user. 	
+            </summary>
+        </member>
+        <member name="F:Yammer.Resources.YAMMER_USERS_CURRENT">
+            <summary>
+            Alias to /api/v1/users/current user's id.format.
+            </summary>
+        </member>
+        <member name="F:Yammer.Resources.YAMMER_GROUP_JOIN">
+            <summary>
+            Join a group.
+            </summary>
+        </member>
+        <member name="F:Yammer.Resources.YAMMER_GROUP_RESIGN">
+            <summary>
+            Leave a group.
+            </summary>
+        </member>
+        <member name="F:Yammer.Resources.YAMMER_RELATIONSHIPS_ALL">
+            <summary>
+            Show org chart relationships.
+            </summary>
+        </member>
+        <member name="F:Yammer.Resources.YAMMER_RELATIONSHIPS_CREATE">
+            <summary>
+            Add an org chart relationship.
+            </summary>
+        </member>
+        <member name="F:Yammer.Resources.YAMMER_RELATIONSHIPS_DELETE">
+            <summary>
+            Remove a relationship.
+            </summary>
+        </member>
+        <member name="F:Yammer.Resources.YAMMER_SUGGESTIONS_SHOW_ALL">
+            <summary>
+            Show suggested groups and users. 
+            </summary>
+        </member>
+        <member name="F:Yammer.Resources.YAMMER_SUGGESTIONS_SHOW_USERS">
+            <summary>
+            Show only suggested users. 
+            </summary>
+        </member>
+        <member name="F:Yammer.Resources.YAMMER_SUGGESTIONS_SHOW_GROUPS">
+            <summary>
+            Show only suggested groups. 	
+            </summary>
+        </member>
+        <member name="F:Yammer.Resources.YAMMER_SUGGESTIONS_DECLINE">
+            <summary>
+            Decline a suggestion.
+            </summary>
+        </member>
+        <member name="F:Yammer.Resources.YAMMER_SUBSCRIPTIONS_TO_USER">
+            <summary>
+            Check to see if you are subscribed to the user of the given id.
+            </summary>
+        </member>
+        <member name="F:Yammer.Resources.YAMMER_SUBSCRIPTIONS_TO_TAG">
+            <summary>
+            Check to see if you are subscribed to the tag of the given id. 
+            </summary>
+        </member>
+        <member name="F:Yammer.Resources.YAMMER_SUBSCRIPTIONS_SUBSCRIBE">
+            <summary>
+            Subscribe to a user or tag.
+            </summary>
+        </member>
+        <member name="F:Yammer.Resources.YAMMER_SUBSCRIPTIONS_UNSUBSCRIBE">
+            <summary>
+            Unsubscribe to a user or tag.
+            </summary>
+        </member>
+        <member name="F:Yammer.Resources.YAMMER_AUTOCOMPLETE">
+            <summary>
+            Return typeahead suggestions for the prefix passed
+            </summary>
+        </member>
+        <member name="M:Yammer.HttpUtility.Get(System.String,Yammer.Session)">
+            <summary>
+            Creates http get web request and returns response
+            </summary>
+            <param name="url">The URL for the web request</param>
+            <param name="session">The Yammer<see cref="T:Yammer.Session">session</see> object</param>
+            <returns>http response</returns>
+        </member>
+        <member name="M:Yammer.HttpUtility.Post(System.String,System.Collections.Specialized.NameValueCollection,Yammer.Session)">
+            <summary>
+            Creates http post web request and returns response
+            </summary>
+            <param name="url">The URL for the web request</param>
+            <param name="parameters">the query string parameters</param>
+            <param name="session">The Yammer<see cref="T:Yammer.Session">session</see> object</param>
+            <returns>http response</returns>
+        </member>
+        <member name="M:Yammer.HttpUtility.Upload(System.String,System.Collections.Specialized.NameValueCollection,Yammer.Session,System.Collections.Generic.List{System.String})">
+            <summary>
+            Creates http multipart post web request and returns response
+            </summary>
+            <param name="url">The URL for the web request</param>
+            <param name="parameters">the query string parameters</param>
+            <param name="session">The Yammer<see cref="T:Yammer.Session">session</see> object</param>
+            <param name="files">The file path collection to upload</param>
+            <remarks>Used to upload attachments</remarks>
+            <returns>http response</returns>
+        </member>
+        <member name="M:Yammer.HttpUtility.Delete(System.String,Yammer.Session)">
+            <summary>
+            Creates http delete web request and returns response
+            </summary>
+            <param name="url">The URL for the web request</param>
+            <param name="session">The Yammer<see cref="T:Yammer.Session">session</see> object</param>
+            <returns>http response</returns>
+        </member>
+        <member name="M:Yammer.HttpUtility.CreateAuthHeader(Yammer.WebMethod,System.String,System.String,System.String,Yammer.Session)">
+            <summary>
+            Creates the OAuth header for the http request
+            </summary>
+            <param name="method">The <see cref="T:Yammer.WebMethod"/> http web method</param>
+            <param name="nonce">The OAuth nonce string</param>
+            <param name="timeStamp">The generated OAuth timestamp</param>
+            <param name="sig">The generatred OAuth signature</param>
+            <param name="session">The Yammer<see cref="T:Yammer.Session">session</see> object</param>
+            <returns></returns>
+        </member>
+        <member name="M:Yammer.HttpUtility.CreateWebRequest(Yammer.WebMethod,System.Net.WebProxy,System.String,System.Boolean)">
+            <summary>
+            Creates intstance of the HttpRequest object
+            </summary>
+            <param name="method">The <see cref="T:Yammer.WebMethod"/> http web method</param>
+            <param name="proxy"> The client <see cref="T:System.Net.WebProxy"/> proxy</param>
+            <param name="requestUrl">The URL for the web request</param>
+            <param name="preAuth">Send authentication header with request</param>
+            <returns>HttpRequest object</returns>
+        </member>
+        <member name="M:Yammer.HttpUtility.CreateWebRequest(System.String,Yammer.WebMethod,System.String,System.String,System.String,Yammer.Session)">
+            <summary>
+            Creates intstance of the HttpRequest object
+            </summary>
+            <param name="fullUrl">The full URL with querystring for the web request</param>
+            <param name="method">The <see cref="T:Yammer.WebMethod"/> http web method</param>
+            <param name="nonce">The OAuth nonce string</param>
+            <param name="timeStamp">The generated OAuth timestamp</param>
+            <param name="sig">The generatred OAuth signature</param>
+            <param name="session">The Yammer<see cref="T:Yammer.Session">session</see> object</param>
+            <returns>HttpRequest object</returns>
+        </member>
+        <member name="M:Yammer.HttpUtility.CreateWebRequest(System.String,Yammer.WebMethod,System.String,System.String,System.String,System.String,Yammer.Session)">
+            <summary>
+            
+            </summary>
+            <param name="fullUrl">The full URL with querystring for the web request</param>
+            <param name="method">The <see cref="T:Yammer.WebMethod"/> http web method</param>
+            <param name="nonce">The OAuth nonce string</param>
+            <param name="timeStamp">The generated OAuth timestamp</param>
+            <param name="sig">The generatred OAuth signature</param>
+            <param name="boundary">The boundary for the http multipart request</param>
+            <param name="session">The Yammer<see cref="T:Yammer.Session">session</see> object</param>
+            <returns>HttpRequest object</returns>
+        </member>
+        <member name="M:Yammer.HttpUtility.EncodeUrl(System.String,System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            Encodes URL to RFC 3986
+            </summary>
+            <param name="url">The url to encode</param>
+            <param name="parameters">The query string parameters</param>
+            <returns></returns>
+        </member>
+        <member name="M:Yammer.HttpUtility.GetSignature(Yammer.WebMethod,Yammer.Session,System.String,System.String@,System.String@)">
+            <summary>
+            Generates OAuth signature for http request
+            </summary>
+            <param name="method">The <see cref="T:Yammer.WebMethod"/> http web method</param>
+            <param name="session">he Yammer<see cref="T:Yammer.Session">session</see> object</param>
+            <param name="url">The URL for the web request</param>
+            <param name="nonce">The OAuth nonce string</param>
+            <param name="timeStamp">The generated OAuth timestamp</param>
+            <returns>OAuth signature</returns>
+        </member>
+        <member name="M:Yammer.HttpUtility.GetWebResponse(System.Net.HttpWebRequest)">
+            <summary>
+            Reads web response
+            </summary>
+            <param name="request"></param>
+            <returns>http web response</returns>
+        </member>
+        <member name="M:Yammer.HttpUtility.WritePostData(System.Collections.Specialized.NameValueCollection,System.Net.HttpWebRequest)">
+            <summary>
+            Writes post data to request stream
+            </summary>
+            <param name="parameters">The query string parameters</param>
+            <param name="request">The http request to write to</param>
+        </member>
+        <member name="M:Yammer.HttpUtility.WritePostData(System.String,System.IO.Stream,System.Boolean)">
+            <summary>
+            Writes post data to request stream
+            </summary>
+            <param name="parameters">The query string parameters</param>
+            <param name="request">The http request to write to</param>
+        </member>
+        <member name="P:Yammer.Group.Type">
+            <summary>
+            The object type, such as user, tag, etc.
+            </summary>
+        </member>
+        <member name="P:Yammer.Group.Id">
+            <summary>
+            The ID number for this object. Note that IDs are not unique across all object types: 
+            there may be a user and tag with the same numerical ID.
+            </summary>
+        </member>
+        <member name="P:Yammer.Group.FullName">
+            <summary>
+            Name given to this group.
+            </summary>
+        </member>
+        <member name="P:Yammer.Group.Name">
+            <summary>
+            Shortened name of this group. Used in references (@salesteam), addressing (to:salesteam), 
+            the email address for group updates (salesteam@yammer.com) and the web URL (www.yammer.com/groups/salesteam). 
+            </summary>
+        </member>
+        <member name="P:Yammer.Group.Privacy">
+            <summary>
+            Either public or private, to indicate whether updates are visible to non-members 
+            (public) and whether joining requires a group admin's approval (private). 
+            </summary>
+        </member>
+        <member name="P:Yammer.Group.Url">
+            <summary>
+            The API resource for fetching this object.
+            </summary>
+        </member>
+        <member name="P:Yammer.Group.WebUrl">
+            <summary>
+            The URL for viewing this object on the main Yammer website.
+            </summary>
+        </member>
+        <member name="P:Yammer.Group.Stats">
+            <summary>
+            Group stats
+            </summary>
+        </member>
+    </members>
+</doc>

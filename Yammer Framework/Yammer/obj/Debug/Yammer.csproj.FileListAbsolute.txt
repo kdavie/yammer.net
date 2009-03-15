@@ -1,0 +1,28 @@
+C:\ContextMenu\CuttingEdge0502\ContextMenu\Yammer\Yammer\obj\Debug\ResolveAssemblyReference.cache
+C:\ContextMenu\CuttingEdge0502\ContextMenu\Yammer\Yammer\bin\Debug\Yammer.dll
+C:\ContextMenu\CuttingEdge0502\ContextMenu\Yammer\Yammer\bin\Debug\Yammer.pdb
+C:\ContextMenu\CuttingEdge0502\ContextMenu\Yammer\Yammer\obj\Debug\Yammer.dll
+C:\ContextMenu\CuttingEdge0502\ContextMenu\Yammer\Yammer\obj\Debug\Yammer.pdb
+C:\ContextMenu\CuttingEdge0502\ContextMenu\Yammer\Yammer\bin\Debug\oAuth.dll
+C:\ContextMenu\CuttingEdge0502\ContextMenu\Yammer\Yammer\bin\Debug\oAuth.pdb
+C:\Documents and Settings\kdavie\My Documents\Visual Studio 2008\Projects\Yammer\Yammer\bin\Debug\Yammer.dll
+C:\Documents and Settings\kdavie\My Documents\Visual Studio 2008\Projects\Yammer\Yammer\bin\Debug\Yammer.pdb
+C:\Documents and Settings\kdavie\My Documents\Visual Studio 2008\Projects\Yammer\Yammer\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\kdavie\My Documents\Visual Studio 2008\Projects\Yammer\Yammer\obj\Debug\Yammer.dll
+C:\Documents and Settings\kdavie\My Documents\Visual Studio 2008\Projects\Yammer\Yammer\obj\Debug\Yammer.pdb
+C:\Documents and Settings\kdavie\My Documents\Visual Studio 2008\Projects\Yammer\Yammer\bin\Debug\oAuth.dll
+C:\Documents and Settings\kdavie\My Documents\Visual Studio 2008\Projects\Yammer\Yammer\bin\Debug\oAuth.pdb
+C:\Documents and Settings\Kevin\My Documents\Visual Studio 2008\Projects\Yammer\Yammer\bin\Debug\Yammer.dll
+C:\Documents and Settings\Kevin\My Documents\Visual Studio 2008\Projects\Yammer\Yammer\bin\Debug\Yammer.pdb
+C:\Documents and Settings\Kevin\My Documents\Visual Studio 2008\Projects\Yammer\Yammer\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Kevin\My Documents\Visual Studio 2008\Projects\Yammer\Yammer\obj\Debug\Yammer.dll
+C:\Documents and Settings\Kevin\My Documents\Visual Studio 2008\Projects\Yammer\Yammer\obj\Debug\Yammer.pdb
+C:\Documents and Settings\Kevin\My Documents\Visual Studio 2008\Projects\Yammer\Yammer\bin\Debug\oAuth.dll
+C:\Documents and Settings\Kevin\My Documents\Visual Studio 2008\Projects\Yammer\Yammer\bin\Debug\oAuth.pdb
+C:\Documents and Settings\Kevin\Yammer Framework\Yammer\bin\Debug\Yammer.dll
+C:\Documents and Settings\Kevin\Yammer Framework\Yammer\bin\Debug\Yammer.pdb
+C:\Documents and Settings\Kevin\Yammer Framework\Yammer\bin\Debug\oAuth.dll
+C:\Documents and Settings\Kevin\Yammer Framework\Yammer\bin\Debug\oAuth.pdb
+C:\Documents and Settings\Kevin\Yammer Framework\Yammer\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Kevin\Yammer Framework\Yammer\obj\Debug\Yammer.dll
+C:\Documents and Settings\Kevin\Yammer Framework\Yammer\obj\Debug\Yammer.pdb

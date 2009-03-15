@@ -1,0 +1,153 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>oAuth</name>
+    </assembly>
+    <members>
+        <member name="T:OAuth.Rfc3986">
+            <summary>
+            Performs RFC 3986 encoding and decoding.
+            http://www.apps.ietf.org/rfc/rfc3986.html
+            </summary>
+        </member>
+        <member name="M:OAuth.Rfc3986.EncodeAndJoin(System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            Join the name-value pairs into a string seperated with ampersands.
+            Each name and value is first RFC 3986 encoded and values are separated
+            from names with equal signs.
+            </summary>
+            <param name="values">The name value collection to encode and join</param>
+            <returns>An RFC 3986 compliant string</returns>
+        </member>
+        <member name="M:OAuth.Rfc3986.SplitAndDecode(System.String)">
+            <summary>
+            Splits a ampersand-separated list of key-value pairs, decodes the keys and 
+            values, and adds them to a NameValueCollection. Keys and values are separated
+            by equals signs.
+            </summary>
+            <param name="input">The key-value pair list</param>
+            <returns>A name value collection, which may be empty.</returns>
+            <exception cref="T:System.FormatException">
+            If the string is not a series of key-value pairs separated by ampersands,
+            or if one of the keys is null or empty, or if one of the keys or values is 
+            not properly encoded.
+            </exception>
+        </member>
+        <member name="M:OAuth.Rfc3986.Encode(System.String)">
+            <summary>
+            Perform RFC 3986 Percent-encoding on a string.
+            </summary>
+            <param name="input">The input string</param>
+            <returns>The RFC 3986 Percent-encoded string</returns>
+        </member>
+        <member name="M:OAuth.Rfc3986.Decode(System.String)">
+            <summary>
+            Perform RFC 3986 Percent-decoding on a string.
+            </summary>
+            <param name="input">The input RFC 3986 Percent-encoded string</param>
+            <returns>The decoded string</returns>
+        </member>
+        <member name="M:OAuth.OAuthBase.ComputeHash(System.Security.Cryptography.HashAlgorithm,System.String)">
+            <summary>
+            Helper function to compute a hash value
+            </summary>
+            <param name="hashAlgorithm">The hashing algoirhtm used. If that algorithm needs some initialization, like HMAC and its derivatives, they should be initialized prior to passing it to this function</param>
+            <param name="data">The data to hash</param>
+            <returns>a Base64 string of the hash value</returns>
+        </member>
+        <member name="M:OAuth.OAuthBase.GetQueryParameters(System.String)">
+            <summary>
+            Internal function to cut out all non oauth query string parameters (all parameters not begining with "oauth_")
+            </summary>
+            <param name="parameters">The query string part of the Url</param>
+            <returns>A list of QueryParameter each containing the parameter name and value</returns>
+        </member>
+        <member name="M:OAuth.OAuthBase.UrlEncode(System.String)">
+            <summary>
+            This is a different Url Encode implementation since the default .NET one outputs the percent encoding in lower case.
+            While this is not a problem with the percent encoding spec, it is used in upper case throughout OAuth
+            </summary>
+            <param name="value">The value to Url encode</param>
+            <returns>Returns a Url encoded string</returns>
+        </member>
+        <member name="M:OAuth.OAuthBase.NormalizeRequestParameters(System.Collections.Generic.IList{OAuth.OAuthBase.QueryParameter})">
+            <summary>
+            Normalizes the request parameters according to the spec
+            </summary>
+            <param name="parameters">The list of parameters already sorted</param>
+            <returns>a string representing the normalized parameters</returns>
+        </member>
+        <member name="M:OAuth.OAuthBase.GenerateSignatureBase(System.Uri,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String@,System.String@)">
+            <summary>
+            Generate the signature base that is used to produce the signature
+            </summary>
+            <param name="url">The full url that needs to be signed including its non OAuth url parameters</param>
+            <param name="consumerKey">The consumer key</param>        
+            <param name="token">The token, if available. If not available pass null or an empty string</param>
+            <param name="tokenSecret">The token secret, if available. If not available pass null or an empty string</param>
+            <param name="httpMethod">The http method used. Must be a valid HTTP method verb (POST,GET,PUT, etc)</param>
+            <param name="signatureType">The signature type. To use the default values use <see cref="T:OAuth.OAuthBase.SignatureTypes">OAuthBase.SignatureTypes</see>.</param>
+            <returns>The signature base</returns>
+        </member>
+        <member name="M:OAuth.OAuthBase.GenerateSignatureUsingHash(System.String,System.Security.Cryptography.HashAlgorithm)">
+            <summary>
+            Generate the signature value based on the given signature base and hash algorithm
+            </summary>
+            <param name="signatureBase">The signature based as produced by the GenerateSignatureBase method or by any other means</param>
+            <param name="hash">The hash algorithm used to perform the hashing. If the hashing algorithm requires initialization or a key it should be set prior to calling this method</param>
+            <returns>A base64 string of the hash value</returns>
+        </member>
+        <member name="M:OAuth.OAuthBase.GenerateSignature(System.Uri,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String@,System.String@)">
+            <summary>
+            Generates a signature using the HMAC-SHA1 algorithm
+            </summary>		
+            <param name="url">The full url that needs to be signed including its non OAuth url parameters</param>
+            <param name="consumerKey">The consumer key</param>
+            <param name="consumerSecret">The consumer seceret</param>
+            <param name="token">The token, if available. If not available pass null or an empty string</param>
+            <param name="tokenSecret">The token secret, if available. If not available pass null or an empty string</param>
+            <param name="httpMethod">The http method used. Must be a valid HTTP method verb (POST,GET,PUT, etc)</param>
+            <returns>A base64 string of the hash value</returns>
+        </member>
+        <member name="M:OAuth.OAuthBase.GenerateSignature(System.Uri,System.String,System.String,System.String,System.String,System.String,System.String,System.String,OAuth.OAuthBase.SignatureTypes,System.String@,System.String@)">
+            <summary>
+            Generates a signature using the specified signatureType 
+            </summary>		
+            <param name="url">The full url that needs to be signed including its non OAuth url parameters</param>
+            <param name="consumerKey">The consumer key</param>
+            <param name="consumerSecret">The consumer seceret</param>
+            <param name="token">The token, if available. If not available pass null or an empty string</param>
+            <param name="tokenSecret">The token secret, if available. If not available pass null or an empty string</param>
+            <param name="httpMethod">The http method used. Must be a valid HTTP method verb (POST,GET,PUT, etc)</param>
+            <param name="signatureType">The type of signature to use</param>
+            <returns>A base64 string of the hash value</returns>
+        </member>
+        <member name="M:OAuth.OAuthBase.GenerateTimeStamp">
+            <summary>
+            Generate the timestamp for the signature        
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:OAuth.OAuthBase.GenerateNonce">
+            <summary>
+            Generate a nonce
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:OAuth.OAuthBase.SignatureTypes">
+            <summary>
+            Provides a predefined set of algorithms that are supported officially by the protocol
+            </summary>
+        </member>
+        <member name="T:OAuth.OAuthBase.QueryParameter">
+            <summary>
+            Provides an internal structure to sort the query parameter
+            </summary>
+        </member>
+        <member name="T:OAuth.OAuthBase.QueryParameterComparer">
+            <summary>
+            Comparer class used to perform the sorting of the query parameters
+            </summary>
+        </member>
+    </members>
+</doc>
