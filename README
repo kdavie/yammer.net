@@ -1,337 +1,1265 @@
-Yammer uses OAuth to authenticate clients. This allows applications to securely access data on a user's behalf without storing or needing the user's password. 
-Before you can use Yammer.Net, you must first obtain a client key and secret from Yammer.  To do this, log into Yammer and navigate to https://www.yammer.com/client_applications/new.  This form will allow you to register your application.  Once you complete and submit the form you will be provided with your client key and secret.  Make a note of these; you’ll need them to make use of the library.
-Now that you have your client key and secret you are ready to being using the framework.  Create a new project and add references to the OAuth and Yammer assemblies.  Yammer.Net uses a settings file to persist authorization information between your application sessions.  This file is stored in the user’s Application Data folder under Yammer\Data.  The first thing you should do when your application loads is check if this file exists:
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
-namespace YammerNetExample
-{
-    class Program
-    {
-        const string CONSUMER_KEY = "myConsumerKey";
-        const string CONSUMER_SECRET = "myConsumerSecret";
-        static void Main(string[] args)
+
+    
+    kdavie/yammer.net @ GitHub
+    
+        body
         {
-            Yammer.Settings settings = Yammer.Settings.CheckConfiguration();
-            if (settings == null)
-            {
-                //Need to configure client
-            }
-            else
-            {
-                //Client already configured, use persisted settings
-            }
+            margin-top: 1.0em;
+            background-color: #ffffff;
+            font-family: "helvetica";
         }
-    }
-}
-Configuring your client for first time use is a three step process.  First, you must obtain a request token from Yammer using your client key and secret.   The Yammer.Auth.GetRequestToken member accepts three arguments: proxy, consumerKey and consumerSecret .  If your client won’t be behind a proxy, you can pass in a null for this argument.  After obtaining the request token you can allow the user to authorize your application.  If you would like the user to be redirected to your website after authorizing with Yammer, you can provide a value for the callbackUrl argument of the Yammer.Auth.Authorize member.
-private static Yammer.Auth GetRequestToken()
-{
-    Yammer.Auth auth = Yammer.Auth.GetRequestToken(null, CONSUMER_KEY, CONSUMER_SECRET);
-    if (auth != null)
-    {
-        auth.Authorize(null);
-        Console.WriteLine("We've opened up a browser so you can authenticate this application with Yammer.");
-        Console.WriteLine("Once you've authenticated, press any key to continue.");
-        Console.ReadLine();
-    }
-    return auth;
-}
-The framework will open a browser and allow the user to authorize your application.  Once the user authorizes through the Yammer website, your application can request its permanent access key and secret:
-private static void GetAccessToken(Yammer.Auth auth)
-{
-    if (auth != null)
-        auth.GetAccessToken();
-
-    if (auth.Success)
-    {
-        Console.WriteLine("Welcome to my Yammer application!");
-        Console.ReadLine();
-    }
-}
-After performing these three steps (GetRequestToken(), Authorize(), and GetAccessToken()), your application will be configured to communicate with Yammer.  The next step is to start making calls to the Yammer API.  To continue with my console example, I’ve added some code to handle a few menu options:
-public static void ReadMessages(List<Yammer.Message> messages)
-{
-    Console.WriteLine();
-    foreach (Yammer.Message msg in messages)
-    {
-        string body = msg.Body.Plain;
-        string timeStamp = msg.CreatedAt;
-
-        Yammer.User sender = null;
-        Yammer.Guide guide = null;
-        Yammer.Message repliedToMessage = null;
-        Yammer.User repliedToUser = null;
-
-        //if message sent from user, store user information
-        if (msg.SenderType.ToUpper() == Yammer.SenderType.USER.ToString())
-            sender = msg.References.Users.Find(delegate(Yammer.User u) { return u.Id == msg.SenderId.ToString(); });
-
-        //if message sent from guide, store guid information
-        if (msg.SenderType.ToUpper() == Yammer.SenderType.SYSTEM.ToString()) 
-            guide = msg.References.Guide;
-
-        //if message is a reply, store replied-to-message
-        if (msg.RepliedToId != null && msg.RepliedToId != string.Empty)
-            repliedToMessage = msg.References.Messages.Find(delegate(Yammer.Message m) { return m.Id == msg.RepliedToId; });
-
-        //if reply-to-message exists, store replied-to-user
-        if(repliedToMessage != null)
-            repliedToUser = msg.References.Users.Find(delegate(Yammer.User u) { return int.Parse(u.Id) == repliedToMessage.SenderId; });
-
-        StringBuilder sb = new StringBuilder();
-        //Write sender name
-        if(sender != null)
-            sb.Append(sender.FullName);
-        //Write guid name
-        if (guide != null)
-            sb.Append(guide.FullName);
-        //Write replied-to-user name
-        if (repliedToUser != null)
-            sb.Append(" in-reply-to: " + repliedToUser.FullName);
-        sb.AppendLine();
+        #container
+        {
+            margin: 0 auto;
+            width: 700px;
+        }
+        h1
+        {
+            font-size: 3.8em;
+            color: #49637C;
+            margin-bottom: 3px;
+        }
+        h1 .small
+        {
+            font-size: 0.4em;
+        }
+        h1 a
+        {
+            text-decoration: none;
+        }
+        h2
+        {
+            font-size: 1.5em;
+            color: #49637C;
+        }
+        h3
+        {
+            text-align: center;
+            color: #49637C;
+        }
+        a
+        {
+            color: #49637C;
+        }
+        .description
+        {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            margin-top: 30px;
+            font-style: italic;
+        }
+        .download
+        {
+            float: right;
+        }
+        pre
+        {
+            background: #49637C;
+            color: #fff;
+            padding: 15px;
+        }
+        hr
+        {
+            border: 0;
+            width: 80%;
+            border-bottom: 1px solid #aaa;
+        }
+        .footer
+        {
+            text-align: center;
+            padding-top: 30px;
+            font-style: italic;
+        }
+    
+    
         
-        //Write message body
-        sb.AppendLine(body);
+
+
+    "
+        !http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png(Fork me on GitHub)!
+    ":http://github.com/kdavie/yammer.net
+    
         
-        //Write attachments
-        if (msg.Attachments.Count > 0)
-            foreach (Yammer.Attachment attachment in msg.Attachments)
-                sb.AppendLine(attachment.Name);
+            "
+                !http://github.com/images/modules/download/zip.png!":http://github.com/kdavie/yammer.net/zipball/master
+            "
+                !http://github.com/images/modules/download/tar.png!":http://github.com/kdavie/yammer.net/tarball/master
+        
+        h1. "Yammer.NET":http://github.com/kdavie/yammer.net %(=small)
+            by "kdavie":http://github.com/kdavie
+        
+            .NET Yammer API Wrapper
+        
+        h2. Usage
+        
+p(=MsoNormal). Yammer uses "OAuth":http://oauth.net/
+to authenticate clients. This allows applications to securely access data on a
+user's behalf without storing or needing the user's password. 
+p(=MsoNormal). Before you can use Yammer.Net, you must first obtain a client
+key and secret from Yammer.  To do this, log into Yammer and navigate to "https://www.yammer.com/client_applications/new":https://www.yammer.com/client_applications/new. 
+This form will allow you to register your application.  Once you complete and
+submit the form you will be provided with your client key and secret.  Make a
+note of these; you'll need them to make use of the library.
+p(=MsoNormal). Now that you have your client key and secret you are ready
+to being using the framework.  Create a new project and add references to the OAuth
+and Yammer assemblies.  Yammer.Net uses a settings file to persist
+authorization information between your application sessions.  This file is
+stored in the user's Application Data folder under YammerData.  The first
+thing you should do when your application loads is check if this file exists:
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. using%%{=font-size:10.0pt;
+font-family:"Courier New"} System;%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New";color:blue}using%%{=font-size:10.0pt;
+font-family:"Courier New"} System.Collections.Generic;%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New";color:blue}using%%{=font-size:10.0pt;
+font-family:"Courier New"} System.Linq;%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New";color:blue}using%%{=font-size:10.0pt;
+font-family:"Courier New"} System.Text;%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"} %
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New";color:blue}namespace%%{=font-size:
+10.0pt;font-family:"Courier New"} YammerNetExample%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}{%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}    class% %{=color:#2B91AF}Program%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}    {%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}        const% %{=color:blue}string% CONSUMER_KEY = %{=color:#A31515}"myConsumerKey"%;
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}        const% %{=color:blue}string% CONSUMER_SECRET = %{=color:#A31515}"myConsumerSecret"%;
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}        static% %{=color:blue}void% Main(%{=color:blue}string%[]
+args)
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}        {%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}            Yammer.Settings%
+settings = Yammer.%{=color:#2B91AF}Settings%.CheckConfiguration();
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}            if%
+(settings == %{=color:blue}null%)
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}            {%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}                //Need to
+configure client%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}            }%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}            else%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}            {%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}                //Client
+already configured, use persisted settings%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}            }%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}        }%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}    }%
+p(=MsoNormal){=background:#D9D9D9}. %{=font-size:10.0pt;
+line-height:115%;font-family:"Courier New"}}%
+p(=MsoNormal). Configuring your client for first time use is a three step
+process.  First, you must obtain a request token from Yammer using your client
+key and secret.   The Yammer.Auth.GetRequestToken member accepts three
+arguments: proxy, consumerKey and consumerSecret .  If your client won't be
+behind a proxy, you can pass in a null for this argument.  After obtaining the
+request token you can allow the user to authorize your application.  If you
+would like the user to be redirected to your website after authorizing with
+Yammer, you can provide a value for the callbackUrl argument of the
+Yammer.Auth.Authorize member.
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New";color:blue}private%%{=font-size:
+10.0pt;font-family:"Courier New"} static%
+Yammer.%{=color:#2B91AF}Auth% GetRequestToken()
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}{%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}    Yammer.Auth%
+auth = Yammer.%{=color:#2B91AF}Auth%.GetRequestToken(%{=color:blue}null%, CONSUMER_KEY, CONSUMER_SECRET);
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}    if% (auth != %{=color:blue}null%)
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}    {%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}        auth.Authorize(null%);
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}        Console%.WriteLine(%{=color:#A31515}"We've opened up a browser so you can authenticate
+this application with Yammer."%);
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}        Console%.WriteLine(%{=color:#A31515}"Once you've authenticated, press any key to
+continue."%);
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}        Console%.ReadLine();
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}    }%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}    return% auth;
+p(=MsoNormal){=background:#D9D9D9}. %{=font-size:10.0pt;
+line-height:115%;font-family:"Courier New"}}%
+p(=MsoNormal). The framework will open a browser and allow the user to
+authorize your application.  Once the user authorizes through the Yammer
+website, your application can request its permanent access key and secret:
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New";color:blue}private%%{=font-size:
+10.0pt;font-family:"Courier New"} static% %{=color:blue}void% GetAccessToken(Yammer.%{=color:#2B91AF}Auth%
+auth)
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}{%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}    if% (auth != %{=color:blue}null%)
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}        auth.GetAccessToken();%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"} %
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}    if%
+(auth.Success)
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}    {%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}        Console%.WriteLine(%{=color:#A31515}"Welcome to my Yammer application!"%);
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}        Console%.ReadLine();
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}    }%
+p(=MsoNormal){=background:#D9D9D9}. %{=font-size:10.0pt;
+line-height:115%;font-family:"Courier New"}}%
+p(=MsoNormal). After performing these three steps (GetRequestToken(),
+Authorize(), and GetAccessToken()), your application will be configured to communicate
+with Yammer.  The next step is to start making calls to the Yammer API.  To
+continue with my console example, I've added some code to handle a few menu
+options:
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New";color:blue}public%%{=font-size:10.0pt;
+font-family:"Courier New"} static% %{=color:blue}void% ReadMessages(%{=color:#2B91AF}List%<Yammer.%{=color:#2B91AF}Message%> messages)
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}{%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}    Console%.WriteLine();
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}    foreach% (Yammer.%{=color:#2B91AF}Message% msg %{=color:blue}in%
+messages)
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}    {%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}        string% body
+= msg.Body.Plain;
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}        string%
+timeStamp = msg.CreatedAt;
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"} %
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}        Yammer.User%
+sender = %{=color:blue}null%;
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}        Yammer.Guide%
+guide = %{=color:blue}null%;
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}        Yammer.Message%
+repliedToMessage = %{=color:blue}null%;
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}        Yammer.User%
+repliedToUser = %{=color:blue}null%;
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"} %
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}        //if message sent
+from user, store user information%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}        if%
+(msg.SenderType.ToUpper() == Yammer.%{=color:#2B91AF}SenderType%.USER.ToString())
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}            sender = msg.References.Users.Find(delegate%(Yammer.%{=color:#2B91AF}User%
+u) { %{=color:blue}return% u.Id == msg.SenderId.ToString();
+});
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"} %
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}        //if message sent
+from guide, store guid information%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}        if%
+(msg.SenderType.ToUpper() == Yammer.%{=color:#2B91AF}SenderType%.SYSTEM.ToString())
 
-        //Write timestamp
-        sb.AppendLine(timeStamp);
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}            guide = msg.References.Guide;%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"} %
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}        //if message is a
+reply, store replied-to-message%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}        if%
+(msg.RepliedToId != %{=color:blue}null% &&
+msg.RepliedToId != %{=color:blue}string%.Empty)
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}            repliedToMessage =
+msg.References.Messages.Find(delegate%(Yammer.%{=color:#2B91AF}Message% m) { %{=color:blue}return%
+m.Id == msg.RepliedToId; });
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"} %
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}        //if
+reply-to-message exists, store replied-to-user%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}        if%(repliedToMessage
+!= %{=color:blue}null%)
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}            repliedToUser =
+msg.References.Users.Find(delegate%(Yammer.%{=color:#2B91AF}User% u) { %{=color:blue}return% %{=color:blue}int%.Parse(u.Id) == repliedToMessage.SenderId; });
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"} %
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}        StringBuilder%
+sb = %{=color:blue}new% %{=color:#2B91AF}StringBuilder%();
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}        //Write sender
+name%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}        if%(sender !=
+%{=color:blue}null%)
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}            sb.Append(sender.FullName);%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}        //Write guid name%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}        if% (guide !=
+%{=color:blue}null%)
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}            sb.Append(guide.FullName);%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}        //Write
+replied-to-user name%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}        if%
+(repliedToUser != %{=color:blue}null%)
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}            sb.Append("
+in-reply-to: "% + repliedToUser.FullName);
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}        sb.AppendLine();%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}        %
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}        //Write message
+body%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}        sb.AppendLine(body);%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}        %
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}        //Write
+attachments%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}        if%
+(msg.Attachments.Count > 0)
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}            foreach%
+(Yammer.%{=color:#2B91AF}Attachment% attachment %{=color:blue}in% msg.Attachments)
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}                sb.AppendLine(attachment.Name);%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"} %
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}        //Write timestamp%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}        sb.AppendLine(timeStamp);%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"} %
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}        Console%.WriteLine(sb.ToString());
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}    }%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}}%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"} %
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"} %
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New";color:blue}public%%{=font-size:10.0pt;
+font-family:"Courier New"} static% %{=color:blue}void% PostMessage(%{=color:blue}string%
+input, Yammer.%{=color:#2B91AF}Session% session)
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}{%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}    //parse message%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}    string% pattern =
+%{=color:#A31515}"-ms"+.+?""%;
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}    System.Text.RegularExpressions.Regex% regex = %{=color:blue}new%
+System.Text.RegularExpressions.%{=color:#2B91AF}Regex%(pattern,
+System.Text.RegularExpressions.%{=color:#2B91AF}RegexOptions%.Singleline);
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}    System.Text.RegularExpressions.Match% message = regex.Match(input);
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}    string% body = %{=color:blue}string%.Empty;
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}    if% (message != %{=color:blue}null%)
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}        body = message.Value.Replace("-m"%, %{=color:#A31515}""%).Trim().Replace(%{=color:#A31515}"""%,%{=color:#A31515}""%);
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"} %
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}    //parse attachments%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}    pattern = "-as"+.+?""%;
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}    regex = new%
+System.Text.RegularExpressions.%{=color:#2B91AF}Regex%(pattern,
+System.Text.RegularExpressions.%{=color:#2B91AF}RegexOptions%.Singleline);
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}    List%<%{=color:blue}string%> attachmentList = %{=color:blue}new%
+%{=color:#2B91AF}List%<%{=color:blue}string%>();
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}    if%
+(regex.IsMatch(input))
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}    {%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}        message = regex.Match(input);%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}       
+attachmentList.AddRange(message.Value.Replace("-a"%,
+%{=color:#A31515}""%).Trim().Replace(%{=color:#A31515}"""%, %{=color:#A31515}""%).Split(%{=color:#A31515}';'%));
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}    }%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"} %
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}    //post message%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}    Yammer.ApiWrapper%.PostMessage(body,
+session, attachmentList);
+p(=MsoNormal){=background:#D9D9D9}. %{=font-size:10.0pt;
+line-height:115%;font-family:"Courier New"}}%
+p(=MsoNormal). %{=font-size:10.0pt;line-height:115%;font-family:
+"Courier New"}The Yammer.ApiWrapper.PostMessage member accepts a list of
+attachments.  This list should be a string of paths to attach with the message. 
+The follow is the complete source for the example console app used to illustrate
+these steps:%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New";color:blue}using%%{=font-size:10.0pt;
+font-family:"Courier New"} System;%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New";color:blue}using%%{=font-size:10.0pt;
+font-family:"Courier New"} System.Collections.Generic;%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New";color:blue}using%%{=font-size:10.0pt;
+font-family:"Courier New"} System.Linq;%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New";color:blue}using%%{=font-size:10.0pt;
+font-family:"Courier New"} System.Text;%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New";color:blue}using%%{=font-size:10.0pt;
+font-family:"Courier New"} System.Net;%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"} %
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New";color:blue}namespace%%{=font-size:
+10.0pt;font-family:"Courier New"} YammerNetExample%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}{%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}    ///%%{=color:green} %%{=color:gray}<summary>%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}    ///%%{=color:green} Yammer.Net example%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}    ///%%{=color:green} %%{=color:gray}</summary>%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}    ///%%{=color:green} %%{=color:gray}<example>%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}    ///%%{=color:green} yam myfeed%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}    ///%%{=color:green} yam post -m "this is a sample post"%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}    ///%%{=color:green} yam post -m "this is a sample post with an
+attachment" -a "c:myImage.gif"%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}    ///%%{=color:green} yam post -m "this is a sample post with multiple
+attachments" -a "c:myImage.gif;c:myText.txt"%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}    ///%%{=color:green} %%{=color:gray}</example>%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}    class% %{=color:#2B91AF}Program%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}    {%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}        const% %{=color:blue}string% CONSUMER_KEY = %{=color:#A31515}"myConsumerKey"%;
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}        const% %{=color:blue}string% CONSUMER_SECRET = %{=color:#A31515}"myConsumerSecret"%;
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}        const% %{=color:blue}string% RETRIEVE_MY_FEED = %{=color:#A31515}"yam
+myfeed"%;
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}        const% %{=color:blue}string% POST_MESSAGE = %{=color:#A31515}"yam
+post"%;
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}        static% %{=color:blue}void% Main(%{=color:blue}string%[]
+args)
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}        {%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}            Yammer.Settings%
+settings = Yammer.%{=color:#2B91AF}Settings%.CheckConfiguration();
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}            if%
+(settings == %{=color:blue}null%)
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}            {%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}                Yammer.Auth%
+auth = GetRequestToken();
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}                GetAccessToken(auth);%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}            }%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}            else%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}                Menu(true%,
+ConfigureClient(settings), %{=color:blue}null%, %{=color:blue}null%);
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}        }%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"} %
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}        private% %{=color:blue}static% OAuth.%{=color:#2B91AF}OAuthKey%
+ConfigureClient(Yammer.%{=color:#2B91AF}Settings% settings)
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}        {%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}            OAuth.OAuthKey%
+key = %{=color:blue}new% OAuth.%{=color:#2B91AF}OAuthKey%(CONSUMER_KEY,
+CONSUMER_SECRET, settings.OAuth.TokenKey, settings.OAuth.TokenSecret);
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}            WebProxy%
+proxy = %{=color:blue}null%;
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}            if%
+(settings.Proxy.Enable)
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}            {%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}                proxy = new%
+System.Net.%{=color:#2B91AF}WebProxy%();
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}                proxy.Address = new% %{=color:#2B91AF}Uri%(settings.Proxy.Address
++ %{=color:#A31515}":"% + settings.Proxy.Port);
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}                proxy.Credentials = new% %{=color:#2B91AF}NetworkCredential%(settings.Proxy.Id,
+settings.Proxy.Password);
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}            }%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}            return%
+key;
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}        }%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"} %
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}        public% %{=color:blue}static% Yammer.%{=color:#2B91AF}Auth%
+GetRequestToken()
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}        {%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}        Yammer.Auth%
+auth = Yammer.%{=color:#2B91AF}Auth%.GetRequestToken(%{=color:blue}null%, CONSUMER_KEY, CONSUMER_SECRET);
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}        if% (auth != %{=color:blue}null%)
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}        {%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}            auth.Authorize(null%);
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}            Console%.WriteLine(%{=color:#A31515}"We've opened up a browser so you can authenticate
+this application with Yammer."%);
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}            Console%.WriteLine(%{=color:#A31515}"Once you've authenticated, press any key to
+continue."%);
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}            Console%.ReadLine();
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}        }%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}        return% auth;
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}        }%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"} %
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}        public% %{=color:blue}static% %{=color:blue}void%
+GetAccessToken(Yammer.%{=color:#2B91AF}Auth% auth)
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}        {%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}            if% (auth
+!= %{=color:blue}null%)
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}                auth.GetAccessToken();%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"} %
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}            if%
+(auth.Success)
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}                Menu(true%,
+auth.Key, %{=color:blue}null%, %{=color:blue}null%);
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}            %
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}        }%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"} %
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}        public% %{=color:blue}static% %{=color:blue}void% Menu(%{=color:blue}bool% welcome, OAuth.%{=color:#2B91AF}OAuthKey%
+key, %{=color:#2B91AF}WebProxy% proxy, Yammer.%{=color:#2B91AF}Session% session)
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}        {%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}            if%(session
+== %{=color:blue}null%)
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}                session = new%
+Yammer.%{=color:#2B91AF}Session%(key, proxy);
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"} %
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}            if%
+(welcome)
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}            {%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}                Console%.WriteLine(%{=color:#A31515}"Welcome to my Yammer application!"%);
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}                welcome = false%;
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}            }%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"} %
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}            string%
+input = %{=color:#2B91AF}Console%.ReadLine();
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}            string%
+option = ParseInput(input);
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"} %
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}            switch%
+(option)
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}            {%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}                case%
+RETRIEVE_MY_FEED:
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}                    ReadMessages(Yammer.ApiWrapper%.GetFollowingMessages(session));
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}                    break%;
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}                case%
+POST_MESSAGE:
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}                    PostMessage(input, session);%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}                    break%;
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}            }%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"} %
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}            Menu(welcome, key, proxy, session);%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"} %
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}        }%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"} %
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}        public% %{=color:blue}static% %{=color:blue}string%
+ParseInput(%{=color:blue}string% input)
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}        {%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}            if%
+(input.ToLower().Contains(RETRIEVE_MY_FEED))
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}                return%
+RETRIEVE_MY_FEED;
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"} %
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}            if%
+(input.ToLower().Contains(POST_MESSAGE))
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}                return%
+POST_MESSAGE;
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"} %
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}            return% %{=color:blue}null%;
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}        }%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"} %
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}        public% %{=color:blue}static% %{=color:blue}void%
+ReadMessages(%{=color:#2B91AF}List%<Yammer.%{=color:#2B91AF}Message%> messages)
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}        {%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}            Console%.WriteLine();
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}            foreach%
+(Yammer.%{=color:#2B91AF}Message% msg %{=color:blue}in%
+messages)
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}            {%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}                string%
+body = msg.Body.Plain;
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}                string%
+timeStamp = msg.CreatedAt;
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"} %
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}                Yammer.User%
+sender = %{=color:blue}null%;
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}                Yammer.Guide%
+guide = %{=color:blue}null%;
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}                Yammer.Message%
+repliedToMessage = %{=color:blue}null%;
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}                Yammer.User%
+repliedToUser = %{=color:blue}null%;
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"} %
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}                //if
+message sent from user store user information%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}                if%
+(msg.SenderType.ToUpper() == Yammer.%{=color:#2B91AF}SenderType%.USER.ToString())
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}                    sender =
+msg.References.Users.Find(delegate%(Yammer.%{=color:#2B91AF}User% u) { %{=color:blue}return%
+u.Id == msg.SenderId.ToString(); });
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"} %
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}                //if
+message sent from guide store guid information%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}                if%
+(msg.SenderType.ToUpper() == Yammer.%{=color:#2B91AF}SenderType%.SYSTEM.ToString())
 
-        Console.WriteLine(sb.ToString());
-    }
-}
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}                    guide = msg.References.Guide;%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"} %
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}                //if
+message is a reply, store replied-to-message%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}                if%
+(msg.RepliedToId != %{=color:blue}null% &&
+msg.RepliedToId != %{=color:blue}string%.Empty)
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}                    repliedToMessage =
+msg.References.Messages.Find(delegate%(Yammer.%{=color:#2B91AF}Message% m) { %{=color:blue}return%
+m.Id == msg.RepliedToId; });
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"} %
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}                //if
+reply-to-message exists, store replied-to-user%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}                if%(repliedToMessage
+!= %{=color:blue}null%)
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}                    repliedToUser =
+msg.References.Users.Find(delegate%(Yammer.%{=color:#2B91AF}User% u) { %{=color:blue}return% %{=color:blue}int%.Parse(u.Id) == repliedToMessage.SenderId; });
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"} %
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}                StringBuilder%
+sb = %{=color:blue}new% %{=color:#2B91AF}StringBuilder%();
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}                //Write
+sender name%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}                if%(sender
+!= %{=color:blue}null%)
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}                    sb.Append(sender.FullName);%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}                //Write
+guid name%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}                if%
+(guide != %{=color:blue}null%)
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}                    sb.Append(guide.FullName);%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}                //Write
+replied-to-user name%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}                if%
+(repliedToUser != %{=color:blue}null%)
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}                    sb.Append(" in-reply-to: "% +
+repliedToUser.FullName);
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}                sb.AppendLine();%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}                %
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}                //Write
+message body%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}                sb.AppendLine(body);%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}                %
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}                //Write
+attachments%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}                if%
+(msg.Attachments.Count > 0)
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}                    foreach%
+(Yammer.%{=color:#2B91AF}Attachment% attachment %{=color:blue}in% msg.Attachments)
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}                       
+sb.AppendLine(attachment.Name);%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"} %
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}                //Write
+timestamp%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}                sb.AppendLine(timeStamp);%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"} %
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}                Console%.WriteLine(sb.ToString());
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}            }%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}        }%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"} %
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"} %
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}        public% %{=color:blue}static% %{=color:blue}void%
+PostMessage(%{=color:blue}string% input, Yammer.%{=color:#2B91AF}Session% session)
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}        {%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}            //parse
+message%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}            string%
+pattern = %{=color:#A31515}"-ms"+.+?""%;
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}            System.Text.RegularExpressions.Regex% regex = %{=color:blue}new%
+System.Text.RegularExpressions.%{=color:#2B91AF}Regex%(pattern,
+System.Text.RegularExpressions.%{=color:#2B91AF}RegexOptions%.Singleline);
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}            System.Text.RegularExpressions.Match% message = regex.Match(input);
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}            string%
+body = %{=color:blue}string%.Empty;
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}            if%
+(message != %{=color:blue}null%)
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}                body = message.Value.Replace("-m"%, %{=color:#A31515}""%).Trim().Replace(%{=color:#A31515}"""%,%{=color:#A31515}""%);
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"} %
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}            //parse
+attachments%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}            pattern = "-as"+.+?""%;
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}            regex = new%
+System.Text.RegularExpressions.%{=color:#2B91AF}Regex%(pattern,
+System.Text.RegularExpressions.%{=color:#2B91AF}RegexOptions%.Singleline);
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}            List%<%{=color:blue}string%> attachmentList = %{=color:blue}new%
+%{=color:#2B91AF}List%<%{=color:blue}string%>();
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}            if%
+(regex.IsMatch(input))
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}            {%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}                message = regex.Match(input);%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}               
+attachmentList.AddRange(message.Value.Replace("-a"%,
+%{=color:#A31515}""%).Trim().Replace(%{=color:#A31515}"""%, %{=color:#A31515}""%).Split(%{=color:#A31515}';'%));
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}            }%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"} %
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}            //post message%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}            Yammer.ApiWrapper%.PostMessage(body,
+session, attachmentList);
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}        }%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}    }%
+p(=MsoNormal){=margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;background:#D9D9D9;text-autospace:none}. %{=font-size:10.0pt;
+font-family:"Courier New"}}%
 
+        h2. Documentation
+        " HTML Documentation":http://kdavie.github.com/yammer.net/documentation/Index.html
+        h2. Contact
+Kevin Davie (kevin.davie@gmail.com)
 
-public static void PostMessage(string input, Yammer.Session session)
-{
-    //parse message
-    string pattern = "-m\\s\"+.+?\"";
-    System.Text.RegularExpressions.Regex regex = new System.Text.RegularExpressions.Regex(pattern, System.Text.RegularExpressions.RegexOptions.Singleline);
-    System.Text.RegularExpressions.Match message = regex.Match(input);
-    string body = string.Empty;
-    if (message != null)
-        body = message.Value.Replace("-m", "").Trim().Replace("\"","");
-
-    //parse attachments
-    pattern = "-a\\s\"+.+?\"";
-    regex = new System.Text.RegularExpressions.Regex(pattern, System.Text.RegularExpressions.RegexOptions.Singleline);
-    List<string> attachmentList = new List<string>();
-    if (regex.IsMatch(input))
-    {
-        message = regex.Match(input);
-        attachmentList.AddRange(message.Value.Replace("-a", "").Trim().Replace("\"", "").Split(';'));
-    }
-
-    //post message
-    Yammer.ApiWrapper.PostMessage(body, session, attachmentList);
-}
-The Yammer.ApiWrapper.PostMessage member accepts a list of attachments.  This list should be a string of paths to attach with the message.  The follow is the complete source for the example console app used to illustrate these steps:
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Net;
-
-namespace YammerNetExample
-{
-    /// <summary>
-    /// Yammer.Net example
-    /// </summary>
-    /// <example>
-    /// yam myfeed
-    /// yam post -m "this is a sample post"
-    /// yam post -m "this is a sample post with an attachment" -a "c:\myImage.gif"
-    /// yam post -m "this is a sample post with multiple attachments" -a "c:\myImage.gif;c:\myText.txt"
-    /// </example>
-    class Program
-    {
-        const string CONSUMER_KEY = "myConsumerKey";
-        const string CONSUMER_SECRET = "myConsumerSecret";
-        const string RETRIEVE_MY_FEED = "yam myfeed";
-        const string POST_MESSAGE = "yam post";
-        static void Main(string[] args)
-        {
-            Yammer.Settings settings = Yammer.Settings.CheckConfiguration();
-            if (settings == null)
-            {
-                Yammer.Auth auth = GetRequestToken();
-                GetAccessToken(auth);
-            }
-            else
-                Menu(true, ConfigureClient(settings), null, null);
-        }
-
-        private static OAuth.OAuthKey ConfigureClient(Yammer.Settings settings)
-        {
-            OAuth.OAuthKey key = new OAuth.OAuthKey(CONSUMER_KEY, CONSUMER_SECRET, settings.OAuth.TokenKey, settings.OAuth.TokenSecret);
-            WebProxy proxy = null;
-            if (settings.Proxy.Enable)
-            {
-                proxy = new System.Net.WebProxy();
-                proxy.Address = new Uri(settings.Proxy.Address + ":" + settings.Proxy.Port);
-                proxy.Credentials = new NetworkCredential(settings.Proxy.Id, settings.Proxy.Password);
-            }
-            return key;
-        }
-
-        public static Yammer.Auth GetRequestToken()
-        {
-        Yammer.Auth auth = Yammer.Auth.GetRequestToken(null, CONSUMER_KEY, CONSUMER_SECRET);
-        if (auth != null)
-        {
-            auth.Authorize(null);
-            Console.WriteLine("We've opened up a browser so you can authenticate this application with Yammer.");
-            Console.WriteLine("Once you've authenticated, press any key to continue.");
-            Console.ReadLine();
-        }
-        return auth;
-        }
-
-        public static void GetAccessToken(Yammer.Auth auth)
-        {
-            if (auth != null)
-                auth.GetAccessToken();
-
-            if (auth.Success)
-                Menu(true, auth.Key, null, null);
-            
-        }
-
-        public static void Menu(bool welcome, OAuth.OAuthKey key, WebProxy proxy, Yammer.Session session)
-        {
-            if(session == null)
-                session = new Yammer.Session(key, proxy);
-
-            if (welcome)
-            {
-                Console.WriteLine("Welcome to my Yammer application!");
-                welcome = false;
-            }
-
-            string input = Console.ReadLine();
-            string option = ParseInput(input);
-
-            switch (option)
-            {
-                case RETRIEVE_MY_FEED:
-                    ReadMessages(Yammer.ApiWrapper.GetFollowingMessages(session));
-                    break;
-                case POST_MESSAGE:
-                    PostMessage(input, session);
-                    break;
-            }
-
-            Menu(welcome, key, proxy, session);
-
-        }
-
-        public static string ParseInput(string input)
-        {
-            if (input.ToLower().Contains(RETRIEVE_MY_FEED))
-                return RETRIEVE_MY_FEED;
-
-            if (input.ToLower().Contains(POST_MESSAGE))
-                return POST_MESSAGE;
-
-            return null;
-        }
-
-        public static void ReadMessages(List<Yammer.Message> messages)
-        {
-            Console.WriteLine();
-            foreach (Yammer.Message msg in messages)
-            {
-                string body = msg.Body.Plain;
-                string timeStamp = msg.CreatedAt;
-
-                Yammer.User sender = null;
-                Yammer.Guide guide = null;
-                Yammer.Message repliedToMessage = null;
-                Yammer.User repliedToUser = null;
-
-                //if message sent from user store user information
-                if (msg.SenderType.ToUpper() == Yammer.SenderType.USER.ToString())
-                    sender = msg.References.Users.Find(delegate(Yammer.User u) { return u.Id == msg.SenderId.ToString(); });
-
-                //if message sent from guide store guid information
-                if (msg.SenderType.ToUpper() == Yammer.SenderType.SYSTEM.ToString()) 
-                    guide = msg.References.Guide;
-
-                //if message is a reply, store replied-to-message
-                if (msg.RepliedToId != null && msg.RepliedToId != string.Empty)
-                    repliedToMessage = msg.References.Messages.Find(delegate(Yammer.Message m) { return m.Id == msg.RepliedToId; });
-
-                //if reply-to-message exists, store replied-to-user
-                if(repliedToMessage != null)
-                    repliedToUser = msg.References.Users.Find(delegate(Yammer.User u) { return int.Parse(u.Id) == repliedToMessage.SenderId; });
-
-                StringBuilder sb = new StringBuilder();
-                //Write sender name
-                if(sender != null)
-                    sb.Append(sender.FullName);
-                //Write guid name
-                if (guide != null)
-                    sb.Append(guide.FullName);
-                //Write replied-to-user name
-                if (repliedToUser != null)
-                    sb.Append(" in-reply-to: " + repliedToUser.FullName);
-                sb.AppendLine();
-                
-                //Write message body
-                sb.AppendLine(body);
-                
-                //Write attachments
-                if (msg.Attachments.Count > 0)
-                    foreach (Yammer.Attachment attachment in msg.Attachments)
-                        sb.AppendLine(attachment.Name);
-
-                //Write timestamp
-                sb.AppendLine(timeStamp);
-
-                Console.WriteLine(sb.ToString());
-            }
-        }
-
-
-        public static void PostMessage(string input, Yammer.Session session)
-        {
-            //parse message
-            string pattern = "-m\\s\"+.+?\"";
-            System.Text.RegularExpressions.Regex regex = new System.Text.RegularExpressions.Regex(pattern, System.Text.RegularExpressions.RegexOptions.Singleline);
-            System.Text.RegularExpressions.Match message = regex.Match(input);
-            string body = string.Empty;
-            if (message != null)
-                body = message.Value.Replace("-m", "").Trim().Replace("\"","");
-
-            //parse attachments
-            pattern = "-a\\s\"+.+?\"";
-            regex = new System.Text.RegularExpressions.Regex(pattern, System.Text.RegularExpressions.RegexOptions.Singleline);
-            List<string> attachmentList = new List<string>();
-            if (regex.IsMatch(input))
-            {
-                message = regex.Match(input);
-                attachmentList.AddRange(message.Value.Replace("-a", "").Trim().Replace("\"", "").Split(';'));
-            }
-
-            //post message
-            Yammer.ApiWrapper.PostMessage(body, session, attachmentList);
-        }
-    }
-}
-
-
-
-
-
-
-
-
-
-
+        h2. Download
+You can download this project in either "
+            zip":http://github.com/kdavie/yammer.net/zipball/master or "tar":http://github.com/kdavie/yammer.net/tarball/master
+            formats. 
+You can also clone the project with "Git":http://git-scm.com by running:
+            <pre>$ git clone git://github.com/kdavie/yammer.net</pre>
+        
+        
+            get the source code on GitHub : "kdavie/yammer.net":http://github.com/kdavie/yammer.net
+        
