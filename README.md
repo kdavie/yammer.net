@@ -1,7 +1,9 @@
-<p>Yammer uses OAuth to authenticate clients. This allows applications to securely access data on a user's behalf without storing or needing the user's password. 
-Before you can use Yammer.Net, you must first obtain a client key and secret from Yammer.  To do this, log into Yammer and navigate to https://www.yammer.com/client&#95;applications/new.  This form will allow you to register your application.  Once you complete and submit the form you will be provided with your client key and secret.  Make a note of these; you'll need them to make use of the library.</p>
+<h2><span style="color:#4183C4">Usage</span></h2>
 
-<p>Now that you have your client key and secret you are ready to being using the framework.  Create a new project and add references to the OAuth and Yammer assemblies.  Yammer.Net uses a settings file to persist authorization information between your application sessions.  This file is stored in the user's Application Data folder under Yammer\Data.  The first thing you should do when your application loads is check if this file exists:</p>
+<p>Yammer uses <a href="http://oauth.net/" target="_blank">OAuth</a> to authenticate clients. This allows applications to securely access data on a user's behalf without storing or needing the user's password. 
+Before you can use Yammer.Net, you must first obtain a client key and secret from Yammer.  To do this, log into Yammer and navigate to <a href="https://www.yammer.com/client_applications/new" target="_blank">https://www.yammer.com/client_applications/new</a>.  This form will allow you to register your application.  Once you complete and submit the form you will be provided with your client key and secret.  Make a note of these; you’ll need them to make use of the library.</p>
+
+<p>Now that you have your client key and secret you are ready to being using the framework.  Create a new project and add references to the OAuth and Yammer assemblies.  Yammer.Net uses a settings file to persist authorization information between your application sessions.  This file is stored in the user’s Application Data folder under Yammer\Data.  The first thing you should do when your application loads is check if this file exists:</p>
 
 <pre><code>using System;    
 using System.Collections.Generic;    
@@ -29,7 +31,7 @@ namespace YammerNetExample
 }
 </code></pre>
 
-<p>Configuring your client for first time use is a three step process.  First, you must obtain a request token from Yammer using your client key and secret.   The Yammer.Auth.GetRequestToken member accepts three arguments: proxy, consumerKey and consumerSecret .  If your client won't be behind a proxy, you can pass in a null for this argument.  After obtaining the request token you can allow the user to authorize your application.  If you would like the user to be redirected to your website after authorizing with Yammer, you can provide a value for the callbackUrl argument of the Yammer.Auth.Authorize member.</p>
+<p>Configuring your client for first time use is a three step process.  First, you must obtain a request token from Yammer using your client key and secret.   The Yammer.Auth.GetRequestToken member accepts three arguments: proxy, consumerKey and consumerSecret .  If your client won’t be behind a proxy, you can pass in a null for this argument.  After obtaining the request token you can allow the user to authorize your application.  If you would like the user to be redirected to your website after authorizing with Yammer, you can provide a value for the callbackUrl argument of the Yammer.Auth.Authorize member.</p>
 
 <pre><code>private static Yammer.Auth GetRequestToken()
 {
@@ -60,7 +62,7 @@ namespace YammerNetExample
 }
 </code></pre>
 
-<p>After performing these three steps (GetRequestToken(), Authorize(), and GetAccessToken()), your application will be configured to communicate with Yammer.  The next step is to start making calls to the Yammer API.  To continue with my console example, I've added some code to handle a few menu options:</p>
+<p>After performing these three steps (GetRequestToken(), Authorize(), and GetAccessToken()), your application will be configured to communicate with Yammer.  The next step is to start making calls to the Yammer API.  To continue with my console example, I’ve added some code to handle a few menu options:</p>
 
 <pre><code>public static void ReadMessages(List&lt;Yammer.Message&gt; messages)
 {
@@ -339,3 +341,19 @@ namespace YammerNetExample
     }
 }
 </code></pre>
+
+<h2><span style="color:#4183C4">Documentation</span></h2>
+
+<p><a href="http://kdavie.github.com/yammer.net/documentation/Index.html" target="_blank">HTML Documentation</a></p>
+
+<h2><span style="color:#4183C4">License</span></h2>
+
+<p><b>Copyright (c) 2009 Kevin Davie</b></p>
+
+<p style="font-size:10pt;">
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:   The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.   
+</p>
+
+<p style="font-size:10pt;">
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+</p>
