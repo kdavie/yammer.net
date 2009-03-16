@@ -146,7 +146,9 @@ public static void PostMessage(string input, Yammer.Session session)
 }
 </code></pre>
 
-<p>The Yammer.ApiWrapper.PostMessage member accepts a list of attachments.  This list should be a string of paths to attach with the message.  The follow is the complete source for the example console app used to illustrate these steps:</p>
+<p>The Yammer.ApiWrapper.PostMessage member accepts a list of attachments.  This list should be a string of paths to attach with the message.</p>
+
+<p>The following is the complete source for the example console app used to illustrate these steps:</p>
 
 <pre><code>using System;
 using System.Collections.Generic;
