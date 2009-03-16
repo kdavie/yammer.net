@@ -10,7 +10,7 @@ Application Data folder under Yammer\Data.  The first thing you should do when y
 </p>
 
 <blockquote>
-<p>
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,7 +36,7 @@ namespace YammerNetExample
         }
     }
 }
-</p>
+
 </blockquote>
 <p>
 Configuring your client for first time use is a three step process.  First, you must obtain a request token from Yammer using your client key and secret.   
@@ -46,7 +46,7 @@ redirected to your website after authorizing with Yammer, you can provide a valu
 </p>
 
 <blockquote>
-<p>
+
 private static Yammer.Auth GetRequestToken()
 {
     Yammer.Auth auth = Yammer.Auth.GetRequestToken(null, CONSUMER_KEY, CONSUMER_SECRET);
@@ -59,7 +59,7 @@ private static Yammer.Auth GetRequestToken()
     }
     return auth;
 }
-</p>
+
 </blockquote>
 <p>
 The framework will open a browser and allow the user to authorize your application.  Once the user authorizes through the Yammer website, 
@@ -88,7 +88,7 @@ The next step is to start making calls to the Yammer API.  To continue with my c
 </p>
 
 <blockquote>
-<p>
+
 public static void ReadMessages(List<Yammer.Message> messages)
 {
     Console.WriteLine();
@@ -169,7 +169,7 @@ public static void PostMessage(string input, Yammer.Session session)
     //post message
     Yammer.ApiWrapper.PostMessage(body, session, attachmentList);
 }
-</p>
+
 </blockquote>
 <p>
 The Yammer.ApiWrapper.PostMessage member accepts a list of attachments.  This list should be a string of paths to attach with the message.  The follow is the complete source for the example console app used to illustrate these steps:
@@ -177,7 +177,7 @@ The Yammer.ApiWrapper.PostMessage member accepts a list of attachments.  This li
 </p>
 
 <blockquote>
-<p>
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -370,7 +370,8 @@ namespace YammerNetExample
         }
     }
 }
-</p>
+
 </blockquote>
  
+
 
