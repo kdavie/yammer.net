@@ -11,8 +11,8 @@ namespace YammerNetExample
 {
     class Program
     {
-        const string CONSUMER&amp;#95;KEY = "myConsumerKey";
-        const string CONSUMER&amp;#95;SECRET = "myConsumerSecret";
+        const string CONSUMER_KEY = "myConsumerKey";
+        const string CONSUMER_SECRET = "myConsumerSecret";
         static void Main(string[] args)
         {
             Yammer.Settings settings = Yammer.Settings.CheckConfiguration();
@@ -33,7 +33,7 @@ namespace YammerNetExample
 
 <pre><code>private static Yammer.Auth GetRequestToken()
 {
-    Yammer.Auth auth = Yammer.Auth.GetRequestToken(null, CONSUMER&amp;#95;KEY, CONSUMER&amp;#95;SECRET);
+    Yammer.Auth auth = Yammer.Auth.GetRequestToken(null, CONSUMER_KEY, CONSUMER_SECRET);
     if (auth != null)
     {
         auth.Authorize(null);
@@ -165,10 +165,10 @@ namespace YammerNetExample
     /// &lt;/example&gt;
     class Program
     {
-        const string CONSUMER&amp;#95;KEY = "myConsumerKey";
-        const string CONSUMER&amp;#95;SECRET = "myConsumerSecret";
-        const string RETRIEVE&amp;#95;MY&amp;#95;FEED = "yam myfeed";
-        const string POST&amp;#95;MESSAGE = "yam post";
+        const string CONSUMER_KEY = "myConsumerKey";
+        const string CONSUMER_SECRET = "myConsumerSecret";
+        const string RETRIEVE_MY_FEED = "yam myfeed";
+        const string POST_MESSAGE = "yam post";
         static void Main(string[] args)
         {
             Yammer.Settings settings = Yammer.Settings.CheckConfiguration();
@@ -183,7 +183,7 @@ namespace YammerNetExample
 
         private static OAuth.OAuthKey ConfigureClient(Yammer.Settings settings)
         {
-            OAuth.OAuthKey key = new OAuth.OAuthKey(CONSUMER&amp;#95;KEY, CONSUMER&amp;#95;SECRET, settings.OAuth.TokenKey, settings.OAuth.TokenSecret);
+            OAuth.OAuthKey key = new OAuth.OAuthKey(CONSUMER_KEY, CONSUMER_SECRET, settings.OAuth.TokenKey, settings.OAuth.TokenSecret);
             WebProxy proxy = null;
             if (settings.Proxy.Enable)
             {
@@ -196,7 +196,7 @@ namespace YammerNetExample
 
         public static Yammer.Auth GetRequestToken()
         {
-        Yammer.Auth auth = Yammer.Auth.GetRequestToken(null, CONSUMER&amp;#95;KEY, CONSUMER&amp;#95;SECRET);
+        Yammer.Auth auth = Yammer.Auth.GetRequestToken(null, CONSUMER_KEY, CONSUMER_SECRET);
         if (auth != null)
         {
             auth.Authorize(null);
@@ -233,10 +233,10 @@ namespace YammerNetExample
 
             switch (option)
             {
-                case RETRIEVE&amp;#95;MY&amp;#95;FEED:
+                case RETRIEVE_MY_FEED:
                     ReadMessages(Yammer.ApiWrapper.GetFollowingMessages(session));
                     break;
-                case POST&amp;#95;MESSAGE:
+                case POST_MESSAGE:
                     PostMessage(input, session);
                     break;
             }
@@ -247,11 +247,11 @@ namespace YammerNetExample
 
         public static string ParseInput(string input)
         {
-            if (input.ToLower().Contains(RETRIEVE&amp;#95;MY&amp;#95;FEED))
-                return RETRIEVE&amp;#95;MY&amp;#95;FEED;
+            if (input.ToLower().Contains(RETRIEVE_MY_FEED))
+                return RETRIEVE_MY_FEED;
 
-            if (input.ToLower().Contains(POST&amp;#95;MESSAGE))
-                return POST&amp;#95;MESSAGE;
+            if (input.ToLower().Contains(POST_MESSAGE))
+                return POST_MESSAGE;
 
             return null;
         }
