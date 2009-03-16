@@ -1,80 +1,1163 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-
-	<title>kdavie/yammer.net @ GitHub</title>
-	
-	<style type="text/css">
-		body {
-  		margin-top: 1.0em;
-  		background-color: #ffffff;
-		  font-family: "helvetica"; 
-  		color: #49637C;
-    }
-    #container {
-      margin: 0 auto;
-      width: 700px;
-    }
-		h1 { font-size: 3.8em; color: #49637C; margin-bottom: 3px; }
-		h1 .small { font-size: 0.4em; }
-		h1 a { text-decoration: none }
-		h2 { font-size: 1.5em; color: #49637C; }
-    h3 { text-align: center; color: #49637C; }
-    a { color: #49637C; }
-    .description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
-    .download { float: right; }
-		pre { background: #49637C; color: #fff; padding: 15px;}
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    .footer { text-align:center; padding-top:30px; font-style: italic; }
-	</style>
-	
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>kdavie/yammer.net @ GitHub</title>
+    <style type="text/css">
+        body
+        {
+            margin-top: 1.0em;
+            background-color: #ffffff;
+            font-family: "helvetica";
+            color: #49637C;
+        }
+        #container
+        {
+            margin: 0 auto;
+            width: 700px;
+        }
+        h1
+        {
+            font-size: 3.8em;
+            color: #49637C;
+            margin-bottom: 3px;
+        }
+        h1 .small
+        {
+            font-size: 0.4em;
+        }
+        h1 a
+        {
+            text-decoration: none;
+        }
+        h2
+        {
+            font-size: 1.5em;
+            color: #49637C;
+        }
+        h3
+        {
+            text-align: center;
+            color: #49637C;
+        }
+        a
+        {
+            color: #49637C;
+        }
+        .description
+        {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            margin-top: 30px;
+            font-style: italic;
+        }
+        .download
+        {
+            float: right;
+        }
+        pre
+        {
+            background: #49637C;
+            color: #fff;
+            padding: 15px;
+        }
+        hr
+        {
+            border: 0;
+            width: 80%;
+            border-bottom: 1px solid #aaa;
+        }
+        .footer
+        {
+            text-align: center;
+            padding-top: 30px;
+            font-style: italic;
+        }
+    </style>
+    <style>
+        <!
+        -- /* Font Definitions */ @
+        font-face
+        {
+            font-family: "Cambria Math";
+            panose-1: 2 4 5 3 5 4 6 3 2 4;
+        }
+        @font-face
+        {
+            font-family: Calibri;
+            panose-1: 2 15 5 2 2 2 4 3 2 4;
+        }
+        /* Style Definitions */p.MsoNormal, li.MsoNormal, div.MsoNormal
+        {
+            margin-top: 0in;
+            margin-right: 0in;
+            margin-bottom: 10.0pt;
+            margin-left: 0in;
+            line-height: 115%;
+            font-size: 11.0pt;
+            font-family: "Calibri" , "sans-serif";
+        }
+        a:link, span.MsoHyperlink
+        {
+            color: blue;
+            text-decoration: underline;
+        }
+        a:visited, span.MsoHyperlinkFollowed
+        {
+            color: purple;
+            text-decoration: underline;
+        }
+        .MsoPapDefault
+        {
+            margin-bottom: 10.0pt;
+            line-height: 115%;
+        }
+        @page Section1
+        {
+            size: 8.5in 11.0in;
+            margin: 1.0in 1.0in 1.0in 1.0in;
+        }
+        div.Section1
+        {
+            page: Section1;
+        }
+        -- ></style>
 </head>
-
 <body>
-  <a href="http://github.com/kdavie/yammer.net"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
-  
-  <div id="container">
-
-    <div class="download">
-      <a href="http://github.com/kdavie/yammer.net/zipball/master">
-        <img border="0" width="90" src="http://github.com/images/modules/download/zip.png"></a>
-      <a href="http://github.com/kdavie/yammer.net/tarball/master">
-        <img border="0" width="90" src="http://github.com/images/modules/download/tar.png"></a>
+    <a href="http://github.com/kdavie/yammer.net">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"
+            alt="Fork me on GitHub" />
+    </a>
+    <div id="container">
+        <div class="download">
+            <a href="http://github.com/kdavie/yammer.net/zipball/master">
+                <img border="0" width="90" src="http://github.com/images/modules/download/zip.png"></a>
+            <a href="http://github.com/kdavie/yammer.net/tarball/master">
+                <img border="0" width="90" src="http://github.com/images/modules/download/tar.png"></a>
+        </div>
+        <h1><a href="http://github.com/kdavie/yammer.net">Yammer.NET</a> <span class="small">
+            by <a href="http://github.com/kdavie">kdavie</a></small></h1>
+        <div class="description">
+            .NET Yammer API Wrapper
+        </div>
+        <h2>Usage</h2>
+        <div class="Section1">
+            <p class="MsoNormal">Yammer uses <a href="http://oauth.net/" target="_blank">OAuth</a>
+                to authenticate clients. This allows applications to securely access data on a user's
+                behalf without storing or needing the user's password. </p>
+            <p class="MsoNormal">Before you can use Yammer.Net, you must first obtain a client key
+                and secret from Yammer. To do this, log into Yammer and navigate to <a href="https://www.yammer.com/client_applications/new">
+                    https://www.yammer.com/client_applications/new</a>. This form will allow you
+                to register your application. Once you complete and submit the form you will be
+                provided with your client key and secret. Make a note of these; you’ll need them
+                to make use of the library.</p>
+            <p class="MsoNormal">Now that you have your client key and secret you are ready to being
+                using the framework. Create a new project and add references to the OAuth and Yammer
+                assemblies. Yammer.Net uses a settings file to persist authorization information
+                between your application sessions. This file is stored in the user’s Application
+                Data folder under Yammer\Data. The first thing you should do when your application
+                loads is check if this file exists:</p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New";
+                    color: blue'>using</span><span style='font-size: 10.0pt; font-family: "Courier New"'>
+                        System;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New";
+                    color: blue'>using</span><span style='font-size: 10.0pt; font-family: "Courier New"'>
+                        System.Collections.Generic;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New";
+                    color: blue'>using</span><span style='font-size: 10.0pt; font-family: "Courier New"'>
+                        System.Linq;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New";
+                    color: blue'>using</span><span style='font-size: 10.0pt; font-family: "Courier New"'>
+                        System.Text;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>&nbsp;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New";
+                    color: blue'>namespace</span><span style='font-size: 10.0pt; font-family: "Courier New"'>
+                        YammerNetExample</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>{</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: blue'>class</span> <span style='color: #2B91AF'>Program</span></span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>{</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: blue'>const</span> <span style='color: blue'>string</span> CONSUMER_KEY
+                    = <span style='color: #A31515'>&quot;myConsumerKey&quot;</span>;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: blue'>const</span> <span style='color: blue'>string</span> CONSUMER_SECRET
+                    = <span style='color: #A31515'>&quot;myConsumerSecret&quot;</span>;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: blue'>static</span> <span style='color: blue'>void</span> Main(<span
+                        style='color: blue'>string</span>[] args)</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>{</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>Yammer.<span
+                    style='color: #2B91AF'>Settings</span> settings = Yammer.<span style='color: #2B91AF'>Settings</span>.CheckConfiguration();</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: blue'>if</span> (settings == <span style='color: blue'>null</span>)</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>{</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: green'>//Need to configure client</span></span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>}</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: blue'>else</span></span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>{</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: green'>//Client already configured, use persisted settings</span></span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>}</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>}</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>}</span></p>
+            <p class="MsoNormal"><span style='font-size: 10.0pt; line-height: 115%; font-family: "Courier New"'>
+                }</span></p>
+            <p class="MsoNormal">Configuring your client for first time use is a three step process.
+                First, you must obtain a request token from Yammer using your client key and secret.
+                The Yammer.Auth.GetRequestToken member accepts three arguments: proxy, consumerKey
+                and consumerSecret . If your client won’t be behind a proxy, you can pass in a null
+                for this argument. After obtaining the request token you can allow the user to authorize
+                your application. If you would like the user to be redirected to your website after
+                authorizing with Yammer, you can provide a value for the callbackUrl argument of
+                the Yammer.Auth.Authorize member.</p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New";
+                    color: blue'>private</span><span style='font-size: 10.0pt; font-family: "Courier New"'>
+                        <span style='color: blue'>static</span> Yammer.<span style='color: #2B91AF'>Auth</span>
+                        GetRequestToken()</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>{</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>Yammer.<span
+                    style='color: #2B91AF'>Auth</span> auth = Yammer.<span style='color: #2B91AF'>Auth</span>.GetRequestToken(<span
+                        style='color: blue'>null</span>, CONSUMER_KEY, CONSUMER_SECRET);</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: blue'>if</span> (auth != <span style='color: blue'>null</span>)</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>{</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>auth.Authorize(<span
+                    style='color: blue'>null</span>);</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: #2B91AF'>Console</span>.WriteLine(<span style='color: #A31515'>&quot;We've
+                        opened up a browser so you can authenticate this application with Yammer.&quot;</span>);</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: #2B91AF'>Console</span>.WriteLine(<span style='color: #A31515'>&quot;Once
+                        you've authenticated, press any key to continue.&quot;</span>);</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: #2B91AF'>Console</span>.ReadLine();</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>}</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: blue'>return</span> auth;</span></p>
+            <p class="MsoNormal"><span style='font-size: 10.0pt; line-height: 115%; font-family: "Courier New"'>
+                }</span></p>
+            <p class="MsoNormal">The framework will open a browser and allow the user to authorize
+                your application. Once the user authorizes through the Yammer website, your application
+                can request its permanent access key and secret:</p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New";
+                    color: blue'>private</span><span style='font-size: 10.0pt; font-family: "Courier New"'>
+                        <span style='color: blue'>static</span> <span style='color: blue'>void</span> GetAccessToken(Yammer.<span
+                            style='color: #2B91AF'>Auth</span> auth)</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>{</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: blue'>if</span> (auth != <span style='color: blue'>null</span>)</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>auth.GetAccessToken();</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>&nbsp;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: blue'>if</span> (auth.Success)</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>{</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: #2B91AF'>Console</span>.WriteLine(<span style='color: #A31515'>&quot;Welcome
+                        to my Yammer application!&quot;</span>);</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: #2B91AF'>Console</span>.ReadLine();</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>}</span></p>
+            <p class="MsoNormal"><span style='font-size: 10.0pt; line-height: 115%; font-family: "Courier New"'>
+                }</span></p>
+            <p class="MsoNormal">After performing these three steps (GetRequestToken(), Authorize(),
+                and GetAccessToken()), your application will be configured to communicate with Yammer.
+                The next step is to start making calls to the Yammer API. To continue with my console
+                example, I’ve added some code to handle a few menu options:</p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New";
+                    color: blue'>public</span><span style='font-size: 10.0pt; font-family: "Courier New"'>
+                        <span style='color: blue'>static</span> <span style='color: blue'>void</span> ReadMessages(<span
+                            style='color: #2B91AF'>List</span>&lt;Yammer.<span style='color: #2B91AF'>Message</span>&gt;
+                        messages)</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>{</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: #2B91AF'>Console</span>.WriteLine();</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: blue'>foreach</span> (Yammer.<span style='color: #2B91AF'>Message</span>
+                    msg <span style='color: blue'>in</span> messages)</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>{</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: blue'>string</span> body = msg.Body.Plain;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: blue'>string</span> timeStamp = msg.CreatedAt;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>&nbsp;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>Yammer.<span
+                    style='color: #2B91AF'>User</span> sender = <span style='color: blue'>null</span>;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>Yammer.<span
+                    style='color: #2B91AF'>Guide</span> guide = <span style='color: blue'>null</span>;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>Yammer.<span
+                    style='color: #2B91AF'>Message</span> repliedToMessage = <span style='color: blue'>null</span>;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>Yammer.<span
+                    style='color: #2B91AF'>User</span> repliedToUser = <span style='color: blue'>null</span>;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>&nbsp;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: green'>//if message sent from user, store user information</span></span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: blue'>if</span> (msg.SenderType.ToUpper() == Yammer.<span style='color: #2B91AF'>SenderType</span>.USER.ToString())</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>sender
+                    = msg.References.Users.Find(<span style='color: blue'>delegate</span>(Yammer.<span
+                        style='color: #2B91AF'>User</span> u) { <span style='color: blue'>return</span>
+                    u.Id == msg.SenderId.ToString(); });</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>&nbsp;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: green'>//if message sent from guide, store guid information</span></span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: blue'>if</span> (msg.SenderType.ToUpper() == Yammer.<span style='color: #2B91AF'>SenderType</span>.SYSTEM.ToString())
+                </span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>guide
+                    = msg.References.Guide;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>&nbsp;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: green'>//if message is a reply, store replied-to-message</span></span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: blue'>if</span> (msg.RepliedToId != <span style='color: blue'>null</span>
+                    &amp;&amp; msg.RepliedToId != <span style='color: blue'>string</span>.Empty)</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>repliedToMessage
+                    = msg.References.Messages.Find(<span style='color: blue'>delegate</span>(Yammer.<span
+                        style='color: #2B91AF'>Message</span> m) { <span style='color: blue'>return</span>
+                    m.Id == msg.RepliedToId; });</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>&nbsp;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: green'>//if reply-to-message exists, store replied-to-user</span></span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: blue'>if</span>(repliedToMessage != <span style='color: blue'>null</span>)</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>repliedToUser
+                    = msg.References.Users.Find(<span style='color: blue'>delegate</span>(Yammer.<span
+                        style='color: #2B91AF'>User</span> u) { <span style='color: blue'>return</span>
+                    <span style='color: blue'>int</span>.Parse(u.Id) == repliedToMessage.SenderId; });</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>&nbsp;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: #2B91AF'>StringBuilder</span> sb = <span style='color: blue'>new</span>
+                    <span style='color: #2B91AF'>StringBuilder</span>();</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: green'>//Write sender name</span></span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: blue'>if</span>(sender != <span style='color: blue'>null</span>)</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>sb.Append(sender.FullName);</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: green'>//Write guid name</span></span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: blue'>if</span> (guide != <span style='color: blue'>null</span>)</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>sb.Append(guide.FullName);</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: green'>//Write replied-to-user name</span></span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: blue'>if</span> (repliedToUser != <span style='color: blue'>null</span>)</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>sb.Append(<span
+                    style='color: #A31515'>&quot; in-reply-to: &quot;</span> + repliedToUser.FullName);</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>sb.AppendLine();</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>
+                </span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: green'>//Write message body</span></span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>sb.AppendLine(body);</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>
+                </span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: green'>//Write attachments</span></span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: blue'>if</span> (msg.Attachments.Count &gt; 0)</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: blue'>foreach</span> (Yammer.<span style='color: #2B91AF'>Attachment</span>
+                    attachment <span style='color: blue'>in</span> msg.Attachments)</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>sb.AppendLine(attachment.Name);</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>&nbsp;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: green'>//Write timestamp</span></span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>sb.AppendLine(timeStamp);</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>&nbsp;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: #2B91AF'>Console</span>.WriteLine(sb.ToString());</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>}</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>}</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>&nbsp;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>&nbsp;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New";
+                    color: blue'>public</span><span style='font-size: 10.0pt; font-family: "Courier New"'>
+                        <span style='color: blue'>static</span> <span style='color: blue'>void</span> PostMessage(<span
+                            style='color: blue'>string</span> input, Yammer.<span style='color: #2B91AF'>Session</span>
+                        session)</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>{</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: green'>//parse message</span></span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: blue'>string</span> pattern = <span style='color: #A31515'>&quot;-m\\s\&quot;+.+?\&quot;&quot;</span>;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>System.Text.RegularExpressions.<span
+                    style='color: #2B91AF'>Regex</span> regex = <span style='color: blue'>new</span>
+                    System.Text.RegularExpressions.<span style='color: #2B91AF'>Regex</span>(pattern,
+                    System.Text.RegularExpressions.<span style='color: #2B91AF'>RegexOptions</span>.Singleline);</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>System.Text.RegularExpressions.<span
+                    style='color: #2B91AF'>Match</span> message = regex.Match(input);</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: blue'>string</span> body = <span style='color: blue'>string</span>.Empty;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: blue'>if</span> (message != <span style='color: blue'>null</span>)</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>body
+                    = message.Value.Replace(<span style='color: #A31515'>&quot;-m&quot;</span>, <span
+                        style='color: #A31515'>&quot;&quot;</span>).Trim().Replace(<span style='color: #A31515'>&quot;\&quot;&quot;</span>,<span
+                            style='color: #A31515'>&quot;&quot;</span>);</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>&nbsp;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: green'>//parse attachments</span></span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>pattern
+                    = <span style='color: #A31515'>&quot;-a\\s\&quot;+.+?\&quot;&quot;</span>;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>regex
+                    = <span style='color: blue'>new</span> System.Text.RegularExpressions.<span style='color: #2B91AF'>Regex</span>(pattern,
+                    System.Text.RegularExpressions.<span style='color: #2B91AF'>RegexOptions</span>.Singleline);</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: #2B91AF'>List</span>&lt;<span style='color: blue'>string</span>&gt;
+                    attachmentList = <span style='color: blue'>new</span> <span style='color: #2B91AF'>List</span>&lt;<span
+                        style='color: blue'>string</span>&gt;();</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: blue'>if</span> (regex.IsMatch(input))</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>{</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>message
+                    = regex.Match(input);</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>attachmentList.AddRange(message.Value.Replace(<span
+                    style='color: #A31515'>&quot;-a&quot;</span>, <span style='color: #A31515'>&quot;&quot;</span>).Trim().Replace(<span
+                        style='color: #A31515'>&quot;\&quot;&quot;</span>, <span style='color: #A31515'>&quot;&quot;</span>).Split(<span
+                            style='color: #A31515'>';'</span>));</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>}</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>&nbsp;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: green'>//post message</span></span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>Yammer.<span
+                    style='color: #2B91AF'>ApiWrapper</span>.PostMessage(body, session, attachmentList);</span></p>
+            <p class="MsoNormal"><span style='font-size: 10.0pt; line-height: 115%; font-family: "Courier New"'>
+                }</span></p>
+            <p class="MsoNormal"><span style='font-size: 10.0pt; line-height: 115%; font-family: "Courier New"'>
+                The Yammer.ApiWrapper.PostMessage member accepts a list of attachments. This list
+                should be a string of paths to attach with the message. The follow is the complete
+                source for the example console app used to illustrate these steps:</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New";
+                    color: blue'>using</span><span style='font-size: 10.0pt; font-family: "Courier New"'>
+                        System;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New";
+                    color: blue'>using</span><span style='font-size: 10.0pt; font-family: "Courier New"'>
+                        System.Collections.Generic;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New";
+                    color: blue'>using</span><span style='font-size: 10.0pt; font-family: "Courier New"'>
+                        System.Linq;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New";
+                    color: blue'>using</span><span style='font-size: 10.0pt; font-family: "Courier New"'>
+                        System.Text;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New";
+                    color: blue'>using</span><span style='font-size: 10.0pt; font-family: "Courier New"'>
+                        System.Net;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>&nbsp;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New";
+                    color: blue'>namespace</span><span style='font-size: 10.0pt; font-family: "Courier New"'>
+                        YammerNetExample</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>{</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: gray'>///</span><span style='color: green'> </span><span style='color: gray'>
+                        &lt;summary&gt;</span></span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: gray'>///</span><span style='color: green'> Yammer.Net example</span></span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: gray'>///</span><span style='color: green'> </span><span style='color: gray'>
+                        &lt;/summary&gt;</span></span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: gray'>///</span><span style='color: green'> </span><span style='color: gray'>
+                        &lt;example&gt;</span></span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: gray'>///</span><span style='color: green'> yam myfeed</span></span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: gray'>///</span><span style='color: green'> yam post -m &quot;this is
+                        a sample post&quot;</span></span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: gray'>///</span><span style='color: green'> yam post -m &quot;this is
+                        a sample post with an attachment&quot; -a &quot;c:\myImage.gif&quot;</span></span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: gray'>///</span><span style='color: green'> yam post -m &quot;this is
+                        a sample post with multiple attachments&quot; -a &quot;c:\myImage.gif;c:\myText.txt&quot;</span></span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: gray'>///</span><span style='color: green'> </span><span style='color: gray'>
+                        &lt;/example&gt;</span></span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: blue'>class</span> <span style='color: #2B91AF'>Program</span></span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>{</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: blue'>const</span> <span style='color: blue'>string</span> CONSUMER_KEY
+                    = <span style='color: #A31515'>&quot;myConsumerKey&quot;</span>;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: blue'>const</span> <span style='color: blue'>string</span> CONSUMER_SECRET
+                    = <span style='color: #A31515'>&quot;myConsumerSecret&quot;</span>;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: blue'>const</span> <span style='color: blue'>string</span> RETRIEVE_MY_FEED
+                    = <span style='color: #A31515'>&quot;yam myfeed&quot;</span>;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: blue'>const</span> <span style='color: blue'>string</span> POST_MESSAGE
+                    = <span style='color: #A31515'>&quot;yam post&quot;</span>;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: blue'>static</span> <span style='color: blue'>void</span> Main(<span
+                        style='color: blue'>string</span>[] args)</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>{</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>Yammer.<span
+                    style='color: #2B91AF'>Settings</span> settings = Yammer.<span style='color: #2B91AF'>Settings</span>.CheckConfiguration();</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: blue'>if</span> (settings == <span style='color: blue'>null</span>)</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>{</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>Yammer.<span
+                    style='color: #2B91AF'>Auth</span> auth = GetRequestToken();</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>GetAccessToken(auth);</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>}</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: blue'>else</span></span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>Menu(<span
+                    style='color: blue'>true</span>, ConfigureClient(settings), <span style='color: blue'>
+                        null</span>, <span style='color: blue'>null</span>);</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>}</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>&nbsp;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: blue'>private</span> <span style='color: blue'>static</span> OAuth.<span
+                        style='color: #2B91AF'>OAuthKey</span> ConfigureClient(Yammer.<span style='color: #2B91AF'>Settings</span>
+                    settings)</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>{</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>OAuth.<span
+                    style='color: #2B91AF'>OAuthKey</span> key = <span style='color: blue'>new</span>
+                    OAuth.<span style='color: #2B91AF'>OAuthKey</span>(CONSUMER_KEY, CONSUMER_SECRET,
+                    settings.OAuth.TokenKey, settings.OAuth.TokenSecret);</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: #2B91AF'>WebProxy</span> proxy = <span style='color: blue'>null</span>;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: blue'>if</span> (settings.Proxy.Enable)</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>{</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>proxy
+                    = <span style='color: blue'>new</span> System.Net.<span style='color: #2B91AF'>WebProxy</span>();</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>proxy.Address
+                    = <span style='color: blue'>new</span> <span style='color: #2B91AF'>Uri</span>(settings.Proxy.Address
+                    + <span style='color: #A31515'>&quot;:&quot;</span> + settings.Proxy.Port);</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>proxy.Credentials
+                    = <span style='color: blue'>new</span> <span style='color: #2B91AF'>NetworkCredential</span>(settings.Proxy.Id,
+                    settings.Proxy.Password);</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>}</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: blue'>return</span> key;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>}</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>&nbsp;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: blue'>public</span> <span style='color: blue'>static</span> Yammer.<span
+                        style='color: #2B91AF'>Auth</span> GetRequestToken()</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>{</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>Yammer.<span
+                    style='color: #2B91AF'>Auth</span> auth = Yammer.<span style='color: #2B91AF'>Auth</span>.GetRequestToken(<span
+                        style='color: blue'>null</span>, CONSUMER_KEY, CONSUMER_SECRET);</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: blue'>if</span> (auth != <span style='color: blue'>null</span>)</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>{</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>auth.Authorize(<span
+                    style='color: blue'>null</span>);</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: #2B91AF'>Console</span>.WriteLine(<span style='color: #A31515'>&quot;We've
+                        opened up a browser so you can authenticate this application with Yammer.&quot;</span>);</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: #2B91AF'>Console</span>.WriteLine(<span style='color: #A31515'>&quot;Once
+                        you've authenticated, press any key to continue.&quot;</span>);</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: #2B91AF'>Console</span>.ReadLine();</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>}</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: blue'>return</span> auth;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>}</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>&nbsp;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: blue'>public</span> <span style='color: blue'>static</span> <span style='color: blue'>
+                        void</span> GetAccessToken(Yammer.<span style='color: #2B91AF'>Auth</span> auth)</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>{</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: blue'>if</span> (auth != <span style='color: blue'>null</span>)</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>auth.GetAccessToken();</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>&nbsp;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: blue'>if</span> (auth.Success)</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>Menu(<span
+                    style='color: blue'>true</span>, auth.Key, <span style='color: blue'>null</span>,
+                    <span style='color: blue'>null</span>);</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>
+                </span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>}</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>&nbsp;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: blue'>public</span> <span style='color: blue'>static</span> <span style='color: blue'>
+                        void</span> Menu(<span style='color: blue'>bool</span> welcome, OAuth.<span style='color: #2B91AF'>OAuthKey</span>
+                    key, <span style='color: #2B91AF'>WebProxy</span> proxy, Yammer.<span style='color: #2B91AF'>Session</span>
+                    session)</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>{</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: blue'>if</span>(session == <span style='color: blue'>null</span>)</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>session
+                    = <span style='color: blue'>new</span> Yammer.<span style='color: #2B91AF'>Session</span>(key,
+                    proxy);</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>&nbsp;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: blue'>if</span> (welcome)</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>{</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: #2B91AF'>Console</span>.WriteLine(<span style='color: #A31515'>&quot;Welcome
+                        to my Yammer application!&quot;</span>);</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>welcome
+                    = <span style='color: blue'>false</span>;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>}</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>&nbsp;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: blue'>string</span> input = <span style='color: #2B91AF'>Console</span>.ReadLine();</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: blue'>string</span> option = ParseInput(input);</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>&nbsp;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: blue'>switch</span> (option)</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>{</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: blue'>case</span> RETRIEVE_MY_FEED:</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>ReadMessages(Yammer.<span
+                    style='color: #2B91AF'>ApiWrapper</span>.GetFollowingMessages(session));</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: blue'>break</span>;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: blue'>case</span> POST_MESSAGE:</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>PostMessage(input,
+                    session);</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: blue'>break</span>;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>}</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>&nbsp;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>Menu(welcome,
+                    key, proxy, session);</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>&nbsp;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>}</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>&nbsp;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: blue'>public</span> <span style='color: blue'>static</span> <span style='color: blue'>
+                        string</span> ParseInput(<span style='color: blue'>string</span> input)</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>{</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: blue'>if</span> (input.ToLower().Contains(RETRIEVE_MY_FEED))</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: blue'>return</span> RETRIEVE_MY_FEED;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>&nbsp;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: blue'>if</span> (input.ToLower().Contains(POST_MESSAGE))</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: blue'>return</span> POST_MESSAGE;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>&nbsp;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: blue'>return</span> <span style='color: blue'>null</span>;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>}</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>&nbsp;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: blue'>public</span> <span style='color: blue'>static</span> <span style='color: blue'>
+                        void</span> ReadMessages(<span style='color: #2B91AF'>List</span>&lt;Yammer.<span
+                            style='color: #2B91AF'>Message</span>&gt; messages)</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>{</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: #2B91AF'>Console</span>.WriteLine();</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: blue'>foreach</span> (Yammer.<span style='color: #2B91AF'>Message</span>
+                    msg <span style='color: blue'>in</span> messages)</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>{</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: blue'>string</span> body = msg.Body.Plain;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: blue'>string</span> timeStamp = msg.CreatedAt;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>&nbsp;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>Yammer.<span
+                    style='color: #2B91AF'>User</span> sender = <span style='color: blue'>null</span>;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>Yammer.<span
+                    style='color: #2B91AF'>Guide</span> guide = <span style='color: blue'>null</span>;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>Yammer.<span
+                    style='color: #2B91AF'>Message</span> repliedToMessage = <span style='color: blue'>null</span>;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>Yammer.<span
+                    style='color: #2B91AF'>User</span> repliedToUser = <span style='color: blue'>null</span>;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>&nbsp;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: green'>//if message sent from user store user information</span></span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: blue'>if</span> (msg.SenderType.ToUpper() == Yammer.<span style='color: #2B91AF'>SenderType</span>.USER.ToString())</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>sender
+                    = msg.References.Users.Find(<span style='color: blue'>delegate</span>(Yammer.<span
+                        style='color: #2B91AF'>User</span> u) { <span style='color: blue'>return</span>
+                    u.Id == msg.SenderId.ToString(); });</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>&nbsp;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: green'>//if message sent from guide store guid information</span></span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: blue'>if</span> (msg.SenderType.ToUpper() == Yammer.<span style='color: #2B91AF'>SenderType</span>.SYSTEM.ToString())
+                </span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>guide
+                    = msg.References.Guide;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>&nbsp;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: green'>//if message is a reply, store replied-to-message</span></span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: blue'>if</span> (msg.RepliedToId != <span style='color: blue'>null</span>
+                    &amp;&amp; msg.RepliedToId != <span style='color: blue'>string</span>.Empty)</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>repliedToMessage
+                    = msg.References.Messages.Find(<span style='color: blue'>delegate</span>(Yammer.<span
+                        style='color: #2B91AF'>Message</span> m) { <span style='color: blue'>return</span>
+                    m.Id == msg.RepliedToId; });</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>&nbsp;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: green'>//if reply-to-message exists, store replied-to-user</span></span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: blue'>if</span>(repliedToMessage != <span style='color: blue'>null</span>)</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>repliedToUser
+                    = msg.References.Users.Find(<span style='color: blue'>delegate</span>(Yammer.<span
+                        style='color: #2B91AF'>User</span> u) { <span style='color: blue'>return</span>
+                    <span style='color: blue'>int</span>.Parse(u.Id) == repliedToMessage.SenderId; });</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>&nbsp;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: #2B91AF'>StringBuilder</span> sb = <span style='color: blue'>new</span>
+                    <span style='color: #2B91AF'>StringBuilder</span>();</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: green'>//Write sender name</span></span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: blue'>if</span>(sender != <span style='color: blue'>null</span>)</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>sb.Append(sender.FullName);</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: green'>//Write guid name</span></span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: blue'>if</span> (guide != <span style='color: blue'>null</span>)</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>sb.Append(guide.FullName);</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: green'>//Write replied-to-user name</span></span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: blue'>if</span> (repliedToUser != <span style='color: blue'>null</span>)</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>sb.Append(<span
+                    style='color: #A31515'>&quot; in-reply-to: &quot;</span> + repliedToUser.FullName);</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>sb.AppendLine();</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>
+                </span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: green'>//Write message body</span></span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>sb.AppendLine(body);</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>
+                </span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: green'>//Write attachments</span></span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: blue'>if</span> (msg.Attachments.Count &gt; 0)</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: blue'>foreach</span> (Yammer.<span style='color: #2B91AF'>Attachment</span>
+                    attachment <span style='color: blue'>in</span> msg.Attachments)</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>sb.AppendLine(attachment.Name);</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>&nbsp;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: green'>//Write timestamp</span></span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>sb.AppendLine(timeStamp);</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>&nbsp;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: #2B91AF'>Console</span>.WriteLine(sb.ToString());</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>}</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>}</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>&nbsp;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>&nbsp;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: blue'>public</span> <span style='color: blue'>static</span> <span style='color: blue'>
+                        void</span> PostMessage(<span style='color: blue'>string</span> input, Yammer.<span
+                            style='color: #2B91AF'>Session</span> session)</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>{</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: green'>//parse message</span></span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: blue'>string</span> pattern = <span style='color: #A31515'>&quot;-m\\s\&quot;+.+?\&quot;&quot;</span>;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>System.Text.RegularExpressions.<span
+                    style='color: #2B91AF'>Regex</span> regex = <span style='color: blue'>new</span>
+                    System.Text.RegularExpressions.<span style='color: #2B91AF'>Regex</span>(pattern,
+                    System.Text.RegularExpressions.<span style='color: #2B91AF'>RegexOptions</span>.Singleline);</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>System.Text.RegularExpressions.<span
+                    style='color: #2B91AF'>Match</span> message = regex.Match(input);</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: blue'>string</span> body = <span style='color: blue'>string</span>.Empty;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: blue'>if</span> (message != <span style='color: blue'>null</span>)</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>body
+                    = message.Value.Replace(<span style='color: #A31515'>&quot;-m&quot;</span>, <span
+                        style='color: #A31515'>&quot;&quot;</span>).Trim().Replace(<span style='color: #A31515'>&quot;\&quot;&quot;</span>,<span
+                            style='color: #A31515'>&quot;&quot;</span>);</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>&nbsp;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: green'>//parse attachments</span></span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>pattern
+                    = <span style='color: #A31515'>&quot;-a\\s\&quot;+.+?\&quot;&quot;</span>;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>regex
+                    = <span style='color: blue'>new</span> System.Text.RegularExpressions.<span style='color: #2B91AF'>Regex</span>(pattern,
+                    System.Text.RegularExpressions.<span style='color: #2B91AF'>RegexOptions</span>.Singleline);</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: #2B91AF'>List</span>&lt;<span style='color: blue'>string</span>&gt;
+                    attachmentList = <span style='color: blue'>new</span> <span style='color: #2B91AF'>List</span>&lt;<span
+                        style='color: blue'>string</span>&gt;();</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: blue'>if</span> (regex.IsMatch(input))</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>{</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>message
+                    = regex.Match(input);</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>attachmentList.AddRange(message.Value.Replace(<span
+                    style='color: #A31515'>&quot;-a&quot;</span>, <span style='color: #A31515'>&quot;&quot;</span>).Trim().Replace(<span
+                        style='color: #A31515'>&quot;\&quot;&quot;</span>, <span style='color: #A31515'>&quot;&quot;</span>).Split(<span
+                            style='color: #A31515'>';'</span>));</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>}</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>&nbsp;</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'><span
+                    style='color: green'>//post message</span></span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>Yammer.<span
+                    style='color: #2B91AF'>ApiWrapper</span>.PostMessage(body, session, attachmentList);</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>}</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>}</span></p>
+            <p class="MsoNormal" style='margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal;
+                text-autospace: none'><span style='font-size: 10.0pt; font-family: "Courier New"'>}</span></p>
+            <p class="MsoNormal"><span style='font-size: 10.0pt; line-height: 115%; font-family: "Courier New"'>
+                &nbsp;</span></p>
+            <p class="MsoNormal"><span style='font-size: 10.0pt; line-height: 115%; font-family: "Courier New"'>
+                &nbsp;</span></p>
+            <p class="MsoNormal"><span style='font-size: 10.0pt; line-height: 115%; font-family: "Courier New"'>
+                &nbsp;</span></p>
+            <p class="MsoNormal"><span style='font-size: 10.0pt; line-height: 115%; font-family: "Courier New"'>
+                &nbsp;</span></p>
+            <p class="MsoNormal"><span style='font-size: 10.0pt; line-height: 115%; font-family: "Courier New"'>
+                &nbsp;</span></p>
+            <p class="MsoNormal">&nbsp;</p>
+            <p class="MsoNormal">&nbsp;</p>
+            <p class="MsoNormal">&nbsp;</p>
+            <p class="MsoNormal">&nbsp;</p>
+            <p class="MsoNormal">&nbsp;</p>
+        </div>
+        <p>Kevin Davie (kevin.davie@gmail.com)
+            <br />
+            <br />
+        </p>
+        <h2>Contact</h2>
+        <p>Kevin Davie (kevin.davie@gmail.com)
+            <br />
+        </p>
+        <h2>Download</h2>
+        <p>You can download this project in either <a href="http://github.com/kdavie/yammer.net/zipball/master">
+            zip</a> or <a href="http://github.com/kdavie/yammer.net/tarball/master">tar</a>
+            formats. </p>
+        <p>You can also clone the project with <a href="http://git-scm.com">Git</a> by running:
+            <pre>$ git clone git://github.com/kdavie/yammer.net</pre>
+        </p>
+        <div class="footer">
+            get the source code on GitHub : <a href="http://github.com/kdavie/yammer.net">kdavie/yammer.net</a>
+        </div>
     </div>
-      
-    <h1><a href="http://github.com/kdavie/yammer.net">Yammer.NET</a> 
-      <span class="small">by <a href="http://github.com/kdavie">kdavie</a></small></h1>
-
-    <div class="description">
-      .NET Yammer API Wrapper
-    </div>
-
-    <h2>Authors</h2>
-<p>Kevin Davie (kevin.davie@gmail.com)<br/><br/>      </p>
-<h2>Contact</h2>
-<p>Kevin Davie (kevin.davie@gmail.com)<br/>      </p>
-
-
-    <h2>Download</h2>
-    <p>
-      You can download this project in either
-      <a href="http://github.com/kdavie/yammer.net/zipball/master">zip</a> or
-      <a href="http://github.com/kdavie/yammer.net/tarball/master">tar</a> formats.
-    </p>
-    <p>You can also clone the project with <a href="http://git-scm.com">Git</a>
-      by running:
-      <pre>$ git clone git://github.com/kdavie/yammer.net</pre>
-    </p>
-      
-    <div class="footer">
-      get the source code on GitHub : <a href="http://github.com/kdavie/yammer.net">kdavie/yammer.net</a>
-    </div>
-    
-  </div>
-
-  
 </body>
 </html>
