@@ -70,7 +70,6 @@
     <Compile Include="HttpUtility.cs" />
     <Compile Include="Image.cs" />
     <Compile Include="Message.cs" />
-    <Compile Include="MultipartForm.cs" />
     <Compile Include="Reference.cs" />
     <Compile Include="Resources.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

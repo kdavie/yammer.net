@@ -4,6 +4,116 @@
         <name>Yammer</name>
     </assembly>
     <members>
+        <member name="M:Yammer.Utility.GetAppDirectory">
+            <summary>
+            Retrieves application directory collection
+            </summary>
+            <returns>application directory collection</returns>
+        </member>
+        <member name="M:Yammer.Utility.GetApplicationData">
+            <summary>
+            Retrieves application variables
+            </summary>
+            <returns>application<see cref="T:Yammer.Variables"/>variables</returns>
+        </member>
+        <member name="M:Yammer.Utility.SetApplicationData(System.String)">
+            <summary>
+            Writes application variables to client computer
+            </summary>
+            <param name="lastMessageId"></param>
+        </member>
+        <member name="M:Yammer.Auth.GetRequestTokenQuery(System.String,System.String)">
+            <summary>
+            Retrieves the OAuth request token
+            </summary>
+            <param name="consumerKey">The client's consumer key</param>
+            <param name="consumerSecret">The client's consumer secret</param>
+            <returns>the request token query string</returns>
+        </member>
+        <member name="M:Yammer.Auth.GetAuthorizeQuery(System.String,System.String)">
+            <summary>
+            Retrieves the OAuth authorization token
+            </summary>
+            <param name="tokenKey">The generated OAuth Token</param>
+            <param name="callback">The callback URL for the client</param>
+            <returns>the OAuth authorization query string</returns>
+        </member>
+        <member name="M:Yammer.Auth.GetAccessTokenQuery">
+            <summary>
+            Retrieves OAuth access token
+            </summary>
+            <returns>the OAuth access token query string</returns>
+        </member>
+        <member name="M:Yammer.Auth.GetRequestToken(System.Net.WebProxy,System.String,System.String)">
+            <summary>
+            retrieves the <see cref="T:Yammer.Auth">authorization object</see>
+            </summary>
+            <param name="proxy"></param>
+            <param name="consumerKey"></param>
+            <param name="consumerSecret"></param>
+            <returns>The <see cref="T:Yammer.Auth">authorization object</see></returns>
+        </member>
+        <member name="M:Yammer.Auth.Authorize(System.String)">
+            <summary>
+            Opens web browser for authorization
+            </summary>
+            <param name="callbackUrl"></param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Yammer.Auth.GetAccessToken" -->
+        <member name="M:Yammer.Auth.ReadResponse(System.String,System.String@,System.String@)">
+            <summary>
+            Splits the Yammer token key and token secret from the response
+            </summary>
+            <param name="response">The http web response</param>
+            <param name="tokenKey">the token key to save to</param>
+            <param name="tokenSecret">the token secret to save to</param>
+        </member>
+        <member name="P:Yammer.Auth.Proxy">
+            <summary>
+            The client Web Proxy.  Can be null
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="P:Yammer.Auth.Key">
+            <summary>
+            The OAuth key to use
+            </summary>
+        </member>
+        <member name="P:Yammer.Auth.ConsumerKey">
+            <summary>
+            The client's consumer key
+            </summary>
+        </member>
+        <member name="P:Yammer.Auth.ConsumerSecret">
+            <summary>
+            The client's consumer secret
+            </summary>
+        </member>
+        <member name="P:Yammer.Auth.Settings">
+            <summary>
+            The persisted client settings file.
+            </summary>
+        </member>
+        <member name="P:Yammer.Auth.Success">
+            <summary>
+            Connection success indicator
+            </summary>
+        </member>
+        <member name="P:Yammer.Subscription.Url">
+            <summary>
+            The API resource for fetching this object.
+            </summary>
+        </member>
+        <member name="P:Yammer.Subscription.Type">
+            <summary>
+            The object type, such as user, tag, etc.
+            </summary>
+        </member>
+        <member name="T:Yammer.AutoComplete">
+            <summary>
+            NOT YET IMPLEMENTED
+            </summary>
+        </member>
         <member name="M:Yammer.ApiWrapper.GetAllMessages(Yammer.Session)">
             <summary>
             All messages in this network. Corresponds to the "All" tab on the website.
@@ -235,6 +345,62 @@
             <param name="id"></param>
             <param name="session"></param>
         </member>
+        <member name="P:Yammer.Group.Type">
+            <summary>
+            The object type, such as user, tag, etc.
+            </summary>
+        </member>
+        <member name="P:Yammer.Group.Id">
+            <summary>
+            The ID number for this object. Note that IDs are not unique across all object types: 
+            there may be a user and tag with the same numerical ID.
+            </summary>
+        </member>
+        <member name="P:Yammer.Group.FullName">
+            <summary>
+            Name given to this group.
+            </summary>
+        </member>
+        <member name="P:Yammer.Group.Name">
+            <summary>
+            Shortened name of this group. Used in references (@salesteam), addressing (to:salesteam), 
+            the email address for group updates (salesteam@yammer.com) and the web URL (www.yammer.com/groups/salesteam). 
+            </summary>
+        </member>
+        <member name="P:Yammer.Group.Privacy">
+            <summary>
+            Either public or private, to indicate whether updates are visible to non-members 
+            (public) and whether joining requires a group admin's approval (private). 
+            </summary>
+        </member>
+        <member name="P:Yammer.Group.Url">
+            <summary>
+            The API resource for fetching this object.
+            </summary>
+        </member>
+        <member name="P:Yammer.Group.WebUrl">
+            <summary>
+            The URL for viewing this object on the main Yammer website.
+            </summary>
+        </member>
+        <member name="P:Yammer.Group.Stats">
+            <summary>
+            Group stats
+            </summary>
+        </member>
+        <member name="M:Yammer.Settings.CheckConfiguration">
+            <summary>
+            Checks if the persisted <see cref="T:Yammer.Settings">settings</see> file exists on the client
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Yammer.Settings.SaveConfiguration(System.String,System.String,OAuth.OAuthKey,System.Net.WebProxy)">
+            <summary>
+            Saves the <see cref="T:Yammer.Settings">settings</see> file to the client
+            </summary>
+            <param name="tokenKey"></param>
+            <param name="tokenSecret"></param>
+        </member>
         <member name="P:Yammer.Guide.Type">
             <summary>
             The object type.
@@ -264,349 +430,6 @@
         <member name="P:Yammer.Guide.WebUrl">
             <summary>
             The URL for viewing this object on the main Yammer website.
-            </summary>
-        </member>
-        <member name="M:Yammer.Utility.GetAppDirectory">
-            <summary>
-            Retrieves application directory collection
-            </summary>
-            <returns>application directory collection</returns>
-        </member>
-        <member name="M:Yammer.Utility.GetApplicationData">
-            <summary>
-            Retrieves application variables
-            </summary>
-            <returns>application<see cref="T:Yammer.Variables"/>variables</returns>
-        </member>
-        <member name="M:Yammer.Utility.SetApplicationData(System.String)">
-            <summary>
-            Writes application variables to client computer
-            </summary>
-            <param name="lastMessageId"></param>
-        </member>
-        <member name="M:Yammer.Auth.GetRequestTokenQuery(System.String,System.String)">
-            <summary>
-            Retrieves the OAuth request token
-            </summary>
-            <param name="consumerKey">The client's consumer key</param>
-            <param name="consumerSecret">The client's consumer secret</param>
-            <returns>the request token query string</returns>
-        </member>
-        <member name="M:Yammer.Auth.GetAuthorizeQuery(System.String,System.String)">
-            <summary>
-            Retrieves the OAuth authorization token
-            </summary>
-            <param name="tokenKey">The generated OAuth Token</param>
-            <param name="callback">The callback URL for the client</param>
-            <returns>the OAuth authorization query string</returns>
-        </member>
-        <member name="M:Yammer.Auth.GetAccessTokenQuery">
-            <summary>
-            Retrieves OAuth access token
-            </summary>
-            <returns>the OAuth access token query string</returns>
-        </member>
-        <member name="M:Yammer.Auth.GetRequestToken(System.Net.WebProxy,System.String,System.String)">
-            <summary>
-            retrieves the <see cref="T:Yammer.Auth">authorization object</see>
-            </summary>
-            <param name="proxy"></param>
-            <param name="consumerKey"></param>
-            <param name="consumerSecret"></param>
-            <returns>The <see cref="T:Yammer.Auth">authorization object</see></returns>
-        </member>
-        <member name="M:Yammer.Auth.Authorize(System.String)">
-            <summary>
-            Opens web browser for authorization
-            </summary>
-            <param name="callbackUrl"></param>
-        </member>
-        <!-- Badly formed XML comment ignored for member "M:Yammer.Auth.GetAccessToken" -->
-        <member name="M:Yammer.Auth.ReadResponse(System.String,System.String@,System.String@)">
-            <summary>
-            Splits the Yammer token key and token secret from the response
-            </summary>
-            <param name="response">The http web response</param>
-            <param name="tokenKey">the token key to save to</param>
-            <param name="tokenSecret">the token secret to save to</param>
-        </member>
-        <member name="P:Yammer.Auth.Proxy">
-            <summary>
-            The client Web Proxy.  Can be null
-            </summary>
-            <remarks></remarks>
-        </member>
-        <member name="P:Yammer.Auth.Key">
-            <summary>
-            The OAuth key to use
-            </summary>
-        </member>
-        <member name="P:Yammer.Auth.ConsumerKey">
-            <summary>
-            The client's consumer key
-            </summary>
-        </member>
-        <member name="P:Yammer.Auth.ConsumerSecret">
-            <summary>
-            The client's consumer secret
-            </summary>
-        </member>
-        <member name="P:Yammer.Auth.Settings">
-            <summary>
-            The persisted client settings file.
-            </summary>
-        </member>
-        <member name="P:Yammer.Auth.Success">
-            <summary>
-            Connection success indicator
-            </summary>
-        </member>
-        <member name="P:Yammer.Thread.Type">
-            <summary>
-            The object type, such as user, tag, etc.
-            </summary>
-        </member>
-        <member name="P:Yammer.Thread.Id">
-            <summary>
-            The ID number for this object. Note that IDs are not unique across all object types: 
-            there may be a user and tag with the same numerical ID.
-            </summary>
-        </member>
-        <member name="P:Yammer.Thread.Url">
-            <summary>
-            The API resource for fetching this object.
-            </summary>
-        </member>
-        <member name="P:Yammer.Thread.WebUrl">
-            <summary>
-            The URL for viewing this object on the main Yammer website.
-            </summary>
-        </member>
-        <member name="P:Yammer.Thread.Stats">
-            <summary>
-            Thread stats
-            </summary>
-        </member>
-        <member name="F:Yammer.MultipartForm.coFormFields">
-            <summary>
-            Holds any form fields and values that you
-            wish to transfer with your data.
-            </summary>
-        </member>
-        <member name="F:Yammer.MultipartForm.coRequest">
-            <summary>
-            Used mainly to avoid passing parameters to other routines.
-            Could have been local to sendFile().
-            </summary>
-        </member>
-        <member name="F:Yammer.MultipartForm.coFileStream">
-            <summary>
-            Used if we are testing and want to output the raw
-            request, minus http headers, out to a file.
-            </summary>
-        </member>
-        <member name="F:Yammer.MultipartForm.CONTENT_DISP">
-            <summary>
-            Difined to build the form field data that is being
-            passed along with the request.
-            </summary>
-        </member>
-        <member name="M:Yammer.MultipartForm.#ctor(System.String)">
-            <summary>
-            Initialize our class for use to send data files.
-            </summary>
-            <param name="url">The web address of the recipient of the data transfer.</param>
-        </member>
-        <member name="M:Yammer.MultipartForm.setFilename(System.String)">
-            <summary>
-            Used to signal we want the output to go to a
-            text file verses being transfered to a URL.
-            </summary>
-            <param name="path"></param>
-        </member>
-        <member name="M:Yammer.MultipartForm.setField(System.String,System.String)">
-            <summary>
-            Allows you to add some additional field data to be
-            sent along with the transfer. This is usually used
-            for things like userid and password to validate the
-            transfer.
-            </summary>
-            <param name="key">The form field name</param>
-            <param name="str">The form field value</param>
-        </member>
-        <member name="M:Yammer.MultipartForm.getStream">
-            <summary>
-            Determines if we have a file stream set, and returns either
-            the HttpWebRequest stream of the file.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:Yammer.MultipartForm.getResponse">
-            <summary>
-            Here we actually make the request to the web server and
-            retrieve it's response into a text buffer.
-            </summary>
-        </member>
-        <member name="M:Yammer.MultipartForm.sendFile(System.String,Yammer.Session)">
-            <summary>
-            Transmits a file to the web server stated in the
-            URL property. You may call this several times and it
-            will use the values previously set for fields and URL.
-            </summary>
-            <param name="aFilename">The full path of file being transfered.</param>
-        </member>
-        <member name="M:Yammer.MultipartForm.writeString(System.IO.Stream,System.String)">
-            <summary>
-            Mainly used to turn the string into a byte buffer and then
-            write it to our IO stream.
-            </summary>
-            <param name="io">The io stream for output.</param>
-            <param name="str">The data to write.</param>
-        </member>
-        <member name="M:Yammer.MultipartForm.getFormfields">
-            <summary>
-            Builds the proper format of the multipart data that
-            contains the form fields and their respective values.
-            </summary>
-            <returns>The data to send in the multipart upload.</returns>
-        </member>
-        <member name="M:Yammer.MultipartForm.getFileheader(System.String,System.Int32)">
-            <summary>
-            Returns the proper content information for the
-            file we are sending.
-            </summary>
-            <remarks>
-            Hits Patel reported a bug when used with ActiveFile.
-            Added semicolon after sendfile to resolve that issue.
-            Tested for compatibility with IIS 5.0 and Java.
-            </remarks>
-            <param name="aFilename"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Yammer.MultipartForm.getFiletrailer">
-            <summary>
-            Creates the proper ending boundary for the multipart upload.
-            </summary>
-            <returns>The ending boundary.</returns>
-        </member>
-        <member name="M:Yammer.MultipartForm.writeFile(System.IO.Stream,System.String)">
-            <summary>
-            Reads in the file a chunck at a time then sends it to the
-            output stream.
-            </summary>
-            <param name="io">The io stream to write the file to.</param>
-            <param name="aFilename">The name of the file to transfer.</param>
-        </member>
-        <member name="P:Yammer.MultipartForm.TransferHttpVersion">
-            <summary>
-            Allows you to specify the specific version of HTTP to use for uploads.
-            The dot NET stuff currently does not allow you to remove the continue-100 header
-            from 1.1 and 1.0 currently has a bug in it where it adds the continue-100. MS
-            has sent a patch to remove the continue-100 in HTTP 1.0.
-            </summary>
-        </member>
-        <member name="P:Yammer.MultipartForm.FileContentType">
-            <summary>
-            Used to change the content type of the file being sent.
-            Currently defaults to: text/xml. Other options are
-            text/plain or binary
-            </summary>
-        </member>
-        <member name="P:Yammer.MultipartForm.BeginBoundary">
-            <summary>
-            The string that defines the begining boundary of
-            our multipart transfer as defined in the w3c specs.
-            This method also sets the Content and Ending
-            boundaries as defined by the w3c specs.
-            </summary>
-        </member>
-        <member name="P:Yammer.MultipartForm.ContentBoundary">
-            <summary>
-            The string that defines the content boundary of
-            our multipart transfer as defined in the w3c specs.
-            </summary>
-        </member>
-        <member name="P:Yammer.MultipartForm.EndingBoundary">
-            <summary>
-            The string that defines the ending boundary of
-            our multipart transfer as defined in the w3c specs.
-            </summary>
-        </member>
-        <member name="P:Yammer.MultipartForm.ResponseText">
-            <summary>
-            The data returned to us after the transfer is completed.
-            </summary>
-        </member>
-        <member name="P:Yammer.MultipartForm.URL">
-            <summary>
-            The web address of the recipient of the transfer.
-            </summary>
-        </member>
-        <member name="P:Yammer.MultipartForm.BufferSize">
-            <summary>
-            Allows us to determine the size of the buffer used
-            to send a piece of the file at a time out the IO
-            stream. Defaults to 1024 * 10.
-            </summary>
-        </member>
-        <member name="F:Yammer.Attachment.filename">
-            <summary>
-            The filename of the filepart to be uploaded.
-            </summary>
-        </member>
-        <member name="F:Yammer.Attachment.startPos">
-            <summary>
-            The starting position in the stream.
-            </summary>
-        </member>
-        <member name="F:Yammer.Attachment.endPos">
-            <summary>
-            The ending position in the stream.
-            </summary>
-        </member>
-        <member name="F:Yammer.Attachment.totalFileLength">
-            <summary>
-            The total file length.
-            </summary>
-        </member>
-        <member name="F:Yammer.Attachment.binaryStream">
-            <summary>
-            The stream of the file to be sent.
-            </summary>
-        </member>
-        <member name="P:Yammer.Attachment.Type">
-            <summary>
-            Indicates the type of attachment. Current options: image and file
-            </summary>
-        </member>
-        <member name="P:Yammer.Attachment.Id">
-            <summary>
-            Numerical idenifier for this attachment.
-            </summary>
-        </member>
-        <member name="P:Yammer.Attachment.Name">
-            <summary>
-            Short text identifier which may not be unique.
-            </summary>
-        </member>
-        <member name="P:Yammer.Attachment.WebUrl">
-            <summary>
-            Where the attachment can be viewed on the Yammer website
-            </summary>
-        </member>
-        <member name="P:Yammer.Attachment.Image">
-            <summary>
-            Image attachment
-            </summary>
-        </member>
-        <member name="P:Yammer.Attachment.File">
-            <summary>
-            File attachment
-            </summary>
-        </member>
-        <member name="P:Yammer.Attachment.Length">
-            <summary>
-            Gets the length of the data to be sent.
             </summary>
         </member>
         <member name="P:Yammer.Body.Plain">
@@ -691,16 +514,6 @@
             User location
             </summary>
         </member>
-        <member name="P:Yammer.Subscription.Url">
-            <summary>
-            The API resource for fetching this object.
-            </summary>
-        </member>
-        <member name="P:Yammer.Subscription.Type">
-            <summary>
-            The object type, such as user, tag, etc.
-            </summary>
-        </member>
         <member name="P:Yammer.Message.Id">
             <summary>
             The ID number for this object. Note that IDs are not unique across all object types: 
@@ -775,6 +588,154 @@
             user joined the network or when a message was posted.
             </summary>
         </member>
+        <member name="P:Yammer.Thread.Type">
+            <summary>
+            The object type, such as user, tag, etc.
+            </summary>
+        </member>
+        <member name="P:Yammer.Thread.Id">
+            <summary>
+            The ID number for this object. Note that IDs are not unique across all object types: 
+            there may be a user and tag with the same numerical ID.
+            </summary>
+        </member>
+        <member name="P:Yammer.Thread.Url">
+            <summary>
+            The API resource for fetching this object.
+            </summary>
+        </member>
+        <member name="P:Yammer.Thread.WebUrl">
+            <summary>
+            The URL for viewing this object on the main Yammer website.
+            </summary>
+        </member>
+        <member name="P:Yammer.Thread.Stats">
+            <summary>
+            Thread stats
+            </summary>
+        </member>
+        <member name="M:Yammer.HttpUtility.Get(System.String,Yammer.Session)">
+            <summary>
+            Creates http get web request and returns response
+            </summary>
+            <param name="url">The URL for the web request</param>
+            <param name="session">The Yammer<see cref="T:Yammer.Session">session</see> object</param>
+            <returns>http response</returns>
+        </member>
+        <member name="M:Yammer.HttpUtility.Post(System.String,System.Collections.Specialized.NameValueCollection,Yammer.Session)">
+            <summary>
+            Creates http post web request and returns response
+            </summary>
+            <param name="url">The URL for the web request</param>
+            <param name="parameters">the query string parameters</param>
+            <param name="session">The Yammer<see cref="T:Yammer.Session">session</see> object</param>
+            <returns>http response</returns>
+        </member>
+        <member name="M:Yammer.HttpUtility.Upload(System.String,System.Collections.Specialized.NameValueCollection,Yammer.Session,System.Collections.Generic.List{System.String})">
+            <summary>
+            Creates http multipart post web request and returns response
+            </summary>
+            <param name="url">The URL for the web request</param>
+            <param name="parameters">the query string parameters</param>
+            <param name="session">The Yammer<see cref="T:Yammer.Session">session</see> object</param>
+            <param name="files">The file path collection to upload</param>
+            <remarks>Used to upload attachments</remarks>
+            <returns>http response</returns>
+        </member>
+        <member name="M:Yammer.HttpUtility.Delete(System.String,Yammer.Session)">
+            <summary>
+            Creates http delete web request and returns response
+            </summary>
+            <param name="url">The URL for the web request</param>
+            <param name="session">The Yammer<see cref="T:Yammer.Session">session</see> object</param>
+            <returns>http response</returns>
+        </member>
+        <member name="M:Yammer.HttpUtility.CreateAuthHeader(Yammer.WebMethod,System.String,System.String,System.String,Yammer.Session)">
+            <summary>
+            Creates the OAuth header for the http request
+            </summary>
+            <param name="method">The <see cref="T:Yammer.WebMethod"/> http web method</param>
+            <param name="nonce">The OAuth nonce string</param>
+            <param name="timeStamp">The generated OAuth timestamp</param>
+            <param name="sig">The generatred OAuth signature</param>
+            <param name="session">The Yammer<see cref="T:Yammer.Session">session</see> object</param>
+            <returns></returns>
+        </member>
+        <member name="M:Yammer.HttpUtility.CreateWebRequest(Yammer.WebMethod,System.Net.WebProxy,System.String,System.Boolean)">
+            <summary>
+            Creates intstance of the HttpRequest object
+            </summary>
+            <param name="method">The <see cref="T:Yammer.WebMethod"/> http web method</param>
+            <param name="proxy"> The client <see cref="T:System.Net.WebProxy"/> proxy</param>
+            <param name="requestUrl">The URL for the web request</param>
+            <param name="preAuth">Send authentication header with request</param>
+            <returns>HttpRequest object</returns>
+        </member>
+        <member name="M:Yammer.HttpUtility.CreateWebRequest(System.String,Yammer.WebMethod,System.String,System.String,System.String,Yammer.Session)">
+            <summary>
+            Creates intstance of the HttpRequest object
+            </summary>
+            <param name="fullUrl">The full URL with querystring for the web request</param>
+            <param name="method">The <see cref="T:Yammer.WebMethod"/> http web method</param>
+            <param name="nonce">The OAuth nonce string</param>
+            <param name="timeStamp">The generated OAuth timestamp</param>
+            <param name="sig">The generatred OAuth signature</param>
+            <param name="session">The Yammer<see cref="T:Yammer.Session">session</see> object</param>
+            <returns>HttpRequest object</returns>
+        </member>
+        <member name="M:Yammer.HttpUtility.CreateWebRequest(System.String,Yammer.WebMethod,System.String,System.String,System.String,System.String,Yammer.Session)">
+            <summary>
+            
+            </summary>
+            <param name="fullUrl">The full URL with querystring for the web request</param>
+            <param name="method">The <see cref="T:Yammer.WebMethod"/> http web method</param>
+            <param name="nonce">The OAuth nonce string</param>
+            <param name="timeStamp">The generated OAuth timestamp</param>
+            <param name="sig">The generatred OAuth signature</param>
+            <param name="boundary">The boundary for the http multipart request</param>
+            <param name="session">The Yammer<see cref="T:Yammer.Session">session</see> object</param>
+            <returns>HttpRequest object</returns>
+        </member>
+        <member name="M:Yammer.HttpUtility.EncodeUrl(System.String,System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            Encodes URL to RFC 3986
+            </summary>
+            <param name="url">The url to encode</param>
+            <param name="parameters">The query string parameters</param>
+            <returns></returns>
+        </member>
+        <member name="M:Yammer.HttpUtility.GetSignature(Yammer.WebMethod,Yammer.Session,System.String,System.String@,System.String@)">
+            <summary>
+            Generates OAuth signature for http request
+            </summary>
+            <param name="method">The <see cref="T:Yammer.WebMethod"/> http web method</param>
+            <param name="session">he Yammer<see cref="T:Yammer.Session">session</see> object</param>
+            <param name="url">The URL for the web request</param>
+            <param name="nonce">The OAuth nonce string</param>
+            <param name="timeStamp">The generated OAuth timestamp</param>
+            <returns>OAuth signature</returns>
+        </member>
+        <member name="M:Yammer.HttpUtility.GetWebResponse(System.Net.HttpWebRequest)">
+            <summary>
+            Reads web response
+            </summary>
+            <param name="request"></param>
+            <returns>http web response</returns>
+        </member>
+        <member name="M:Yammer.HttpUtility.WritePostData(System.Collections.Specialized.NameValueCollection,System.Net.HttpWebRequest)">
+            <summary>
+            Writes post data to request stream
+            </summary>
+            <param name="parameters">The query string parameters</param>
+            <param name="request">The http request to write to</param>
+        </member>
+        <member name="M:Yammer.HttpUtility.WritePostData(System.String,System.IO.Stream,System.Boolean)">
+            <summary>
+            Writes post data to request stream
+            </summary>
+            <param name="parameters">The query string parameters</param>
+            <param name="request">The http request to write to</param>
+        </member>
         <member name="P:Yammer.Tag.Type">
             <summary>
             The object type, such as user, tag, etc.
@@ -806,23 +767,65 @@
             The URL for viewing this object on the main Yammer website.
             </summary>
         </member>
-        <member name="T:Yammer.AutoComplete">
+        <member name="F:Yammer.Attachment.filename">
             <summary>
-            NOT YET IMPLEMENTED
+            The filename of the filepart to be uploaded.
             </summary>
         </member>
-        <member name="M:Yammer.Settings.CheckConfiguration">
+        <member name="F:Yammer.Attachment.startPos">
             <summary>
-            Checks if the persisted <see cref="T:Yammer.Settings">settings</see> file exists on the client
+            The starting position in the stream.
             </summary>
-            <returns></returns>
         </member>
-        <member name="M:Yammer.Settings.SaveConfiguration(System.String,System.String,OAuth.OAuthKey,System.Net.WebProxy)">
+        <member name="F:Yammer.Attachment.endPos">
             <summary>
-            Saves the <see cref="T:Yammer.Settings">settings</see> file to the client
+            The ending position in the stream.
             </summary>
-            <param name="tokenKey"></param>
-            <param name="tokenSecret"></param>
+        </member>
+        <member name="F:Yammer.Attachment.totalFileLength">
+            <summary>
+            The total file length.
+            </summary>
+        </member>
+        <member name="F:Yammer.Attachment.binaryStream">
+            <summary>
+            The stream of the file to be sent.
+            </summary>
+        </member>
+        <member name="P:Yammer.Attachment.Type">
+            <summary>
+            Indicates the type of attachment. Current options: image and file
+            </summary>
+        </member>
+        <member name="P:Yammer.Attachment.Id">
+            <summary>
+            Numerical idenifier for this attachment.
+            </summary>
+        </member>
+        <member name="P:Yammer.Attachment.Name">
+            <summary>
+            Short text identifier which may not be unique.
+            </summary>
+        </member>
+        <member name="P:Yammer.Attachment.WebUrl">
+            <summary>
+            Where the attachment can be viewed on the Yammer website
+            </summary>
+        </member>
+        <member name="P:Yammer.Attachment.Image">
+            <summary>
+            Image attachment
+            </summary>
+        </member>
+        <member name="P:Yammer.Attachment.File">
+            <summary>
+            File attachment
+            </summary>
+        </member>
+        <member name="P:Yammer.Attachment.Length">
+            <summary>
+            Gets the length of the data to be sent.
+            </summary>
         </member>
         <member name="F:Yammer.Resources.YAMMER_MESSAGES_ALL">
             <summary>
@@ -992,171 +995,6 @@
         <member name="F:Yammer.Resources.YAMMER_AUTOCOMPLETE">
             <summary>
             Return typeahead suggestions for the prefix passed
-            </summary>
-        </member>
-        <member name="M:Yammer.HttpUtility.Get(System.String,Yammer.Session)">
-            <summary>
-            Creates http get web request and returns response
-            </summary>
-            <param name="url">The URL for the web request</param>
-            <param name="session">The Yammer<see cref="T:Yammer.Session">session</see> object</param>
-            <returns>http response</returns>
-        </member>
-        <member name="M:Yammer.HttpUtility.Post(System.String,System.Collections.Specialized.NameValueCollection,Yammer.Session)">
-            <summary>
-            Creates http post web request and returns response
-            </summary>
-            <param name="url">The URL for the web request</param>
-            <param name="parameters">the query string parameters</param>
-            <param name="session">The Yammer<see cref="T:Yammer.Session">session</see> object</param>
-            <returns>http response</returns>
-        </member>
-        <member name="M:Yammer.HttpUtility.Upload(System.String,System.Collections.Specialized.NameValueCollection,Yammer.Session,System.Collections.Generic.List{System.String})">
-            <summary>
-            Creates http multipart post web request and returns response
-            </summary>
-            <param name="url">The URL for the web request</param>
-            <param name="parameters">the query string parameters</param>
-            <param name="session">The Yammer<see cref="T:Yammer.Session">session</see> object</param>
-            <param name="files">The file path collection to upload</param>
-            <remarks>Used to upload attachments</remarks>
-            <returns>http response</returns>
-        </member>
-        <member name="M:Yammer.HttpUtility.Delete(System.String,Yammer.Session)">
-            <summary>
-            Creates http delete web request and returns response
-            </summary>
-            <param name="url">The URL for the web request</param>
-            <param name="session">The Yammer<see cref="T:Yammer.Session">session</see> object</param>
-            <returns>http response</returns>
-        </member>
-        <member name="M:Yammer.HttpUtility.CreateAuthHeader(Yammer.WebMethod,System.String,System.String,System.String,Yammer.Session)">
-            <summary>
-            Creates the OAuth header for the http request
-            </summary>
-            <param name="method">The <see cref="T:Yammer.WebMethod"/> http web method</param>
-            <param name="nonce">The OAuth nonce string</param>
-            <param name="timeStamp">The generated OAuth timestamp</param>
-            <param name="sig">The generatred OAuth signature</param>
-            <param name="session">The Yammer<see cref="T:Yammer.Session">session</see> object</param>
-            <returns></returns>
-        </member>
-        <member name="M:Yammer.HttpUtility.CreateWebRequest(Yammer.WebMethod,System.Net.WebProxy,System.String,System.Boolean)">
-            <summary>
-            Creates intstance of the HttpRequest object
-            </summary>
-            <param name="method">The <see cref="T:Yammer.WebMethod"/> http web method</param>
-            <param name="proxy"> The client <see cref="T:System.Net.WebProxy"/> proxy</param>
-            <param name="requestUrl">The URL for the web request</param>
-            <param name="preAuth">Send authentication header with request</param>
-            <returns>HttpRequest object</returns>
-        </member>
-        <member name="M:Yammer.HttpUtility.CreateWebRequest(System.String,Yammer.WebMethod,System.String,System.String,System.String,Yammer.Session)">
-            <summary>
-            Creates intstance of the HttpRequest object
-            </summary>
-            <param name="fullUrl">The full URL with querystring for the web request</param>
-            <param name="method">The <see cref="T:Yammer.WebMethod"/> http web method</param>
-            <param name="nonce">The OAuth nonce string</param>
-            <param name="timeStamp">The generated OAuth timestamp</param>
-            <param name="sig">The generatred OAuth signature</param>
-            <param name="session">The Yammer<see cref="T:Yammer.Session">session</see> object</param>
-            <returns>HttpRequest object</returns>
-        </member>
-        <member name="M:Yammer.HttpUtility.CreateWebRequest(System.String,Yammer.WebMethod,System.String,System.String,System.String,System.String,Yammer.Session)">
-            <summary>
-            
-            </summary>
-            <param name="fullUrl">The full URL with querystring for the web request</param>
-            <param name="method">The <see cref="T:Yammer.WebMethod"/> http web method</param>
-            <param name="nonce">The OAuth nonce string</param>
-            <param name="timeStamp">The generated OAuth timestamp</param>
-            <param name="sig">The generatred OAuth signature</param>
-            <param name="boundary">The boundary for the http multipart request</param>
-            <param name="session">The Yammer<see cref="T:Yammer.Session">session</see> object</param>
-            <returns>HttpRequest object</returns>
-        </member>
-        <member name="M:Yammer.HttpUtility.EncodeUrl(System.String,System.Collections.Specialized.NameValueCollection)">
-            <summary>
-            Encodes URL to RFC 3986
-            </summary>
-            <param name="url">The url to encode</param>
-            <param name="parameters">The query string parameters</param>
-            <returns></returns>
-        </member>
-        <member name="M:Yammer.HttpUtility.GetSignature(Yammer.WebMethod,Yammer.Session,System.String,System.String@,System.String@)">
-            <summary>
-            Generates OAuth signature for http request
-            </summary>
-            <param name="method">The <see cref="T:Yammer.WebMethod"/> http web method</param>
-            <param name="session">he Yammer<see cref="T:Yammer.Session">session</see> object</param>
-            <param name="url">The URL for the web request</param>
-            <param name="nonce">The OAuth nonce string</param>
-            <param name="timeStamp">The generated OAuth timestamp</param>
-            <returns>OAuth signature</returns>
-        </member>
-        <member name="M:Yammer.HttpUtility.GetWebResponse(System.Net.HttpWebRequest)">
-            <summary>
-            Reads web response
-            </summary>
-            <param name="request"></param>
-            <returns>http web response</returns>
-        </member>
-        <member name="M:Yammer.HttpUtility.WritePostData(System.Collections.Specialized.NameValueCollection,System.Net.HttpWebRequest)">
-            <summary>
-            Writes post data to request stream
-            </summary>
-            <param name="parameters">The query string parameters</param>
-            <param name="request">The http request to write to</param>
-        </member>
-        <member name="M:Yammer.HttpUtility.WritePostData(System.String,System.IO.Stream,System.Boolean)">
-            <summary>
-            Writes post data to request stream
-            </summary>
-            <param name="parameters">The query string parameters</param>
-            <param name="request">The http request to write to</param>
-        </member>
-        <member name="P:Yammer.Group.Type">
-            <summary>
-            The object type, such as user, tag, etc.
-            </summary>
-        </member>
-        <member name="P:Yammer.Group.Id">
-            <summary>
-            The ID number for this object. Note that IDs are not unique across all object types: 
-            there may be a user and tag with the same numerical ID.
-            </summary>
-        </member>
-        <member name="P:Yammer.Group.FullName">
-            <summary>
-            Name given to this group.
-            </summary>
-        </member>
-        <member name="P:Yammer.Group.Name">
-            <summary>
-            Shortened name of this group. Used in references (@salesteam), addressing (to:salesteam), 
-            the email address for group updates (salesteam@yammer.com) and the web URL (www.yammer.com/groups/salesteam). 
-            </summary>
-        </member>
-        <member name="P:Yammer.Group.Privacy">
-            <summary>
-            Either public or private, to indicate whether updates are visible to non-members 
-            (public) and whether joining requires a group admin's approval (private). 
-            </summary>
-        </member>
-        <member name="P:Yammer.Group.Url">
-            <summary>
-            The API resource for fetching this object.
-            </summary>
-        </member>
-        <member name="P:Yammer.Group.WebUrl">
-            <summary>
-            The URL for viewing this object on the main Yammer website.
-            </summary>
-        </member>
-        <member name="P:Yammer.Group.Stats">
-            <summary>
-            Group stats
             </summary>
         </member>
     </members>

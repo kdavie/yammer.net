@@ -13,3 +13,12 @@ C:\Documents and Settings\Kevin\Yammer Framework\Yammer\bin\Release\oAuth.xml
 C:\Documents and Settings\Kevin\Yammer Framework\Yammer\obj\Release\ResolveAssemblyReference.cache
 C:\Documents and Settings\Kevin\Yammer Framework\Yammer\obj\Release\Yammer.dll
 C:\Documents and Settings\Kevin\Yammer Framework\Yammer\obj\Release\Yammer.pdb
+C:\Documents and Settings\Kevin\yammer.net\Yammer Framework\Yammer\bin\Release\Yammer.dll
+C:\Documents and Settings\Kevin\yammer.net\Yammer Framework\Yammer\bin\Release\Yammer.pdb
+C:\Documents and Settings\Kevin\yammer.net\Yammer Framework\Yammer\bin\Release\oAuth.dll
+C:\Documents and Settings\Kevin\yammer.net\Yammer Framework\Yammer\bin\Release\oAuth.pdb
+C:\Documents and Settings\Kevin\yammer.net\Yammer Framework\Yammer\bin\Release\oAuth.xml
+C:\Documents and Settings\Kevin\yammer.net\Yammer Framework\Yammer\obj\Release\ResolveAssemblyReference.cache
+C:\Documents and Settings\Kevin\yammer.net\Yammer Framework\Yammer\obj\Release\Yammer.dll
+C:\Documents and Settings\Kevin\yammer.net\Yammer Framework\Yammer\obj\Release\Yammer.pdb
+C:\Documents and Settings\Kevin\yammer.net\Yammer Framework\Yammer\bin\Release\Yammer.XML
