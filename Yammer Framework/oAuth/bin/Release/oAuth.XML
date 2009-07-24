@@ -4,49 +4,6 @@
         <name>oAuth</name>
     </assembly>
     <members>
-        <member name="T:OAuth.Rfc3986">
-            <summary>
-            Performs RFC 3986 encoding and decoding.
-            http://www.apps.ietf.org/rfc/rfc3986.html
-            </summary>
-        </member>
-        <member name="M:OAuth.Rfc3986.EncodeAndJoin(System.Collections.Specialized.NameValueCollection)">
-            <summary>
-            Join the name-value pairs into a string seperated with ampersands.
-            Each name and value is first RFC 3986 encoded and values are separated
-            from names with equal signs.
-            </summary>
-            <param name="values">The name value collection to encode and join</param>
-            <returns>An RFC 3986 compliant string</returns>
-        </member>
-        <member name="M:OAuth.Rfc3986.SplitAndDecode(System.String)">
-            <summary>
-            Splits a ampersand-separated list of key-value pairs, decodes the keys and 
-            values, and adds them to a NameValueCollection. Keys and values are separated
-            by equals signs.
-            </summary>
-            <param name="input">The key-value pair list</param>
-            <returns>A name value collection, which may be empty.</returns>
-            <exception cref="T:System.FormatException">
-            If the string is not a series of key-value pairs separated by ampersands,
-            or if one of the keys is null or empty, or if one of the keys or values is 
-            not properly encoded.
-            </exception>
-        </member>
-        <member name="M:OAuth.Rfc3986.Encode(System.String)">
-            <summary>
-            Perform RFC 3986 Percent-encoding on a string.
-            </summary>
-            <param name="input">The input string</param>
-            <returns>The RFC 3986 Percent-encoded string</returns>
-        </member>
-        <member name="M:OAuth.Rfc3986.Decode(System.String)">
-            <summary>
-            Perform RFC 3986 Percent-decoding on a string.
-            </summary>
-            <param name="input">The input RFC 3986 Percent-encoded string</param>
-            <returns>The decoded string</returns>
-        </member>
         <member name="M:OAuth.OAuthBase.ComputeHash(System.Security.Cryptography.HashAlgorithm,System.String)">
             <summary>
             Helper function to compute a hash value
@@ -148,6 +105,49 @@
             <summary>
             Comparer class used to perform the sorting of the query parameters
             </summary>
+        </member>
+        <member name="T:OAuth.Rfc3986">
+            <summary>
+            Performs RFC 3986 encoding and decoding.
+            http://www.apps.ietf.org/rfc/rfc3986.html
+            </summary>
+        </member>
+        <member name="M:OAuth.Rfc3986.EncodeAndJoin(System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            Join the name-value pairs into a string seperated with ampersands.
+            Each name and value is first RFC 3986 encoded and values are separated
+            from names with equal signs.
+            </summary>
+            <param name="values">The name value collection to encode and join</param>
+            <returns>An RFC 3986 compliant string</returns>
+        </member>
+        <member name="M:OAuth.Rfc3986.SplitAndDecode(System.String)">
+            <summary>
+            Splits a ampersand-separated list of key-value pairs, decodes the keys and 
+            values, and adds them to a NameValueCollection. Keys and values are separated
+            by equals signs.
+            </summary>
+            <param name="input">The key-value pair list</param>
+            <returns>A name value collection, which may be empty.</returns>
+            <exception cref="T:System.FormatException">
+            If the string is not a series of key-value pairs separated by ampersands,
+            or if one of the keys is null or empty, or if one of the keys or values is 
+            not properly encoded.
+            </exception>
+        </member>
+        <member name="M:OAuth.Rfc3986.Encode(System.String)">
+            <summary>
+            Perform RFC 3986 Percent-encoding on a string.
+            </summary>
+            <param name="input">The input string</param>
+            <returns>The RFC 3986 Percent-encoded string</returns>
+        </member>
+        <member name="M:OAuth.Rfc3986.Decode(System.String)">
+            <summary>
+            Perform RFC 3986 Percent-decoding on a string.
+            </summary>
+            <param name="input">The input RFC 3986 Percent-encoded string</param>
+            <returns>The decoded string</returns>
         </member>
     </members>
 </doc>

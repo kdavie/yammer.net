@@ -107,7 +107,7 @@ namespace Yammer
         /// <returns></returns>
         public static List<Message> GetFollowingMessages(PageFlag flag, int id, Session session)
         {
-            if(flag == PageFlag.NEWER_THAN)
+            if (flag == PageFlag.NEWER_THAN)
                 return RetrieveMessages(Yammer.HttpUtility.Get(Resources.YAMMER_MESSAGES_FOLLOWING + "?newer_than=" + id.ToString(), session));
             else
                 return RetrieveMessages(Yammer.HttpUtility.Get(Resources.YAMMER_MESSAGES_FOLLOWING + "?older_than=" + id.ToString(), session));
@@ -121,7 +121,7 @@ namespace Yammer
         /// <returns></returns>
         public static List<Message> GetMessagesSentBy(int id, Session session)
         {
-            return RetrieveMessages(Yammer.HttpUtility.Get(Resources.YAMMER_MESSAGES_SENT_BY + id.ToString() + ".xml" , session)); 
+            return RetrieveMessages(Yammer.HttpUtility.Get(Resources.YAMMER_MESSAGES_SENT_BY + id.ToString() + ".xml", session));
         }
 
         /// <summary>
@@ -132,7 +132,7 @@ namespace Yammer
         /// <returns></returns>
         public static List<Message> GetMessagesTaggedWith(int id, Session session)
         {
-            return RetrieveMessages(Yammer.HttpUtility.Get(Resources.YAMMER_MESSAGES_TAGGED_WITH + id.ToString() + ".xml", session)); 
+            return RetrieveMessages(Yammer.HttpUtility.Get(Resources.YAMMER_MESSAGES_TAGGED_WITH + id.ToString() + ".xml", session));
         }
 
         /// <summary>
@@ -143,7 +143,7 @@ namespace Yammer
         /// <returns></returns>
         public static List<Message> GetMessagesInThread(int id, Session session)
         {
-            return RetrieveMessages(Yammer.HttpUtility.Get(Resources.YAMMER_MESSAGES_IN_THREAD + id.ToString() + ".xml", session)); 
+            return RetrieveMessages(Yammer.HttpUtility.Get(Resources.YAMMER_MESSAGES_IN_THREAD + id.ToString() + ".xml", session));
         }
 
         /// <summary>
@@ -154,7 +154,7 @@ namespace Yammer
         /// <returns></returns>
         public static List<Message> GetMessagesInGroup(int id, Session session)
         {
-            return RetrieveMessages(Yammer.HttpUtility.Get(Resources.YAMMER_MESSAGES_IN_GROUP + id.ToString() + ".xml", session)); 
+            return RetrieveMessages(Yammer.HttpUtility.Get(Resources.YAMMER_MESSAGES_IN_GROUP + id.ToString() + ".xml", session));
         }
 
         /// <summary>
@@ -178,11 +178,11 @@ namespace Yammer
             NameValueCollection parameters = new NameValueCollection();
             parameters.Add("body", body);
             string response;
-            if(attachments.Count > 0)
+            if (attachments.Count > 0)
                 Yammer.HttpUtility.Upload(Resources.YAMMER_MESSAGES_CREATE, parameters, session, attachments);
             else
                 response = Yammer.HttpUtility.Post(Resources.YAMMER_MESSAGES_CREATE, parameters, session);
-                
+
         }
 
         /// <summary>
@@ -214,7 +214,7 @@ namespace Yammer
 
         }
 
-       
+
 
         #endregion
 
@@ -276,7 +276,7 @@ namespace Yammer
         public static void LeaveGroup(int id, Session session)
         {
             GroupMembership(id, session);
-            
+
         }
 
         private static void GroupMembership(int id, Session session)
@@ -461,7 +461,7 @@ namespace Yammer
         {
             if (message != null)
                 message.References.Messages.Add(reference);
-            
+
         }
 
         private static void SetMessageReference(Message message, Guide reference)

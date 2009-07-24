@@ -31,7 +31,7 @@ namespace Yammer
         /// </summary>
         [DataMember(Name = "stats")]
         [XmlElement(ElementName = "stats")]
-        public UserStats Stats { get; set; }
+        public Stats Stats { get; set; }
 
         /// <summary>
         /// Short text identifier

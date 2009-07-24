@@ -1,24 +1,10 @@
-C:\Documents and Settings\Kevin\My Documents\Visual Studio 2008\Projects\Yammer\Yammer\bin\Release\Yammer.dll
-C:\Documents and Settings\Kevin\My Documents\Visual Studio 2008\Projects\Yammer\Yammer\bin\Release\Yammer.pdb
-C:\Documents and Settings\Kevin\My Documents\Visual Studio 2008\Projects\Yammer\Yammer\obj\Release\ResolveAssemblyReference.cache
-C:\Documents and Settings\Kevin\My Documents\Visual Studio 2008\Projects\Yammer\Yammer\obj\Release\Yammer.dll
-C:\Documents and Settings\Kevin\My Documents\Visual Studio 2008\Projects\Yammer\Yammer\obj\Release\Yammer.pdb
-C:\Documents and Settings\Kevin\My Documents\Visual Studio 2008\Projects\Yammer\Yammer\bin\Release\Yammer.XML
-C:\Documents and Settings\Kevin\Yammer Framework\Yammer\bin\Release\Yammer.XML
-C:\Documents and Settings\Kevin\Yammer Framework\Yammer\bin\Release\Yammer.dll
-C:\Documents and Settings\Kevin\Yammer Framework\Yammer\bin\Release\Yammer.pdb
-C:\Documents and Settings\Kevin\Yammer Framework\Yammer\bin\Release\oAuth.dll
-C:\Documents and Settings\Kevin\Yammer Framework\Yammer\bin\Release\oAuth.pdb
-C:\Documents and Settings\Kevin\Yammer Framework\Yammer\bin\Release\oAuth.xml
-C:\Documents and Settings\Kevin\Yammer Framework\Yammer\obj\Release\ResolveAssemblyReference.cache
-C:\Documents and Settings\Kevin\Yammer Framework\Yammer\obj\Release\Yammer.dll
-C:\Documents and Settings\Kevin\Yammer Framework\Yammer\obj\Release\Yammer.pdb
-C:\Documents and Settings\Kevin\yammer.net\Yammer Framework\Yammer\bin\Release\Yammer.dll
-C:\Documents and Settings\Kevin\yammer.net\Yammer Framework\Yammer\bin\Release\Yammer.pdb
-C:\Documents and Settings\Kevin\yammer.net\Yammer Framework\Yammer\bin\Release\oAuth.dll
-C:\Documents and Settings\Kevin\yammer.net\Yammer Framework\Yammer\bin\Release\oAuth.pdb
-C:\Documents and Settings\Kevin\yammer.net\Yammer Framework\Yammer\bin\Release\oAuth.xml
-C:\Documents and Settings\Kevin\yammer.net\Yammer Framework\Yammer\obj\Release\ResolveAssemblyReference.cache
-C:\Documents and Settings\Kevin\yammer.net\Yammer Framework\Yammer\obj\Release\Yammer.dll
-C:\Documents and Settings\Kevin\yammer.net\Yammer Framework\Yammer\obj\Release\Yammer.pdb
-C:\Documents and Settings\Kevin\yammer.net\Yammer Framework\Yammer\bin\Release\Yammer.XML
+C:\Documents and Settings\Kevin Davie\My Documents\Visual Studio 2008\Projects\YammerADSync\Yammer\bin\Release\Yammer.dll
+C:\Documents and Settings\Kevin Davie\My Documents\Visual Studio 2008\Projects\YammerADSync\Yammer\bin\Release\Yammer.pdb
+C:\Documents and Settings\Kevin Davie\My Documents\Visual Studio 2008\Projects\YammerADSync\Yammer\bin\Release\oAuth.dll
+C:\Documents and Settings\Kevin Davie\My Documents\Visual Studio 2008\Projects\YammerADSync\Yammer\bin\Release\oAuth.pdb
+C:\Documents and Settings\Kevin Davie\My Documents\Visual Studio 2008\Projects\YammerADSync\Yammer\bin\Release\oAuth.xml
+C:\Documents and Settings\Kevin Davie\My Documents\Visual Studio 2008\Projects\YammerADSync\Yammer\obj\Release\ResolveAssemblyReference.cache
+C:\Documents and Settings\Kevin Davie\My Documents\Visual Studio 2008\Projects\YammerADSync\Yammer\obj\Release\Yammer.dll
+C:\Documents and Settings\Kevin Davie\My Documents\Visual Studio 2008\Projects\YammerADSync\Yammer\obj\Release\Yammer.pdb
+C:\Documents and Settings\Kevin Davie\My Documents\Visual Studio 2008\Projects\YammerADSync\Yammer\bin\Release\Yammer.dll.config
+C:\Documents and Settings\Kevin Davie\My Documents\Visual Studio 2008\Projects\YammerADSync\Yammer\bin\Release\Yammer.XML

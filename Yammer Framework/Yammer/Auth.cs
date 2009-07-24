@@ -8,6 +8,7 @@ using System.Net;
 using System.Diagnostics;
 using System.Xml.Serialization;
 using System.IO;
+using System.Collections.Specialized;
 
 namespace Yammer
 {
@@ -15,7 +16,7 @@ namespace Yammer
     {
         #region Ctor
 
-        private Auth()
+        public Auth()
         {
 
         }
@@ -28,35 +29,60 @@ namespace Yammer
         /// The client Web Proxy.  Can be null
         /// </summary>
         /// <remarks></remarks>
+        [XmlIgnore]
         public WebProxy Proxy { get; set; }
 
         /// <summary>
         /// The OAuth key to use
         /// </summary>
+        [XmlElement]
         public OAuthKey Key { get; set; }
 
         /// <summary>
         /// The client's consumer key
         /// </summary>
+        [XmlElement]
         private string ConsumerKey { get; set; }
 
         /// <summary>
         /// The client's consumer secret
         /// </summary>
+        [XmlElement]
         private string ConsumerSecret { get; set; }
 
         /// <summary>
         /// The persisted client settings file.
         /// </summary>
+        [XmlElement]
         public Settings Settings { get; set; }
 
         /// <summary>
         /// Connection success indicator
         /// </summary>
-        public bool Success { get; set; }
+        [XmlElement]
+        public bool Success
+        {
+            get
+            {
+                return success;
+            }
+            set
+            {
+                success = value;
+                OnAuthorizationComplete();
+            }
+        }
+
+        private bool success;
 
         #endregion
 
+        public event EventHandler AuthorizationComplete;
+        public void OnAuthorizationComplete()
+        {
+            if (this.AuthorizationComplete != null)
+                this.AuthorizationComplete(this, new EventArgs());
+        }
         #region Helper Methods
 
         /// <summary>
@@ -68,7 +94,7 @@ namespace Yammer
         private string GetRequestTokenQuery(string consumerKey, string consumerSecret)
         {
             //TODO: Utilize Yammer.HttpUtility for get
-            Uri uri = new Uri("https://www.yammer.com/oauth/request_token");
+            Uri uri = new Uri(Resources.OAUTH_REQUEST_TOKEN);
             string nurl;
             string nrp;
 
@@ -114,9 +140,9 @@ namespace Yammer
         /// Retrieves OAuth access token
         /// </summary>
         /// <returns>the OAuth access token query string</returns>
-        private string GetAccessTokenQuery()
+        private string GetAccessTokenQuery(string callbackToken)
         {
-            Uri uri = new Uri(Resources.OAUTH_ACCESS_TOKEN);
+            Uri uri = new Uri(Resources.OAUTH_ACCESS_TOKEN + "?callback_token=" + callbackToken);
             string nurl;
             string nrp;
 
@@ -143,7 +169,7 @@ namespace Yammer
             sig = System.Web.HttpUtility.UrlEncode(sig);
 
             StringBuilder sb = new StringBuilder(uri.ToString());
-            sb.AppendFormat("?oauth_consumer_key={0}&", Key.ConsumerKey);
+            sb.AppendFormat("&oauth_consumer_key={0}&", Key.ConsumerKey);
             sb.AppendFormat("oauth_token={0}&", Key.TokenKey);
             sb.AppendFormat("oauth_signature_method={0}&", "HMAC-SHA1");
             sb.AppendFormat("oauth_timestamp={0}&", timeStamp);
@@ -205,11 +231,12 @@ namespace Yammer
         /// Retrieves the authorization information from the server
         /// and saves it the persisted see cref="Settings">settings</see> file
         /// </summary>
-        public void GetAccessToken()
+        public void GetAccessToken(string callbackToken)
         {
             try
             {
-                HttpWebRequest request = Yammer.HttpUtility.CreateWebRequest(WebMethod.POST, this.Proxy, GetAccessTokenQuery(), true);
+                HttpWebRequest request = Yammer.HttpUtility.CreateWebRequest(WebMethod.POST, this.Proxy, GetAccessTokenQuery(callbackToken), true);
+               
                 string response = Yammer.HttpUtility.GetWebResponse(request);
                 string tokenKey;
                 string tokenSecret;
@@ -217,6 +244,12 @@ namespace Yammer
                 
                 Settings.SaveConfiguration(tokenKey, tokenSecret,this.Key, this.Proxy);
                 this.Success = true;
+            }
+            catch (WebException ex)
+            {
+                this.Success = false;
+                if (ex.Message.Trim() == "The remote server returned an error: (401) Unauthorized.")
+                    System.Windows.Forms.MessageBox.Show("You must authorize this application before continuing.");
             }
             catch (Exception ex)
             {

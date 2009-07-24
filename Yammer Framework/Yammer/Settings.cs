@@ -23,6 +23,40 @@ namespace Yammer
         public OAuthSettings OAuth { get; set; }
         [XmlElement]
         public string UserId { get; set; }
+        [XmlElement]
+        public string Email { get; set; }
+        [XmlElement]
+        public string Domain { get; set; }
+        private bool showAvatars = true;
+        [XmlElement]
+        public bool ShowAvatars
+        {
+            get
+            {
+                return showAvatars;
+            }
+            set
+            {
+                showAvatars = value;
+            }
+        }
+        [XmlElement]
+        public bool ShowFullNames { get; set; }
+        [XmlElement]
+        public bool SupressEnterKey { get; set; }
+
+        [XmlElement]
+        public bool SmtpUseSSL { get; set; }
+        [XmlElement]
+        public string SmtpHost { get; set; }
+        [XmlElement]
+        public string SmtpPort { get; set; }
+        [XmlElement]
+        public string SmtpUser { get; set; }
+        [XmlElement]
+        public string SmtpPass { get; set; }
+        [XmlElement]
+        public string EmailRecipients { get; set; }
 
         /// <summary>
         /// Checks if the persisted <see cref="Settings">settings</see> file exists on the client
@@ -30,7 +64,7 @@ namespace Yammer
         /// <returns></returns>
         public static Settings CheckConfiguration()
         {
-            Dictionary<string, DirectoryInfo> appData = Utility.GetAppDirectory();
+            Dictionary<string, DirectoryInfo> appData = Utility.GetAppData();
             if (System.IO.File.Exists(appData["data"] + "\\settings.yam"))
             {
                 XmlSerializer serializer = new XmlSerializer(typeof(Settings));
@@ -52,7 +86,7 @@ namespace Yammer
         /// <param name="tokenSecret"></param>
         public static void SaveConfiguration(string tokenKey, string tokenSecret, OAuthKey key, WebProxy proxy)
         {
-            Dictionary<string, DirectoryInfo> appData = Utility.GetAppDirectory();
+            Dictionary<string, DirectoryInfo> appData = Utility.GetAppData();
             Settings settings = new Settings();
             if (proxy != null)
             {

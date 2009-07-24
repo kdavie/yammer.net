@@ -19,9 +19,6 @@ namespace Yammer
         [XmlElement(ElementName = "thumbnail-url")]
         public string ThumbnailUrl { get; set; }
 
-       // <image>
-       //  <size>37235</size>
-       //  <url>https://www.yammer.com/api/v1/images/1301</url>          		 <thumbnail-url>https://www.yammer.com/api/v1/images/1301/small</thumbnail-url> 
-       //</image>
+       
     }
 }

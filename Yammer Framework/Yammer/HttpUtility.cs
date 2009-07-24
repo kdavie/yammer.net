@@ -13,6 +13,13 @@ namespace Yammer
 {
     public static class HttpUtility
     {
+        public static string Get(string url)
+        {
+            string nonce, timestamp;
+            string signature = GetSignature(WebMethod.GET, url, out timestamp, out nonce);
+            HttpWebRequest request = CreateWebRequest(url, WebMethod.GET, nonce, timestamp, signature);
+            return GetWebResponse(request);
+        }
         /// <summary>
         /// Creates http get web request and returns response
         /// </summary>
@@ -24,6 +31,23 @@ namespace Yammer
             string nonce, timestamp;
             string signature = GetSignature(WebMethod.GET, session, url, out timestamp, out nonce);
             HttpWebRequest request = CreateWebRequest(url, WebMethod.GET, nonce, timestamp, signature, session);
+            return GetWebResponse(request);
+        }
+
+        public static string Get(string url, Session session, NameValueCollection parameters)
+        {
+            string nonce, timestamp;
+            string fullUrl = EncodeUrl(url, parameters);
+            string signature = GetSignature(WebMethod.GET, session, fullUrl, out timestamp, out nonce);
+            HttpWebRequest request = CreateWebRequest(fullUrl, WebMethod.GET, nonce, timestamp, signature, session);
+            return GetWebResponse(request);
+        }
+        public static string Get(string url, NameValueCollection parameters)
+        {
+            string nonce, timestamp;
+            string fullUrl = EncodeUrl(url, parameters);
+            string signature = GetSignature(WebMethod.GET, fullUrl, out timestamp, out nonce);
+            HttpWebRequest request = CreateWebRequest(fullUrl, WebMethod.GET, nonce, timestamp, signature);
             return GetWebResponse(request);
         }
 
@@ -41,9 +65,44 @@ namespace Yammer
             string signature = GetSignature(WebMethod.POST, session, fullUrl, out timestamp, out nonce);
             HttpWebRequest request = CreateWebRequest(url, WebMethod.POST, nonce, timestamp, signature, session);
             WritePostData(parameters, request);
+            return GetLocationHeader(request);
+        }
+
+        public static string Post(string url, NameValueCollection parameters)
+        {
+            string nonce, timestamp;
+            string fullUrl = EncodeUrl(url, parameters);
+            string signature = GetSignature(WebMethod.POST, fullUrl, out timestamp, out nonce);
+            HttpWebRequest request = CreateWebRequest(url, WebMethod.POST, nonce, timestamp, signature);
+            WritePostData(parameters, request);
+            return GetLocationHeader(request);
+        }
+
+
+        public static string Put(string url, NameValueCollection parameters, Session session)
+        {
+            string nonce, timestamp;
+            string fullUrl = EncodeUrl(url, parameters);
+            string signature = GetSignature(WebMethod.PUT, session, fullUrl, out timestamp, out nonce);
+            HttpWebRequest request = CreateWebRequest(fullUrl, WebMethod.PUT, new string[] { nonce, timestamp, signature }, session);
+            
+            
+            WritePostData(parameters, request);            
             return GetWebResponse(request);
         }
 
+        public static string Put(string url, NameValueCollection parameters)
+        {
+            string nonce, timestamp;
+            string fullUrl = EncodeUrl(url, parameters);
+            string signature = GetSignature(WebMethod.PUT, fullUrl, out timestamp, out nonce);
+            HttpWebRequest request = CreateWebRequest(fullUrl, WebMethod.PUT, new string[] { nonce, timestamp, signature });
+
+
+            WritePostData(parameters, request);
+            return GetWebResponse(request);
+        }
+      
         /// <summary>
         /// Creates http multipart post web request and returns response
         /// </summary>
@@ -70,6 +129,11 @@ namespace Yammer
             return UploadAttachments(url, parameters, files, session);
         }
 
+        public static string Upload(string url, NameValueCollection parameters, List<string> files)
+        {
+            return UploadAttachments(url, parameters, files);
+        }
+
         /// <summary>
         /// Creates http delete web request and returns response
         /// </summary>
@@ -81,6 +145,41 @@ namespace Yammer
             string nonce, timestamp;
             string signature = GetSignature(WebMethod.DELETE, session, url, out timestamp, out nonce);
             HttpWebRequest request = CreateWebRequest(url, WebMethod.DELETE, nonce, timestamp, signature, session);
+            return GetWebResponse(request);
+
+        }
+        public static string Delete(string url)
+        {
+            string nonce, timestamp;
+            string signature = GetSignature(WebMethod.DELETE, url, out timestamp, out nonce);
+            HttpWebRequest request = CreateWebRequest(url, WebMethod.DELETE, nonce, timestamp, signature);
+            return GetWebResponse(request);
+
+        }
+
+        /// <summary>
+        /// Creates http delete web request and returns response
+        /// </summary>
+        /// <param name="url">The URL for the web request</param>
+        /// <param name="session">The Yammer<see cref="Session">session</see> object</param>
+        /// <returns>http response</returns>
+        public static string Delete(string url, NameValueCollection parameters, Session session)
+        {
+            string nonce, timestamp;
+            string fullUrl = EncodeUrl(url, parameters);
+            string signature = GetSignature(WebMethod.DELETE, session, fullUrl, out timestamp, out nonce);
+            HttpWebRequest request = CreateWebRequest(fullUrl, WebMethod.DELETE, nonce, timestamp, signature, session);
+            WritePostData(parameters, request); 
+            return GetWebResponse(request);
+
+        }
+        public static string Delete(string url, NameValueCollection parameters)
+        {
+            string nonce, timestamp;
+            string fullUrl = EncodeUrl(url, parameters);
+            string signature = GetSignature(WebMethod.DELETE, fullUrl, out timestamp, out nonce);
+            HttpWebRequest request = CreateWebRequest(fullUrl, WebMethod.DELETE, nonce, timestamp, signature);
+            WritePostData(parameters, request);
             return GetWebResponse(request);
 
         }
@@ -99,18 +198,49 @@ namespace Yammer
             StringBuilder sb = new StringBuilder();
             sb.Append("OAuth ");
             if (method == WebMethod.POST)
-                sb.Append("realm=\"" + Resources.YAMMER_MESSAGES_CREATE + "\",");
-
+                sb.Append("realm=\""  + "\",");
+            else
+                sb.Append("realm=\"\",");
+           
             string authHeader = "oauth_consumer_key=\"" + session.AuthKey.ConsumerKey + "\"," +
                                 "oauth_token=\"" + session.AuthKey.TokenKey + "\"," +
                                 "oauth_nonce=\"" + nonce + "\"," +
                                 "oauth_timestamp=\"" + timeStamp + "\"," +
-                                "oauth_signature_method=\"" + "HMAC-SHA1" + "\"," +
+                                "oauth_signature_method=\"" + "PLAINTEXT" + "\"," +
                                 "oauth_version=\"" + "1.0" + "\"," +
                                 "oauth_signature=\"" + sig + "\"";
 
+           
             sb.Append(authHeader);
             return sb.ToString();
+
+            //Authorization: OAuth realm="", oauth_consumer_key="AMbmZSOP3wHm1cjfvSsRg", oauth_signature_method="HMAC-SHA1", oauth_signature="yLDH5eLS4uUVa3vVbNxvDX9B8aFgnwRSFla3jph9y90%26", oauth_timestamp="1229537444", oauth_nonce="1229537444", oauth_version="1.0"
+
+        }
+
+        private static string CreateAuthHeader(WebMethod method, string nonce, string timeStamp, string sig)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("OAuth ");
+            if (method == WebMethod.POST)
+                sb.Append("realm=\"" + "\",");
+            else
+                sb.Append("realm=\"\",");
+
+            string authHeader = "oauth_consumer_key=\"" + Yammer.Session.Auth.Key.ConsumerKey + "\"," +
+                                "oauth_token=\"" + Yammer.Session.Auth.Key.TokenKey + "\"," +
+                                "oauth_nonce=\"" + nonce + "\"," +
+                                "oauth_timestamp=\"" + timeStamp + "\"," +
+                                "oauth_signature_method=\"" + "PLAINTEXT" + "\"," +
+                                "oauth_version=\"" + "1.0" + "\"," +
+                                "oauth_signature=\"" + sig + "\"";
+
+
+            sb.Append(authHeader);
+            return sb.ToString();
+
+            //Authorization: OAuth realm="", oauth_consumer_key="AMbmZSOP3wHm1cjfvSsRg", oauth_signature_method="HMAC-SHA1", oauth_signature="yLDH5eLS4uUVa3vVbNxvDX9B8aFgnwRSFla3jph9y90%26", oauth_timestamp="1229537444", oauth_nonce="1229537444", oauth_version="1.0"
+
         }
 
         /// <summary>
@@ -149,10 +279,57 @@ namespace Yammer
             string authHeader = CreateAuthHeader(method, nonce, timeStamp, sig, session);
             request.ContentType = "application/x-www-form-urlencoded";
             request.Headers.Add("Authorization", authHeader);
+            
+            return request;
+        }
+        private static HttpWebRequest CreateWebRequest(string fullUrl, WebMethod method, string nonce, string timeStamp, string sig)
+        {
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(fullUrl);
+            request.Method = method.ToString();
+            request.Proxy = Yammer.Session.WebProxy;
+            string authHeader = CreateAuthHeader(method, nonce, timeStamp, sig);
+            request.ContentType = "application/x-www-form-urlencoded";
+            request.Headers.Add("Authorization", authHeader);
 
             return request;
         }
 
+        private static HttpWebRequest CreateWebRequest(string fullUrl, WebMethod method, string[] oauthParams, Session session)
+        {
+            string nonce, timeStamp, sig;
+            nonce = oauthParams[0];
+            timeStamp = oauthParams[1];
+            sig = oauthParams[2];
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(fullUrl);
+            request.ServicePoint.Expect100Continue = false;
+            request.KeepAlive = false;
+            request.ProtocolVersion = HttpVersion.Version10;
+            request.Method = method.ToString();
+            request.Proxy = session.Proxy;
+            string authHeader = CreateAuthHeader(method, nonce, timeStamp, sig, session);
+            request.ContentType = "text/plain";
+            request.Headers.Add("Authorization", authHeader);
+
+            return request;
+        }
+        private static HttpWebRequest CreateWebRequest(string fullUrl, WebMethod method, string[] oauthParams)
+        {
+            string nonce, timeStamp, sig;
+            nonce = oauthParams[0];
+            timeStamp = oauthParams[1];
+            sig = oauthParams[2];
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(fullUrl);
+            request.ServicePoint.Expect100Continue = false;
+            request.KeepAlive = false;
+            request.ProtocolVersion = HttpVersion.Version10;
+            request.Method = method.ToString();
+            request.Proxy = Yammer.Session.WebProxy;
+            string authHeader = CreateAuthHeader(method, nonce, timeStamp, sig);
+            request.ContentType = "text/plain";
+            request.Headers.Add("Authorization", authHeader);
+
+            return request;
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -174,6 +351,16 @@ namespace Yammer
             request.Headers.Add("Authorization", authHeader);
             return request;
         }
+        public static HttpWebRequest CreateWebRequest(string fullUrl, WebMethod method, string nonce, string timeStamp, string sig, string boundary)
+        {
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(fullUrl);
+            request.Method = method.ToString();
+            request.Proxy = Yammer.Session.WebProxy;
+            string authHeader = CreateAuthHeader(method, nonce, timeStamp, sig);
+            request.ContentType = "multipart/form-data; boundary=" + boundary;
+            request.Headers.Add("Authorization", authHeader);
+            return request;
+        }
 
         /// <summary>
         /// Encodes URL to RFC 3986
@@ -188,12 +375,27 @@ namespace Yammer
             foreach (string key in parameters.Keys)
             {
                 if (count == 0)
-                    fullUrl = url + "?" + key + "=" + Rfc3986.Encode(parameters[key]);
+                    fullUrl = url + "?" + key + "=" + Rfc3986.Encode(parameters[key].ToLower());
                 else
-                    fullUrl += "&" + key + "=" + Rfc3986.Encode(parameters[key]);
+                    fullUrl += "&" + key + "=" + Rfc3986.Encode(parameters[key].ToLower());
                 count++;
             }
             return fullUrl;
+        }
+
+        private static string PutParams(NameValueCollection parameters)
+        {
+            string qs = string.Empty;
+            int count = 0;
+            foreach (string key in parameters.Keys)
+            {
+                if (count == 0)
+                    qs = key + "=" + Rfc3986.Encode(parameters[key].ToLower());
+                else
+                    qs += "," + key + "=" + Rfc3986.Encode(parameters[key].ToLower());
+                count++;
+            }
+            return qs;
         }
 
         private static string GenerateRandomString(int intLenghtOfString)
@@ -235,7 +437,28 @@ namespace Yammer
                 method.ToString(),
                 timestamp,
                 nonce,
-                OAuthBase.SignatureTypes.HMACSHA1, out nurl, out nrp);
+                OAuthBase.SignatureTypes.PLAINTEXT, out nurl, out nrp);
+
+            return System.Web.HttpUtility.UrlEncode(sig);
+        }
+        public static string GetSignature(WebMethod method, string url, out string timestamp, out string nonce)
+        {
+            OAuthBase oAuth = new OAuthBase();
+            nonce = oAuth.GenerateNonce();
+            timestamp = oAuth.GenerateTimeStamp();
+            string nurl, nrp;
+
+            Uri uri = new Uri(url);
+            string sig = oAuth.GenerateSignature(
+                uri,
+                Yammer.Session.Auth.Key.ConsumerKey,
+                Yammer.Session.Auth.Key.ConsumerSecret,
+                Yammer.Session.Auth.Key.TokenKey,
+                Yammer.Session.Auth.Key.TokenSecret,
+                method.ToString(),
+                timestamp,
+                nonce,
+                OAuthBase.SignatureTypes.PLAINTEXT, out nurl, out nrp);
 
             return System.Web.HttpUtility.UrlEncode(sig);
         }
@@ -254,10 +477,43 @@ namespace Yammer
                 response = request.GetResponse();
                 using (StreamReader reader = new StreamReader(response.GetResponseStream(), Encoding.UTF8))
                     data = reader.ReadToEnd();
+
+            } 
+            catch (System.Net.WebException ex)
+            {
+                if (ex.Status != WebExceptionStatus.ConnectionClosed && ex.Status != WebExceptionStatus.KeepAliveFailure)
+                    throw ex;
+                else
+                    System.Threading.Thread.Sleep(500);
             }
             catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show("Error retrieving web response " + ex.Message);
+                //System.Windows.Forms.MessageBox.Show("Error retrieving web response " + ex.Message);
+                throw ex;
+            }
+            finally
+            {
+                if (response != null)
+                    response.Close();
+            }
+
+            return data;
+
+
+        }
+
+        public static string GetLocationHeader(HttpWebRequest request)
+        {
+            WebResponse response = null;
+            string data = string.Empty;
+            try
+            {
+                response = request.GetResponse();
+                data = response.Headers["Location"];
+            }
+            catch (Exception ex)
+            {
+                //System.Windows.Forms.MessageBox.Show("Error retrieving web response " + ex.Message);
                 throw ex;
             }
             finally
@@ -276,7 +532,7 @@ namespace Yammer
         /// </summary>
         /// <param name="parameters">The query string parameters</param>
         /// <param name="request">The http request to write to</param>
-        private static void WritePostData(NameValueCollection parameters, HttpWebRequest request)
+        public static void WritePostData(NameValueCollection parameters, HttpWebRequest request)
         {
             int count = 0;
             string queryString = string.Empty;
@@ -289,6 +545,7 @@ namespace Yammer
                 count++;
             }
 
+            
             byte[] postDataBytes = Encoding.ASCII.GetBytes(queryString);
             request.ContentLength = postDataBytes.Length;
             Stream reqStream = request.GetRequestStream();
@@ -344,7 +601,50 @@ namespace Yammer
             }
             WritePostData(contentTrailer,io, true);
 
-            string response = GetWebResponse(request);
+            string response = GetLocationHeader(request);
+            io.Close();
+            request = null;
+
+            return response;
+        }
+
+        private static string UploadAttachments(string url, NameValueCollection parameters, List<string> fileNames)
+        {
+            string nonce, timestamp;
+            string beginBoundary = GenerateRandomString(25);
+            string contentBoundary = "--" + beginBoundary;
+            string endBoundary = contentBoundary + "--";
+            string contentTrailer = "\r\n" + endBoundary;
+
+            string signature = HttpUtility.GetSignature(WebMethod.POST, url, out timestamp, out nonce);
+            HttpWebRequest request = HttpUtility.CreateWebRequest(url, WebMethod.POST, nonce, timestamp, signature, beginBoundary);
+            Version protocolVersion = HttpVersion.Version11;
+            string method = WebMethod.POST.ToString();
+            string contentType = "multipart/form-data; boundary=" + beginBoundary;
+            string contentDisposition = "Content-Disposition: form-data; name=";
+            request.Headers.Add("Cache-Control", "no-cache");
+            request.KeepAlive = true;
+            string postParams = GetPostParameters(parameters, contentBoundary, contentDisposition);
+
+            FileInfo[] fi = new FileInfo[fileNames.Count];
+            int i = 0;
+            long postDataSize = 0;
+            int headerLength = 0;
+            List<string> fileHeaders = new List<string>();
+            AddFileHeaders(fileNames, contentBoundary, contentDisposition, fi, ref i, ref postDataSize, ref headerLength, fileHeaders);
+            request.ContentLength = postParams.Length + headerLength + contentTrailer.Length + postDataSize;
+            System.IO.Stream io = request.GetRequestStream();
+            WritePostData(postParams, io, false);
+            i = 0;
+            foreach (string fileName in fileNames)
+            {
+                WritePostData(fileHeaders[i], io, false);
+                WriteFile(io, fileName);
+                i++;
+            }
+            WritePostData(contentTrailer, io, true);
+
+            string response = GetLocationHeader(request);
             io.Close();
             request = null;
 
@@ -427,6 +727,8 @@ namespace Yammer
     
 
     }
+
+     
  
 
 

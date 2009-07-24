@@ -4,12 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Runtime.Serialization;
 using System.Xml.Serialization;
+using System.Xml;
+using System.Collections.Specialized;
+using System.Reflection;
 namespace Yammer
 {
     [DataContract(Name = "reference")]
     [XmlRoot(ElementName = "reference")]
     public class User
     {
+        #region Yammer Properties
+
         /// <summary>
         /// The object type.
         /// </summary>
@@ -105,7 +110,7 @@ namespace Yammer
         /// </summary>
         [DataMember(Name = "stats")]
         [XmlElement(ElementName = "stats")]
-        public UserStats Stats { get; set; }
+        public Stats Stats { get; set; }
 
         /// <summary>
         /// User location
@@ -115,16 +120,172 @@ namespace Yammer
         public string Location { get; set; }
 
 
+        #endregion
+
+        internal static User GetUser(string data)
+        {
+            XmlDocument xdoc = new XmlDocument();
+            xdoc.LoadXml(data);
+            XmlNode node = xdoc.SelectSingleNode("/response");
+            User user = (User)Utility.Deserialize(typeof(User), "<reference>" + node.InnerXml + "</reference>");
+            return user;
+        }
+
+        internal static List<User> GetAllUsers(string data)
+        {
+            XmlDocument xdoc = new XmlDocument();
+            xdoc.LoadXml(data);
+            
+            XmlNodeList nodes = xdoc.SelectNodes("/response/response");
+            List<User> users = new List<User>();
+            foreach (XmlNode node in nodes)
+            {
+                User user = (User)Utility.Deserialize(typeof(User), "<reference>" + node.InnerXml + "</reference>");
+                users.Add(user);
+            }
+            return users;
+        }
+
+        /// <summary>
+        /// Retreives data about current user
+        /// </summary>
+        /// <param name="session"></param>
+        /// <returns></returns>
+        public static User GetCurrentUser()
+        {
+            string response = Yammer.HttpUtility.Get(Resources.YAMMER_USERS_CURRENT);
+            return User.GetUser(response);
+        }
+
+        /// <summary>
+        /// Retrieves list of users in network
+        /// </summary>
+        /// <returns></returns>
+        public static List<User> GetAllUsers()
+        {
+           
+            //string response = Yammer.HttpUtility.Get(Resources.YAMMER_USERS_ALL);
+            //return User.GetAllUsers(response);
+            if (Session.Assets == null)
+                Session.Assets = new Assets();
+
+            return Session.Assets.Users;
+        }
+
+        /// <summary>
+        /// Retrieves list of users in network 
+        /// </summary>
+        /// <param name="userParams"></param>
+        /// <returns></returns>
+        public static List<User> GetAllUsers(MembershipParameters userParams)
+        {
+            NameValueCollection parameters = new NameValueCollection();
+            Yammer.Utility.AddMembershipParams(parameters, userParams);
+            string response = Yammer.HttpUtility.Get(Resources.YAMMER_USERS_ALL, parameters);
+            return User.GetAllUsers(response);
+        }
+
+        public static User GetUserById(int id)
+        {
+            if (Session.Assets == null)
+                Session.Assets = new Assets();
+
+            return Session.Assets.Users.Find(delegate(User u) { return int.Parse(u.Id) == id; });
+        }
+
+        public static User GetUserById(List<User> users, int id)
+        {
+            return users.Find(delegate(User u) { return int.Parse(u.Id) == id; });
+        }
+
+        public static User GetUserByUserName(string name)
+        {
+            return Yammer.User.GetAllUsers().Find(delegate(Yammer.User u) { return u.Name.ToLower() == name.ToLower(); });
+        }
+
+        public static void Update(int id, UserParameters userParams)
+        {
+            NameValueCollection parameters = new NameValueCollection();
+            AddUserParam(parameters, userParams);
+            string response = Yammer.HttpUtility.Put(Resources.YAMMER_USERS_MODIFY + id.ToString() + ".xml", parameters);
+            Session.Assets.UpdateUsers();
+        }
+
+        public static void Create(UserParameters userParams)
+        {
+            NameValueCollection parameters = new NameValueCollection();
+            AddUserParam(parameters, userParams);
+            string response = Yammer.HttpUtility.Post(Resources.YAMMER_USERS_CREATE, parameters);
+        }
+
+        public static void Delete(int id)
+        {
+            NameValueCollection parameters = new NameValueCollection();
+            parameters.Add("delete", "true");
+            string response = Yammer.HttpUtility.Delete(Resources.YAMMER_USERS_DELETE + id.ToString() + ".xml", parameters);
+            Session.Assets.UpdateUsers();
+        }
+
+        public void Delete()
+        {
+            User.Delete(int.Parse(this.Id));
+           
+        }
+
+        private static void AddUserParam(NameValueCollection parameters, UserParameters userParams)
+        {
+            PropertyInfo[] pic = userParams.GetType().GetProperties();
+            UserAttribute name;
+            foreach (PropertyInfo pi in pic)
+            {
+                object value = pi.GetValue(userParams, null);
+                bool include = false;
+                if (value != null)
+                {
+                    string typeName = value.GetType().Name;
+                    switch (typeName)
+                    {
+                        case "String":
+                            name = (UserAttribute)UserAttribute.GetCustomAttribute(pi, typeof(UserAttribute));
+                            parameters.Add(name.Name, pi.GetValue(userParams, null).ToString());
+                            break;
+                        case "List`1":
+                            name = (UserAttribute)UserAttribute.GetCustomAttribute(pi, typeof(UserAttribute));
+                            if (name.Name == "education[]")
+                            {
+                                List<UserEducation> edl = (List<UserEducation>)pi.GetValue(userParams, null);
+                                foreach (UserEducation pc in edl)
+                                    parameters.Add(name.Name, pc.School + "," + pc.Degree + "," + pc.Description + "," + pc.StartYear + "," + pc.EndYear);
+
+                            }
+                            else if (name.Name == "previous_companies[]")
+                            {
+                                List<PreviousCompany> pcl = (List<PreviousCompany>)pi.GetValue(userParams, null);
+                                foreach (PreviousCompany pc in pcl)
+                                    parameters.Add(name.Name, pc.Company + "," + pc.Position + "," + pc.Description + "," + pc.StartYear + "," + pc.EndYear);
+                            }
+                            break;
+                        default:
+                            include = false;
+                            break;
+                    }
+                }
+            }
+        }
+
+        public void Save(UserParameters up)
+        {
+            User.Update(int.Parse(this.Id), up);
+            
+        }
 
     }
 
-    public class UserStats
+    public class Stats
     {
-
         [DataMember(Name = "updates")]
         [XmlElement(ElementName = "updates")]
         public string Updates { get; set; }
-
 
         [DataMember(Name = "followers")]
         [XmlElement(ElementName = "followers")]

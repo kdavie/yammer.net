@@ -3,350 +3,241 @@
 <p>Yammer uses <a href="http://oauth.net/" target="_blank">OAuth</a> to authenticate clients. This allows applications to securely access data on a user's behalf without storing or needing the user's password. 
 Before you can use Yammer.Net, you must first obtain a client key and secret from Yammer.  To do this, log into Yammer and navigate to <a href="https://www.yammer.com/client_applications/new" target="_blank">https://www.yammer.com/client_applications/new</a>.  This form will allow you to register your application.  Once you complete and submit the form you will be provided with your client key and secret.  Make a note of these; you'll need them to make use of the library.</p>
 
-<p>Now that you have your client key and secret you are ready to being using the framework.  Create a new project and add references to the OAuth and Yammer assemblies.  Yammer.Net uses a settings file to persist authorization information between your application sessions.  This file is stored in the user's Application Data folder under Yammer\Data.  The first thing you should do when your application loads is check if this file exists:</p>
+<p>Now that you have your client key and secret you are ready to being using the framework.  Create a new project and add references to the OAuth and Yammer assemblies.  The oAuth dance has been simplified from previous versions. To get started using the wrapper, now you just need to handle a few events and call Session.Start():</p>
 
-<pre><code>using System;    
-using System.Collections.Generic;    
-using System.Linq;    
-using System.Text;    
-namespace YammerNetExample    
+<pre><code>static void Menu_Connect(object sender, EventArgs e)
 {
-    class Program
-    {
-        const string CONSUMER_KEY = "myConsumerKey";
-        const string CONSUMER_SECRET = "myConsumerSecret";
-        static void Main(string[] args)
-        {
-            Yammer.Settings settings = Yammer.Settings.CheckConfiguration();
-            if (settings == null)
-            {
-                //Need to configure client
-            }
-            else
-            {
-                //Client already configured, use persisted settings
-            }
-        }
-    }
+     Console.WriteLine("You will need to authorize this appliction to continue.\r\nWe'll open a browser window where you can login to\r\nYammer to complete the authorization.\r\nPress any key to continue");
+     Console.Read();
+     Yammer.Session.ReceiveRequestToken += new EventHandler(Session_ReceiveRequestToken);
+     Yammer.Session.AuthorizationComplete += new EventHandler(Session_AuthorizationComplete);
+     Yammer.Session.Start();
+     Console.ReadLine();
 }
 </code></pre>
 
-<p>Configuring your client for first time use is a three step process.  First, you must obtain a request token from Yammer using your client key and secret.   The Yammer.Auth.GetRequestToken member accepts three arguments: proxy, consumerKey and consumerSecret .  If your client won't be behind a proxy, you can pass in a null for this argument.  After obtaining the request token you can allow the user to authorize your application.  If you would like the user to be redirected to your website after authorizing with Yammer, you can provide a value for the callbackUrl argument of the Yammer.Auth.Authorize member.</p>
+<p>Now you'll need to set up the even handlers:</p>
 
-<pre><code>private static Yammer.Auth GetRequestToken()
+<pre><code>static void Session_AuthorizationComplete(object sender, EventArgs e)
 {
-    Yammer.Auth auth = Yammer.Auth.GetRequestToken(null, CONSUMER_KEY, CONSUMER_SECRET);
-    if (auth != null)
-    {
-        auth.Authorize(null);
-        Console.WriteLine("We've opened up a browser so you can authenticate this application with Yammer.");
-        Console.WriteLine("Once you've authenticated, press any key to continue.");
-        Console.ReadLine();
-    }
-    return auth;
+     if (Yammer.Session.Auth.Success)
+     {
+          Console.WriteLine("Connected, Please enter a command:");
+          Menu.Display(false);
+     }
+}
+
+static void Session_ReceiveRequestToken(object sender, EventArgs e)
+{
+     string message = "Once you've logged in and authorized this application via your browser, please \r\nenter the provided code and press enter to start using Yammer.";
+     Console.WriteLine(message);
+     string code = Console.ReadLine();
+     if (Yammer.Session.Auth != null)
+          Yammer.Session.Auth.GetAccessToken(code);
 }
 </code></pre>
 
-<p>The framework will open a browser and allow the user to authorize your application.  Once the user authorizes through the Yammer website, your application can request its permanent access key and secret:</p>
-
-<pre><code>private static void GetAccessToken(Yammer.Auth auth)
-{
-    if (auth != null)
-        auth.GetAccessToken();
-
-    if (auth.Success)
-    {
-        Console.WriteLine("Welcome to my Yammer application!");
-        Console.ReadLine();
-    }
-}
-</code></pre>
-
-<p>After performing these three steps (GetRequestToken(), Authorize(), and GetAccessToken()), your application will be configured to communicate with Yammer.  The next step is to start making calls to the Yammer API.  To continue with my console example, I've added some code to handle a few menu options:</p>
-
-<pre><code>public static void ReadMessages(List&lt;Yammer.Message&gt; messages)
-{
-    Console.WriteLine();
-    foreach (Yammer.Message msg in messages)
-    {
-        string body = msg.Body.Plain;
-        string timeStamp = msg.CreatedAt;
-
-        Yammer.User sender = null;
-        Yammer.Guide guide = null;
-        Yammer.Message repliedToMessage = null;
-        Yammer.User repliedToUser = null;
-
-        //if message sent from user, store user information
-        if (msg.SenderType.ToUpper() == Yammer.SenderType.USER.ToString())
-            sender = msg.References.Users.Find(delegate(Yammer.User u) { return u.Id == msg.SenderId.ToString(); });
-
-        //if message sent from guide, store guid information
-        if (msg.SenderType.ToUpper() == Yammer.SenderType.SYSTEM.ToString()) 
-            guide = msg.References.Guide;
-
-        //if message is a reply, store replied-to-message
-        if (msg.RepliedToId != null &amp;&amp; msg.RepliedToId != string.Empty)
-            repliedToMessage = msg.References.Messages.Find(delegate(Yammer.Message m) { return m.Id == msg.RepliedToId; });
-
-        //if reply-to-message exists, store replied-to-user
-        if(repliedToMessage != null)
-            repliedToUser = msg.References.Users.Find(delegate(Yammer.User u) { return int.Parse(u.Id) == repliedToMessage.SenderId; });
-
-        StringBuilder sb = new StringBuilder();
-        //Write sender name
-        if(sender != null)
-            sb.Append(sender.FullName);
-        //Write guid name
-        if (guide != null)
-            sb.Append(guide.FullName);
-        //Write replied-to-user name
-        if (repliedToUser != null)
-            sb.Append(" in-reply-to: " + repliedToUser.FullName);
-        sb.AppendLine();
-
-        //Write message body
-        sb.AppendLine(body);
-
-        //Write attachments
-        if (msg.Attachments.Count &gt; 0)
-            foreach (Yammer.Attachment attachment in msg.Attachments)
-                sb.AppendLine(attachment.Name);
-
-        //Write timestamp
-        sb.AppendLine(timeStamp);
-
-        Console.WriteLine(sb.ToString());
-    }
-}
-
-
-public static void PostMessage(string input, Yammer.Session session)
-{
-    //parse message
-    string pattern = "-m\\s\"+.+?\"";
-    System.Text.RegularExpressions.Regex regex = new System.Text.RegularExpressions.Regex(pattern, System.Text.RegularExpressions.RegexOptions.Singleline);
-    System.Text.RegularExpressions.Match message = regex.Match(input);
-    string body = string.Empty;
-    if (message != null)
-        body = message.Value.Replace("-m", "").Trim().Replace("\"","");
-
-    //parse attachments
-    pattern = "-a\\s\"+.+?\"";
-    regex = new System.Text.RegularExpressions.Regex(pattern, System.Text.RegularExpressions.RegexOptions.Singleline);
-    List&lt;string&gt; attachmentList = new List&lt;string&gt;();
-    if (regex.IsMatch(input))
-    {
-        message = regex.Match(input);
-        attachmentList.AddRange(message.Value.Replace("-a", "").Trim().Replace("\"", "").Split(';'));
-    }
-
-    //post message
-    Yammer.ApiWrapper.PostMessage(body, session, attachmentList);
-}
-</code></pre>
-
-<p>The Yammer.ApiWrapper.PostMessage member accepts a list of attachments.  This list should be a string of paths to attach with the message.</p>
-
-<p>The following is the complete source for the example console app used to illustrate these steps:</p>
+<p>That's about it for authorization, now you can start making calls to the Yammer API. The following sample source illustrates various calls to the API. The complete code is available in the project source:</p>
 
 <pre><code>using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Net;
+using System.Reflection;
 
-namespace YammerNetExample
+namespace TestConsole
 {
-    /// &lt;summary&gt;
+    /// <summary>
     /// Yammer.Net example
-    /// &lt;/summary&gt;
-    /// &lt;example&gt;
+    /// </summary>
+    /// <example>
     /// yam myfeed
+    /// yam sent
     /// yam post -m "this is a sample post"
     /// yam post -m "this is a sample post with an attachment" -a "c:\myImage.gif"
     /// yam post -m "this is a sample post with multiple attachments" -a "c:\myImage.gif;c:\myText.txt"
-    /// &lt;/example&gt;
+    /// yam viewuser -uid "kevin"
+    /// yam viewuser -all
+    /// yam currentuser
+    /// yam updateuser -uid "kevin" -params "MobilePhone=602-555-5555"
+    /// yam updateuser -uid "kevin" -params "MobilePhone=602-555-1111;Location=Phoenix"
+    /// yam deleteuser -uid "elisabeth-poo-waller" 
+    /// </example>
     class Program
     {
-        const string CONSUMER_KEY = "myConsumerKey";
-        const string CONSUMER_SECRET = "myConsumerSecret";
-        const string RETRIEVE_MY_FEED = "yam myfeed";
-        const string POST_MESSAGE = "yam post";
         static void Main(string[] args)
         {
-            Yammer.Settings settings = Yammer.Settings.CheckConfiguration();
-            if (settings == null)
-            {
-                Yammer.Auth auth = GetRequestToken();
-                GetAccessToken(auth);
-            }
-            else
-                Menu(true, ConfigureClient(settings), null, null);
+            Menu.Connect += new EventHandler(Menu_Connect);
+            Menu.RetrieveFeed += new EventHandler(Menu_RetrieveFeed);
+            Menu.PostMessage += new InputEventHandler(Menu_PostMessage);
+            Menu.ViewUser += new InputEventHandler(Menu_ViewUser);
+            Menu.CurrentUser += new InputEventHandler(Menu_CurrentUser);
+            Menu.UpdateUser += new InputEventHandler(Menu_UpdateUser);
+            Menu.DeleteUser += new InputEventHandler(Menu_DeleteUser);
+            Menu.Display(true);
         }
 
-        private static OAuth.OAuthKey ConfigureClient(Yammer.Settings settings)
+        static void Menu_Connect(object sender, EventArgs e)
         {
-            OAuth.OAuthKey key = new OAuth.OAuthKey(CONSUMER_KEY, CONSUMER_SECRET, settings.OAuth.TokenKey, settings.OAuth.TokenSecret);
-            WebProxy proxy = null;
-            if (settings.Proxy.Enable)
-            {
-                proxy = new System.Net.WebProxy();
-                proxy.Address = new Uri(settings.Proxy.Address + ":" + settings.Proxy.Port);
-                proxy.Credentials = new NetworkCredential(settings.Proxy.Id, settings.Proxy.Password);
-            }
-            return key;
-        }
-
-        public static Yammer.Auth GetRequestToken()
-        {
-        Yammer.Auth auth = Yammer.Auth.GetRequestToken(null, CONSUMER_KEY, CONSUMER_SECRET);
-        if (auth != null)
-        {
-            auth.Authorize(null);
-            Console.WriteLine("We've opened up a browser so you can authenticate this application with Yammer.");
-            Console.WriteLine("Once you've authenticated, press any key to continue.");
+            Console.WriteLine("You will need to authorize this appliction to continue.\r\nWe'll open a browser window where you can login to\r\nYammer to complete the authorization.\r\nPress any key to continue");
+            Console.Read();
+            Yammer.Session.ReceiveRequestToken += new EventHandler(Session_ReceiveRequestToken);
+            Yammer.Session.AuthorizationComplete += new EventHandler(Session_AuthorizationComplete);
+            Yammer.Session.Start();
             Console.ReadLine();
         }
-        return auth;
-        }
 
-        public static void GetAccessToken(Yammer.Auth auth)
+        static void Menu_RetrieveFeed(object sender, EventArgs e)
         {
-            if (auth != null)
-                auth.GetAccessToken();
-
-            if (auth.Success)
-                Menu(true, auth.Key, null, null);
-
-        }
-
-        public static void Menu(bool welcome, OAuth.OAuthKey key, WebProxy proxy, Yammer.Session session)
-        {
-            if(session == null)
-                session = new Yammer.Session(key, proxy);
-
-            if (welcome)
+            foreach (Yammer.Message msg in Menu.Messages)
             {
-                Console.WriteLine("Welcome to my Yammer application!");
-                welcome = false;
+                object[] args = null;
+
+                if (msg.Sender != null)
+                    args = new object[] { msg.Sender.Name, msg.Body.Plain, msg.CreatedAt };
+                else
+                {
+                    if (msg.Guide != null)
+                        args = new object[] { msg.Guide.Name, msg.Body.Plain, msg.CreatedAt };
+                }
+
+                Console.WriteLine(string.Format("{0}\r\n{1}\r\n{2}\r\n", args));
             }
-
-            string input = Console.ReadLine();
-            string option = ParseInput(input);
-
-            switch (option)
-            {
-                case RETRIEVE_MY_FEED:
-                    ReadMessages(Yammer.ApiWrapper.GetFollowingMessages(session));
-                    break;
-                case POST_MESSAGE:
-                    PostMessage(input, session);
-                    break;
-            }
-
-            Menu(welcome, key, proxy, session);
-
+            Console.ReadLine();
         }
 
-        public static string ParseInput(string input)
+        static void Menu_PostMessage(InputEventArgs e)
         {
-            if (input.ToLower().Contains(RETRIEVE_MY_FEED))
-                return RETRIEVE_MY_FEED;
+            MatchPattern[] patterns = new MatchPattern[] { new MatchPattern("-m", true), new MatchPattern("-a", true) };
 
-            if (input.ToLower().Contains(POST_MESSAGE))
-                return POST_MESSAGE;
+            Dictionary<string, string> parameters = Menu.ParseInput(e.Input, patterns);
 
-            return null;
-        }
-
-        public static void ReadMessages(List&lt;Yammer.Message&gt; messages)
-        {
-            Console.WriteLine();
-            foreach (Yammer.Message msg in messages)
-            {
-                string body = msg.Body.Plain;
-                string timeStamp = msg.CreatedAt;
-
-                Yammer.User sender = null;
-                Yammer.Guide guide = null;
-                Yammer.Message repliedToMessage = null;
-                Yammer.User repliedToUser = null;
-
-                //if message sent from user store user information
-                if (msg.SenderType.ToUpper() == Yammer.SenderType.USER.ToString())
-                    sender = msg.References.Users.Find(delegate(Yammer.User u) { return u.Id == msg.SenderId.ToString(); });
-
-                //if message sent from guide store guid information
-                if (msg.SenderType.ToUpper() == Yammer.SenderType.SYSTEM.ToString()) 
-                    guide = msg.References.Guide;
-
-                //if message is a reply, store replied-to-message
-                if (msg.RepliedToId != null &amp;&amp; msg.RepliedToId != string.Empty)
-                    repliedToMessage = msg.References.Messages.Find(delegate(Yammer.Message m) { return m.Id == msg.RepliedToId; });
-
-                //if reply-to-message exists, store replied-to-user
-                if(repliedToMessage != null)
-                    repliedToUser = msg.References.Users.Find(delegate(Yammer.User u) { return int.Parse(u.Id) == repliedToMessage.SenderId; });
-
-                StringBuilder sb = new StringBuilder();
-                //Write sender name
-                if(sender != null)
-                    sb.Append(sender.FullName);
-                //Write guid name
-                if (guide != null)
-                    sb.Append(guide.FullName);
-                //Write replied-to-user name
-                if (repliedToUser != null)
-                    sb.Append(" in-reply-to: " + repliedToUser.FullName);
-                sb.AppendLine();
-
-                //Write message body
-                sb.AppendLine(body);
-
-                //Write attachments
-                if (msg.Attachments.Count &gt; 0)
-                    foreach (Yammer.Attachment attachment in msg.Attachments)
-                        sb.AppendLine(attachment.Name);
-
-                //Write timestamp
-                sb.AppendLine(timeStamp);
-
-                Console.WriteLine(sb.ToString());
-            }
-        }
-
-
-        public static void PostMessage(string input, Yammer.Session session)
-        {
-            //parse message
-            string pattern = "-m\\s\"+.+?\"";
-            System.Text.RegularExpressions.Regex regex = new System.Text.RegularExpressions.Regex(pattern, System.Text.RegularExpressions.RegexOptions.Singleline);
-            System.Text.RegularExpressions.Match message = regex.Match(input);
             string body = string.Empty;
-            if (message != null)
-                body = message.Value.Replace("-m", "").Trim().Replace("\"","");
+            if (parameters.ContainsKey("-m"))
+                body = parameters["-m"];
 
-            //parse attachments
-            pattern = "-a\\s\"+.+?\"";
-            regex = new System.Text.RegularExpressions.Regex(pattern, System.Text.RegularExpressions.RegexOptions.Singleline);
-            List&lt;string&gt; attachmentList = new List&lt;string&gt;();
-            if (regex.IsMatch(input))
-            {
-                message = regex.Match(input);
-                attachmentList.AddRange(message.Value.Replace("-a", "").Trim().Replace("\"", "").Split(';'));
-            }
+            List<string> attachmentList = new List<string>();
+            if (parameters.ContainsKey("-a"))
+                attachmentList.AddRange(parameters["-a"].Split(';'));
 
             //post message
-            Yammer.ApiWrapper.PostMessage(body, session, attachmentList);
+            Yammer.Message.PostMessage(body, attachmentList);
         }
+
+        static void Menu_ViewUser(InputEventArgs e)
+        {
+            MatchPattern[] patterns = new MatchPattern[] { new MatchPattern("-uid", true), new MatchPattern("-all", false) };
+            Dictionary<string, string> parameters = Menu.ParseInput(e.Input, patterns);
+            string uid = string.Empty;
+            if (parameters.ContainsKey("-uid"))
+            {
+                uid = parameters["-uid"];
+                Yammer.User user = Yammer.User.GetUserByUserName(uid);
+                if (user != null)
+                {
+                    object[] args = new object[] { user.Name, user.JobTitle, user.MugshotUrl, user.WebUrl, user.Contact.PhoneNumbers[0].Number, user.Location };
+                    Console.WriteLine(string.Format("UserName:{0}\r\nTitle:{1}\r\nAvatar:{2}\r\nUrl:{3}\r\nMobilePhone:{4}\r\nLocation:{5}", args));
+                }
+                else
+                    Console.WriteLine("User not found");
+            }
+            else if (parameters.ContainsKey("-all"))
+            {
+                List<Yammer.User> users = Yammer.User.GetAllUsers();
+                foreach (Yammer.User u in users)
+                {
+                    object[] args = new object[] { u.Name, u.JobTitle, u.MugshotUrl, u.WebUrl, u.Contact.PhoneNumbers.Count > 0 ? u.Contact.PhoneNumbers[0].Number : string.Empty, u.Location };
+                    Console.WriteLine(string.Format("UserName:{0}\r\nTitle:{1}\r\nAvatar:{2}\r\nUrl:{3}\r\nMobilePhone:{4}\r\n\r\nLocation:{5}", args));
+                }
+            }
+
+        }
+
+        static void Menu_CurrentUser(InputEventArgs e)
+        {
+            string input = e.Input;
+            Yammer.User user = Yammer.User.GetCurrentUser();
+            object[] args = new object[] { user.Name, user.JobTitle, user.MugshotUrl, user.WebUrl, user.Contact.PhoneNumbers[0].Number, user.Location };
+            Console.WriteLine(string.Format("UserName:{0}\r\nTitle:{1}\r\nAvatar:{2}\r\nUrl:{3}\r\nMobilePhone:{4}\r\nLocation:{5}", args));
+        }
+
+        static void Menu_UpdateUser(InputEventArgs e)
+        {
+            MatchPattern[] patterns = new MatchPattern[] { new MatchPattern("-uid", true), new MatchPattern("-params", true) };
+            Dictionary<string, string> parameters = Menu.ParseInput(e.Input, patterns);
+
+            string uid = string.Empty;
+            if (parameters.ContainsKey("-uid"))
+                uid = parameters["-uid"];
+
+            Yammer.User user = null;
+            if (uid != null && uid != string.Empty)
+                user = Yammer.User.GetUserByUserName(uid);
+
+            string attributes = string.Empty;
+            Yammer.UserParameters userParams = null;
+            List<PropertyInfo> properties = null;
+            string[] props = null;
+
+            if (parameters.ContainsKey("-params"))
+            {
+                attributes = parameters["-params"];
+                props = attributes.Split(';');
+                userParams = new Yammer.UserParameters();
+                properties = new List<PropertyInfo>(userParams.GetType().GetProperties());
+            }
+
+            foreach (string prop in props)
+            {
+                string[] hash = prop.Split('=');
+
+                PropertyInfo property = properties.Find(delegate(PropertyInfo p) { return p.Name == hash[0]; });
+                if (property != null)
+                    property.SetValue(userParams, hash[1], null);
+            }
+
+            if(user != null)
+                user.Save(userParams);
+
+        }
+
+        static void Menu_DeleteUser(InputEventArgs e)
+        {
+            MatchPattern[] patterns = new MatchPattern[] { new MatchPattern("-uid", true) };
+            Dictionary<string, string> parameters = Menu.ParseInput(e.Input, patterns);
+            string uid = string.Empty;
+            if (parameters.ContainsKey("-uid"))
+                uid = parameters["-uid"];
+
+            if(uid != null && uid != string.Empty)
+                Yammer.User.GetUserByUserName(uid).Delete();
+        }
+
+        static void Session_AuthorizationComplete(object sender, EventArgs e)
+        {
+            if (Yammer.Session.Auth.Success)
+            {
+                Console.WriteLine("Connected, Please enter a command:");
+                Menu.Display(false);
+            }
+        }
+
+        static void Session_ReceiveRequestToken(object sender, EventArgs e)
+        {
+            string message = "Once you've logged in and authorized this application via your browser, please \r\nenter the provided code and press enter to start using Yammer.";
+            Console.WriteLine(message);
+            string code = Console.ReadLine();
+            if (Yammer.Session.Auth != null)
+                Yammer.Session.Auth.GetAccessToken(code);
+        }
+
+
     }
 }
+
 </code></pre>
 
-<h2><span style="color:#4183C4">Documentation</span></h2>
 
-<p><a href="http://kdavie.github.com/yammer.net/documentation/Index.html" target="_blank">HTML Documentation</a></p>
 
 <h2><span style="color:#4183C4">License</span></h2>
 

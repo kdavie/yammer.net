@@ -11,6 +11,7 @@ namespace Yammer
         IMAGE,
         FILE
     }
+
     public enum SenderType
     {
         USER,
@@ -51,6 +52,24 @@ namespace Yammer
     {
         GET,
         POST,
-        DELETE
+        DELETE,
+        PUT
+    }
+
+    public enum SortBy
+    {
+        NONE,
+        MESSAGES,
+        MEMBERS,
+        PRIVACY,
+        CREATED_AT,
+        CREATOR,
+        FOLLOWERS
+    }
+
+    public enum SuggestionType
+    {
+        USER,
+        GROUP
     }
 }

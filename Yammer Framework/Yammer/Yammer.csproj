@@ -58,6 +58,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiWrapper.cs" />
+    <Compile Include="Assets.cs" />
     <Compile Include="Attachment.cs" />
     <Compile Include="Auth.cs" />
     <Compile Include="AutoComplete.cs" />
@@ -66,32 +68,39 @@
     <Compile Include="Enumerations.cs" />
     <Compile Include="File.cs" />
     <Compile Include="Group.cs" />
+    <Compile Include="MembershipParameters.cs" />
     <Compile Include="Guide.cs" />
     <Compile Include="HttpUtility.cs" />
     <Compile Include="Image.cs" />
     <Compile Include="Message.cs" />
+    <Compile Include="MessageProperties.cs" />
+    <Compile Include="PreviousCompany.cs" />
     <Compile Include="Reference.cs" />
+    <Compile Include="Relationship.cs" />
     <Compile Include="Resources.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Security.cs" />
     <Compile Include="Session.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Subscription.cs" />
+    <Compile Include="Suggested.cs" />
+    <Compile Include="Suggestion.cs" />
     <Compile Include="Tag.cs" />
     <Compile Include="Thread.cs" />
     <Compile Include="User.cs" />
-    <Compile Include="ApiWrapper.cs" />
+    <Compile Include="UserEducation.cs" />
+    <Compile Include="UserParameters.cs" />
     <Compile Include="Utility.cs" />
     <Compile Include="Variables.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\oAuth\oAuth.csproj">
       <Project>{FA127787-7F14-4EF0-A27E-9BE55880F082}</Project>
       <Name>oAuth</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

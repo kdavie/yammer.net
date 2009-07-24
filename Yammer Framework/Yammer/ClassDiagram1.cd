@@ -196,7 +196,7 @@
       <FileName>User.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Yammer.UserStats" Collapsed="true">
+  <Class Name="Yammer.Stats" Collapsed="true">
     <Position X="7.5" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAgCAAAAAAAAAAAAAAAAAAAAgAAAAA=</HashCode>
