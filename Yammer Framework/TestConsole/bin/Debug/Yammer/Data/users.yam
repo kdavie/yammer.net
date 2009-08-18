@@ -1,0 +1,1857 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfUser xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <User>
+    <type>user</type>
+    <id>95732</id>
+    <name>emma-hx-cruz</name>
+    <full-name>emma cruz</full-name>
+    <mugshot-url>https://staging.yammer.com/images/no_photo_small.gif</mugshot-url>
+    <url>https://staging.yammer.com/api/v1/users/95732</url>
+    <web-url>https://staging.yammer.com/users/emma-hx-cruz</web-url>
+    <job-title>it</job-title>
+    <contact>
+      <email-addresses>
+        <email-address>
+          <type>primary</type>
+          <address>emma.hx.cruz@yammertest.com</address>
+        </email-address>
+      </email-addresses>
+      <phone-numbers>
+        <phone-number>
+          <type>work</type>
+          <number>472-913-7645</number>
+        </phone-number>
+        <phone-number>
+          <type>mobile</type>
+          <number>644-845-3612</number>
+        </phone-number>
+      </phone-numbers>
+      <im>
+        <username />
+        <provider />
+      </im>
+    </contact>
+    <network-id>15463</network-id>
+    <birth-date />
+    <hire-date />
+    <network-name>Yammertest</network-name>
+    <stats>
+      <updates>0</updates>
+      <followers>0</followers>
+      <following>0</following>
+    </stats>
+    <location>0</location>
+  </User>
+  <User>
+    <type>user</type>
+    <id>95733</id>
+    <name>emma-iqs-mann</name>
+    <full-name>emma mann</full-name>
+    <mugshot-url>https://staging.yammer.com/images/no_photo_small.gif</mugshot-url>
+    <url>https://staging.yammer.com/api/v1/users/95733</url>
+    <web-url>https://staging.yammer.com/users/emma-iqs-mann</web-url>
+    <job-title>other</job-title>
+    <contact>
+      <email-addresses>
+        <email-address>
+          <type>primary</type>
+          <address>emma.iqs.mann@yammertest.com</address>
+        </email-address>
+      </email-addresses>
+      <phone-numbers>
+        <phone-number>
+          <type>work</type>
+          <number>3364688914</number>
+        </phone-number>
+        <phone-number>
+          <type>mobile</type>
+          <number>3761520364</number>
+        </phone-number>
+      </phone-numbers>
+      <im>
+        <username />
+        <provider />
+      </im>
+    </contact>
+    <network-id>15463</network-id>
+    <birth-date />
+    <hire-date />
+    <network-name>Yammertest</network-name>
+    <stats>
+      <updates>0</updates>
+      <followers>0</followers>
+      <following>0</following>
+    </stats>
+    <location>0</location>
+  </User>
+  <User>
+    <type>user</type>
+    <id>95734</id>
+    <name>enrique-ajv-robbins</name>
+    <full-name>enrique robbins</full-name>
+    <mugshot-url>https://staging.yammer.com/images/no_photo_small.gif</mugshot-url>
+    <url>https://staging.yammer.com/api/v1/users/95734</url>
+    <web-url>https://staging.yammer.com/users/enrique-ajv-robbins</web-url>
+    <job-title>executive</job-title>
+    <contact>
+      <email-addresses>
+        <email-address>
+          <type>primary</type>
+          <address>enrique.ajv.robbins@yammertest.com</address>
+        </email-address>
+      </email-addresses>
+      <phone-numbers>
+        <phone-number>
+          <type>work</type>
+          <number>437-4383707</number>
+        </phone-number>
+        <phone-number>
+          <type>mobile</type>
+          <number>9939817104</number>
+        </phone-number>
+      </phone-numbers>
+      <im>
+        <username />
+        <provider />
+      </im>
+    </contact>
+    <network-id>15463</network-id>
+    <birth-date />
+    <hire-date />
+    <network-name>Yammertest</network-name>
+    <stats>
+      <updates>0</updates>
+      <followers>0</followers>
+      <following>0</following>
+    </stats>
+    <location>0</location>
+  </User>
+  <User>
+    <type>user</type>
+    <id>95735</id>
+    <name>enrique-oin-wong</name>
+    <full-name>enrique wong</full-name>
+    <mugshot-url>https://staging.yammer.com/images/no_photo_small.gif</mugshot-url>
+    <url>https://staging.yammer.com/api/v1/users/95735</url>
+    <web-url>https://staging.yammer.com/users/enrique-oin-wong</web-url>
+    <job-title>executive</job-title>
+    <contact>
+      <email-addresses>
+        <email-address>
+          <type>primary</type>
+          <address>enrique.oin.wong@yammertest.com</address>
+        </email-address>
+      </email-addresses>
+      <phone-numbers>
+        <phone-number>
+          <type>work</type>
+          <number>162-790-1200</number>
+        </phone-number>
+        <phone-number>
+          <type>mobile</type>
+          <number>214-0561872</number>
+        </phone-number>
+      </phone-numbers>
+      <im>
+        <username />
+        <provider />
+      </im>
+    </contact>
+    <network-id>15463</network-id>
+    <birth-date />
+    <hire-date />
+    <network-name>Yammertest</network-name>
+    <stats>
+      <updates>0</updates>
+      <followers>0</followers>
+      <following>0</following>
+    </stats>
+    <location>0</location>
+  </User>
+  <User>
+    <type>user</type>
+    <id>95736</id>
+    <name>enrique-wze-shaw</name>
+    <full-name>enrique shaw</full-name>
+    <mugshot-url>https://staging.yammer.com/images/no_photo_small.gif</mugshot-url>
+    <url>https://staging.yammer.com/api/v1/users/95736</url>
+    <web-url>https://staging.yammer.com/users/enrique-wze-shaw</web-url>
+    <job-title>other</job-title>
+    <contact>
+      <email-addresses>
+        <email-address>
+          <type>primary</type>
+          <address>enrique.wze.shaw@yammertest.com</address>
+        </email-address>
+      </email-addresses>
+      <phone-numbers>
+        <phone-number>
+          <type>work</type>
+          <number>974451-0768</number>
+        </phone-number>
+        <phone-number>
+          <type>mobile</type>
+          <number>8793195319</number>
+        </phone-number>
+      </phone-numbers>
+      <im>
+        <username />
+        <provider />
+      </im>
+    </contact>
+    <network-id>15463</network-id>
+    <birth-date />
+    <hire-date />
+    <network-name>Yammertest</network-name>
+    <stats>
+      <updates>0</updates>
+      <followers>0</followers>
+      <following>0</following>
+    </stats>
+    <location>0</location>
+  </User>
+  <User>
+    <type>user</type>
+    <id>95737</id>
+    <name>enrique-xgv-adams</name>
+    <full-name>enrique adams</full-name>
+    <mugshot-url>https://staging.yammer.com/images/no_photo_small.gif</mugshot-url>
+    <url>https://staging.yammer.com/api/v1/users/95737</url>
+    <web-url>https://staging.yammer.com/users/enrique-xgv-adams</web-url>
+    <job-title>administrative</job-title>
+    <contact>
+      <email-addresses>
+        <email-address>
+          <type>primary</type>
+          <address>enrique.xgv.adams@yammertest.com</address>
+        </email-address>
+      </email-addresses>
+      <phone-numbers>
+        <phone-number>
+          <type>work</type>
+          <number>761163-6543</number>
+        </phone-number>
+        <phone-number>
+          <type>mobile</type>
+          <number>1899046498</number>
+        </phone-number>
+      </phone-numbers>
+      <im>
+        <username />
+        <provider />
+      </im>
+    </contact>
+    <network-id>15463</network-id>
+    <birth-date />
+    <hire-date />
+    <network-name>Yammertest</network-name>
+    <stats>
+      <updates>0</updates>
+      <followers>0</followers>
+      <following>0</following>
+    </stats>
+    <location>0</location>
+  </User>
+  <User>
+    <type>user</type>
+    <id>95738</id>
+    <name>eric-cyz-herring</name>
+    <full-name>eric herring</full-name>
+    <mugshot-url>https://staging.yammer.com/images/no_photo_small.gif</mugshot-url>
+    <url>https://staging.yammer.com/api/v1/users/95738</url>
+    <web-url>https://staging.yammer.com/users/eric-cyz-herring</web-url>
+    <job-title>it</job-title>
+    <contact>
+      <email-addresses>
+        <email-address>
+          <type>primary</type>
+          <address>eric.cyz.herring@yammertest.com</address>
+        </email-address>
+      </email-addresses>
+      <phone-numbers>
+        <phone-number>
+          <type>work</type>
+          <number>959-271-4294</number>
+        </phone-number>
+        <phone-number>
+          <type>mobile</type>
+          <number>5336124827</number>
+        </phone-number>
+      </phone-numbers>
+      <im>
+        <username />
+        <provider />
+      </im>
+    </contact>
+    <network-id>15463</network-id>
+    <birth-date />
+    <hire-date />
+    <network-name>Yammertest</network-name>
+    <stats>
+      <updates>0</updates>
+      <followers>0</followers>
+      <following>0</following>
+    </stats>
+    <location>0</location>
+  </User>
+  <User>
+    <type>user</type>
+    <id>95740</id>
+    <name>erich-gmn-nielsen</name>
+    <full-name>erich nielsen</full-name>
+    <mugshot-url>https://staging.yammer.com/images/no_photo_small.gif</mugshot-url>
+    <url>https://staging.yammer.com/api/v1/users/95740</url>
+    <web-url>https://staging.yammer.com/users/erich-gmn-nielsen</web-url>
+    <job-title>executive</job-title>
+    <contact>
+      <email-addresses>
+        <email-address>
+          <type>primary</type>
+          <address>erich.gmn.nielsen@yammertest.com</address>
+        </email-address>
+      </email-addresses>
+      <phone-numbers>
+        <phone-number>
+          <type>work</type>
+          <number>163-506-0551</number>
+        </phone-number>
+        <phone-number>
+          <type>mobile</type>
+          <number>384-929-2886</number>
+        </phone-number>
+      </phone-numbers>
+      <im>
+        <username />
+        <provider />
+      </im>
+    </contact>
+    <network-id>15463</network-id>
+    <birth-date />
+    <hire-date />
+    <network-name>Yammertest</network-name>
+    <stats>
+      <updates>0</updates>
+      <followers>0</followers>
+      <following>0</following>
+    </stats>
+    <location>0</location>
+  </User>
+  <User>
+    <type>user</type>
+    <id>95747</id>
+    <name>ericka-rzg-delgado</name>
+    <full-name>ericka delgado</full-name>
+    <mugshot-url>https://staging.yammer.com/images/no_photo_small.gif</mugshot-url>
+    <url>https://staging.yammer.com/api/v1/users/95747</url>
+    <web-url>https://staging.yammer.com/users/ericka-rzg-delgado</web-url>
+    <job-title>it</job-title>
+    <contact>
+      <email-addresses>
+        <email-address>
+          <type>primary</type>
+          <address>ericka.rzg.delgado@yammertest.com</address>
+        </email-address>
+      </email-addresses>
+      <phone-numbers>
+        <phone-number>
+          <type>work</type>
+          <number>9744715966</number>
+        </phone-number>
+        <phone-number>
+          <type>mobile</type>
+          <number>649-748-4661</number>
+        </phone-number>
+      </phone-numbers>
+      <im>
+        <username />
+        <provider />
+      </im>
+    </contact>
+    <network-id>15463</network-id>
+    <birth-date />
+    <hire-date />
+    <network-name>Yammertest</network-name>
+    <stats>
+      <updates>0</updates>
+      <followers>0</followers>
+      <following>0</following>
+    </stats>
+    <location>0</location>
+  </User>
+  <User>
+    <type>user</type>
+    <id>95748</id>
+    <name>erika-kxc-sullivan</name>
+    <full-name>erika sullivan</full-name>
+    <mugshot-url>https://staging.yammer.com/images/no_photo_small.gif</mugshot-url>
+    <url>https://staging.yammer.com/api/v1/users/95748</url>
+    <web-url>https://staging.yammer.com/users/erika-kxc-sullivan</web-url>
+    <job-title>executive</job-title>
+    <contact>
+      <email-addresses>
+        <email-address>
+          <type>primary</type>
+          <address>erika.kxc.sullivan@yammertest.com</address>
+        </email-address>
+      </email-addresses>
+      <phone-numbers>
+        <phone-number>
+          <type>work</type>
+          <number>743-503-0432</number>
+        </phone-number>
+        <phone-number>
+          <type>mobile</type>
+          <number>7933192620</number>
+        </phone-number>
+      </phone-numbers>
+      <im>
+        <username />
+        <provider />
+      </im>
+    </contact>
+    <network-id>15463</network-id>
+    <birth-date />
+    <hire-date />
+    <network-name>Yammertest</network-name>
+    <stats>
+      <updates>0</updates>
+      <followers>0</followers>
+      <following>0</following>
+    </stats>
+    <location>0</location>
+  </User>
+  <User>
+    <type>user</type>
+    <id>95695</id>
+    <name>apisoni</name>
+    <full-name>Adam Pisoni</full-name>
+    <mugshot-url>https://staging.yammer.com/images/no_photo_small.gif</mugshot-url>
+    <url>https://staging.yammer.com/api/v1/users/95695</url>
+    <web-url>https://staging.yammer.com/users/apisoni</web-url>
+    <job-title />
+    <contact>
+      <email-addresses>
+        <email-address>
+          <type>primary</type>
+          <address>apisoni@yammertest.com</address>
+        </email-address>
+      </email-addresses>
+      <phone-numbers>
+        <phone-number>
+          <type>mobile</type>
+          <number>3105551212</number>
+        </phone-number>
+      </phone-numbers>
+      <im>
+        <username />
+        <provider />
+      </im>
+    </contact>
+    <network-id>15463</network-id>
+    <birth-date />
+    <hire-date />
+    <network-name>Yammertest</network-name>
+    <stats>
+      <updates>0</updates>
+      <followers>0</followers>
+      <following>0</following>
+    </stats>
+    <location>0</location>
+  </User>
+  <User>
+    <type>user</type>
+    <id>95653</id>
+    <name>kevin</name>
+    <full-name>Kevin Davie</full-name>
+    <mugshot-url>https://staging.yammer.com/images/no_photo_small.gif</mugshot-url>
+    <url>https://staging.yammer.com/api/v1/users/95653</url>
+    <web-url>https://staging.yammer.com/users/kevin</web-url>
+    <job-title>Engineer</job-title>
+    <contact>
+      <email-addresses>
+        <email-address>
+          <type>primary</type>
+          <address>kevin@yammertest.com</address>
+        </email-address>
+      </email-addresses>
+      <phone-numbers>
+        <phone-number>
+          <type>mobile</type>
+          <number>602-555-5555</number>
+        </phone-number>
+      </phone-numbers>
+      <im>
+        <username />
+        <provider>aim</provider>
+      </im>
+    </contact>
+    <network-id>15463</network-id>
+    <birth-date />
+    <hire-date />
+    <network-name>Yammertest</network-name>
+    <stats>
+      <updates>7</updates>
+      <followers>0</followers>
+      <following>0</following>
+    </stats>
+    <location>phoenix</location>
+  </User>
+  <User>
+    <type>user</type>
+    <id>95705</id>
+    <name>adrian-ljx-diaz</name>
+    <full-name>adrian diaz</full-name>
+    <mugshot-url>https://staging.yammer.com/images/no_photo_small.gif</mugshot-url>
+    <url>https://staging.yammer.com/api/v1/users/95705</url>
+    <web-url>https://staging.yammer.com/users/adrian-ljx-diaz</web-url>
+    <job-title>it</job-title>
+    <contact>
+      <email-addresses>
+        <email-address>
+          <type>primary</type>
+          <address>adrian.ljx.diaz@yammertest.com</address>
+        </email-address>
+      </email-addresses>
+      <phone-numbers>
+        <phone-number>
+          <type>work</type>
+          <number>631-219-0675</number>
+        </phone-number>
+        <phone-number>
+          <type>mobile</type>
+          <number>323-419-3277</number>
+        </phone-number>
+      </phone-numbers>
+      <im>
+        <username />
+        <provider />
+      </im>
+    </contact>
+    <network-id>15463</network-id>
+    <birth-date />
+    <hire-date />
+    <network-name>Yammertest</network-name>
+    <stats>
+      <updates>0</updates>
+      <followers>0</followers>
+      <following>0</following>
+    </stats>
+    <location>0</location>
+  </User>
+  <User>
+    <type>user</type>
+    <id>95707</id>
+    <name>adrienne-pyy-miller</name>
+    <full-name>adrienne miller</full-name>
+    <mugshot-url>https://staging.yammer.com/images/no_photo_small.gif</mugshot-url>
+    <url>https://staging.yammer.com/api/v1/users/95707</url>
+    <web-url>https://staging.yammer.com/users/adrienne-pyy-miller</web-url>
+    <job-title>other</job-title>
+    <contact>
+      <email-addresses>
+        <email-address>
+          <type>primary</type>
+          <address>adrienne.pyy.miller@yammertest.com</address>
+        </email-address>
+      </email-addresses>
+      <phone-numbers>
+        <phone-number>
+          <type>work</type>
+          <number>572-7854060</number>
+        </phone-number>
+        <phone-number>
+          <type>mobile</type>
+          <number>323-413-8743</number>
+        </phone-number>
+      </phone-numbers>
+      <im>
+        <username />
+        <provider />
+      </im>
+    </contact>
+    <network-id>15463</network-id>
+    <birth-date />
+    <hire-date />
+    <network-name>Yammertest</network-name>
+    <stats>
+      <updates>0</updates>
+      <followers>0</followers>
+      <following>0</following>
+    </stats>
+    <location>0</location>
+  </User>
+  <User>
+    <type>user</type>
+    <id>95708</id>
+    <name>adrienne-sfc-nicholson</name>
+    <full-name>adrienne nicholson</full-name>
+    <mugshot-url>https://staging.yammer.com/images/no_photo_small.gif</mugshot-url>
+    <url>https://staging.yammer.com/api/v1/users/95708</url>
+    <web-url>https://staging.yammer.com/users/adrienne-sfc-nicholson</web-url>
+    <job-title>other</job-title>
+    <contact>
+      <email-addresses>
+        <email-address>
+          <type>primary</type>
+          <address>adrienne.sfc.nicholson@yammertest.com</address>
+        </email-address>
+      </email-addresses>
+      <phone-numbers>
+        <phone-number>
+          <type>work</type>
+          <number>104-566-2108</number>
+        </phone-number>
+        <phone-number>
+          <type>mobile</type>
+          <number>323-419-8773</number>
+        </phone-number>
+      </phone-numbers>
+      <im>
+        <username />
+        <provider />
+      </im>
+    </contact>
+    <network-id>15463</network-id>
+    <birth-date />
+    <hire-date />
+    <network-name>Yammertest</network-name>
+    <stats>
+      <updates>0</updates>
+      <followers>0</followers>
+      <following>0</following>
+    </stats>
+    <location>0</location>
+  </User>
+  <User>
+    <type>user</type>
+    <id>95709</id>
+    <name>aisha-dhe-west</name>
+    <full-name>aisha west</full-name>
+    <mugshot-url>https://staging.yammer.com/images/no_photo_small.gif</mugshot-url>
+    <url>https://staging.yammer.com/api/v1/users/95709</url>
+    <web-url>https://staging.yammer.com/users/aisha-dhe-west</web-url>
+    <job-title>it</job-title>
+    <contact>
+      <email-addresses>
+        <email-address>
+          <type>primary</type>
+          <address>aisha.dhe.west@yammertest.com</address>
+        </email-address>
+      </email-addresses>
+      <phone-numbers>
+        <phone-number>
+          <type>work</type>
+          <number>631-6323825</number>
+        </phone-number>
+        <phone-number>
+          <type>mobile</type>
+          <number>323-419-8773</number>
+        </phone-number>
+      </phone-numbers>
+      <im>
+        <username />
+        <provider />
+      </im>
+    </contact>
+    <network-id>15463</network-id>
+    <birth-date />
+    <hire-date />
+    <network-name>Yammertest</network-name>
+    <stats>
+      <updates>0</updates>
+      <followers>0</followers>
+      <following>0</following>
+    </stats>
+    <location>0</location>
+  </User>
+  <User>
+    <type>user</type>
+    <id>95711</id>
+    <name>alana-guc-butler</name>
+    <full-name>alana butler</full-name>
+    <mugshot-url>https://staging.yammer.com/images/no_photo_small.gif</mugshot-url>
+    <url>https://staging.yammer.com/api/v1/users/95711</url>
+    <web-url>https://staging.yammer.com/users/alana-guc-butler</web-url>
+    <job-title>other</job-title>
+    <contact>
+      <email-addresses>
+        <email-address>
+          <type>primary</type>
+          <address>alana.guc.butler@yammertest.com</address>
+        </email-address>
+      </email-addresses>
+      <phone-numbers>
+        <phone-number>
+          <type>work</type>
+          <number>696-8380098</number>
+        </phone-number>
+        <phone-number>
+          <type>mobile</type>
+          <number>310-914-2368</number>
+        </phone-number>
+      </phone-numbers>
+      <im>
+        <username />
+        <provider />
+      </im>
+    </contact>
+    <network-id>15463</network-id>
+    <birth-date />
+    <hire-date />
+    <network-name>Yammertest</network-name>
+    <stats>
+      <updates>0</updates>
+      <followers>0</followers>
+      <following>0</following>
+    </stats>
+    <location>0</location>
+  </User>
+  <User>
+    <type>user</type>
+    <id>95713</id>
+    <name>alexandra-jus-levy</name>
+    <full-name>alexandra levy</full-name>
+    <mugshot-url>https://staging.yammer.com/images/no_photo_small.gif</mugshot-url>
+    <url>https://staging.yammer.com/api/v1/users/95713</url>
+    <web-url>https://staging.yammer.com/users/alexandra-jus-levy</web-url>
+    <job-title>executive</job-title>
+    <contact>
+      <email-addresses>
+        <email-address>
+          <type>primary</type>
+          <address>alexandra.jus.levy@yammertest.com</address>
+        </email-address>
+      </email-addresses>
+      <phone-numbers>
+        <phone-number>
+          <type>work</type>
+          <number>7041737966</number>
+        </phone-number>
+        <phone-number>
+          <type>mobile</type>
+          <number>323-419-8795</number>
+        </phone-number>
+      </phone-numbers>
+      <im>
+        <username />
+        <provider />
+      </im>
+    </contact>
+    <network-id>15463</network-id>
+    <birth-date />
+    <hire-date />
+    <network-name>Yammertest</network-name>
+    <stats>
+      <updates>0</updates>
+      <followers>0</followers>
+      <following>0</following>
+    </stats>
+    <location>0</location>
+  </User>
+  <User>
+    <type>user</type>
+    <id>95720</id>
+    <name>alfred-mrb-gomez</name>
+    <full-name>alfred gomez</full-name>
+    <mugshot-url>https://staging.yammer.com/images/no_photo_small.gif</mugshot-url>
+    <url>https://staging.yammer.com/api/v1/users/95720</url>
+    <web-url>https://staging.yammer.com/users/alfred-mrb-gomez</web-url>
+    <job-title>other</job-title>
+    <contact>
+      <email-addresses>
+        <email-address>
+          <type>primary</type>
+          <address>alfred.mrb.gomez@yammertest.com</address>
+        </email-address>
+      </email-addresses>
+      <phone-numbers>
+        <phone-number>
+          <type>work</type>
+          <number>413178-1340</number>
+        </phone-number>
+        <phone-number>
+          <type>mobile</type>
+          <number>323-456-8771</number>
+        </phone-number>
+      </phone-numbers>
+      <im>
+        <username />
+        <provider />
+      </im>
+    </contact>
+    <network-id>15463</network-id>
+    <birth-date />
+    <hire-date />
+    <network-name>Yammertest</network-name>
+    <stats>
+      <updates>0</updates>
+      <followers>0</followers>
+      <following>0</following>
+    </stats>
+    <location>0</location>
+  </User>
+  <User>
+    <type>user</type>
+    <id>95721</id>
+    <name>alfred-vh-chavez</name>
+    <full-name>alfred chavez</full-name>
+    <mugshot-url>https://staging.yammer.com/images/no_photo_small.gif</mugshot-url>
+    <url>https://staging.yammer.com/api/v1/users/95721</url>
+    <web-url>https://staging.yammer.com/users/alfred-vh-chavez</web-url>
+    <job-title>executive</job-title>
+    <contact>
+      <email-addresses>
+        <email-address>
+          <type>primary</type>
+          <address>alfred.vh.chavez@yammertest.com</address>
+        </email-address>
+      </email-addresses>
+      <phone-numbers>
+        <phone-number>
+          <type>work</type>
+          <number>9878033533</number>
+        </phone-number>
+        <phone-number>
+          <type>mobile</type>
+          <number>323-432-8743</number>
+        </phone-number>
+      </phone-numbers>
+      <im>
+        <username />
+        <provider />
+      </im>
+    </contact>
+    <network-id>15463</network-id>
+    <birth-date />
+    <hire-date />
+    <network-name>Yammertest</network-name>
+    <stats>
+      <updates>0</updates>
+      <followers>0</followers>
+      <following>0</following>
+    </stats>
+    <location>0</location>
+  </User>
+  <User>
+    <type>user</type>
+    <id>95722</id>
+    <name>alfredo-gxq-anderson</name>
+    <full-name>alfredo anderson</full-name>
+    <mugshot-url>https://staging.yammer.com/images/no_photo_small.gif</mugshot-url>
+    <url>https://staging.yammer.com/api/v1/users/95722</url>
+    <web-url>https://staging.yammer.com/users/alfredo-gxq-anderson</web-url>
+    <job-title>it</job-title>
+    <contact>
+      <email-addresses>
+        <email-address>
+          <type>primary</type>
+          <address>alfredo.gxq.anderson@yammertest.com</address>
+        </email-address>
+      </email-addresses>
+      <phone-numbers>
+        <phone-number>
+          <type>work</type>
+          <number>041-8206791</number>
+        </phone-number>
+        <phone-number>
+          <type>mobile</type>
+          <number>864-191-3237</number>
+        </phone-number>
+      </phone-numbers>
+      <im>
+        <username />
+        <provider />
+      </im>
+    </contact>
+    <network-id>15463</network-id>
+    <birth-date />
+    <hire-date />
+    <network-name>Yammertest</network-name>
+    <stats>
+      <updates>0</updates>
+      <followers>0</followers>
+      <following>0</following>
+    </stats>
+    <location>0</location>
+  </User>
+  <User>
+    <type>user</type>
+    <id>95714</id>
+    <name>alexandra-ovl-moss</name>
+    <full-name>alexandra moss</full-name>
+    <mugshot-url>https://staging.yammer.com/images/no_photo_small.gif</mugshot-url>
+    <url>https://staging.yammer.com/api/v1/users/95714</url>
+    <web-url>https://staging.yammer.com/users/alexandra-ovl-moss</web-url>
+    <job-title>executive</job-title>
+    <contact>
+      <email-addresses>
+        <email-address>
+          <type>primary</type>
+          <address>alexandra.ovl.moss@yammertest.com</address>
+        </email-address>
+      </email-addresses>
+      <phone-numbers>
+        <phone-number>
+          <type>work</type>
+          <number>6524381545</number>
+        </phone-number>
+        <phone-number>
+          <type>mobile</type>
+          <number>323-659-8732</number>
+        </phone-number>
+      </phone-numbers>
+      <im>
+        <username />
+        <provider />
+      </im>
+    </contact>
+    <network-id>15463</network-id>
+    <birth-date />
+    <hire-date />
+    <network-name>Yammertest</network-name>
+    <stats>
+      <updates>0</updates>
+      <followers>0</followers>
+      <following>0</following>
+    </stats>
+    <location>0</location>
+  </User>
+  <User>
+    <type>user</type>
+    <id>95715</id>
+    <name>alfonso-cdn-nelson</name>
+    <full-name>alfonso nelson</full-name>
+    <mugshot-url>https://staging.yammer.com/images/no_photo_small.gif</mugshot-url>
+    <url>https://staging.yammer.com/api/v1/users/95715</url>
+    <web-url>https://staging.yammer.com/users/alfonso-cdn-nelson</web-url>
+    <job-title>executive</job-title>
+    <contact>
+      <email-addresses>
+        <email-address>
+          <type>primary</type>
+          <address>alfonso.cdn.nelson@yammertest.com</address>
+        </email-address>
+      </email-addresses>
+      <phone-numbers>
+        <phone-number>
+          <type>work</type>
+          <number>541-7054685</number>
+        </phone-number>
+        <phone-number>
+          <type>mobile</type>
+          <number>323-432-8773</number>
+        </phone-number>
+      </phone-numbers>
+      <im>
+        <username />
+        <provider />
+      </im>
+    </contact>
+    <network-id>15463</network-id>
+    <birth-date />
+    <hire-date />
+    <network-name>Yammertest</network-name>
+    <stats>
+      <updates>0</updates>
+      <followers>0</followers>
+      <following>0</following>
+    </stats>
+    <location>0</location>
+  </User>
+  <User>
+    <type>user</type>
+    <id>95716</id>
+    <name>alfonso-rt-gallagher</name>
+    <full-name>alfonso gallagher</full-name>
+    <mugshot-url>https://staging.yammer.com/images/no_photo_small.gif</mugshot-url>
+    <url>https://staging.yammer.com/api/v1/users/95716</url>
+    <web-url>https://staging.yammer.com/users/alfonso-rt-gallagher</web-url>
+    <job-title>other</job-title>
+    <contact>
+      <email-addresses>
+        <email-address>
+          <type>primary</type>
+          <address>alfonso.rt.gallagher@yammertest.com</address>
+        </email-address>
+      </email-addresses>
+      <phone-numbers>
+        <phone-number>
+          <type>work</type>
+          <number>001-7000470</number>
+        </phone-number>
+        <phone-number>
+          <type>mobile</type>
+          <number>323-419-8773</number>
+        </phone-number>
+      </phone-numbers>
+      <im>
+        <username />
+        <provider />
+      </im>
+    </contact>
+    <network-id>15463</network-id>
+    <birth-date />
+    <hire-date />
+    <network-name>Yammertest</network-name>
+    <stats>
+      <updates>0</updates>
+      <followers>0</followers>
+      <following>0</following>
+    </stats>
+    <location>0</location>
+  </User>
+  <User>
+    <type>user</type>
+    <id>95718</id>
+    <name>alfred-bag-bartlett</name>
+    <full-name>alfred bartlett</full-name>
+    <mugshot-url>https://staging.yammer.com/images/no_photo_small.gif</mugshot-url>
+    <url>https://staging.yammer.com/api/v1/users/95718</url>
+    <web-url>https://staging.yammer.com/users/alfred-bag-bartlett</web-url>
+    <job-title>it</job-title>
+    <contact>
+      <email-addresses>
+        <email-address>
+          <type>primary</type>
+          <address>alfred.bag.bartlett@yammertest.com</address>
+        </email-address>
+      </email-addresses>
+      <phone-numbers>
+        <phone-number>
+          <type>work</type>
+          <number>075-234-2569</number>
+        </phone-number>
+        <phone-number>
+          <type>mobile</type>
+          <number>323-412-8983</number>
+        </phone-number>
+      </phone-numbers>
+      <im>
+        <username />
+        <provider />
+      </im>
+    </contact>
+    <network-id>15463</network-id>
+    <birth-date />
+    <hire-date />
+    <network-name>Yammertest</network-name>
+    <stats>
+      <updates>0</updates>
+      <followers>0</followers>
+      <following>0</following>
+    </stats>
+    <location>0</location>
+  </User>
+  <User>
+    <type>user</type>
+    <id>95706</id>
+    <name>adriana-ium-cameron</name>
+    <full-name>adriana cameron</full-name>
+    <mugshot-url>https://staging.yammer.com/images/no_photo_small.gif</mugshot-url>
+    <url>https://staging.yammer.com/api/v1/users/95706</url>
+    <web-url>https://staging.yammer.com/users/adriana-ium-cameron</web-url>
+    <job-title>other</job-title>
+    <contact>
+      <email-addresses>
+        <email-address>
+          <type>primary</type>
+          <address>adriana.ium.cameron@yammertest.com</address>
+        </email-address>
+      </email-addresses>
+      <phone-numbers>
+        <phone-number>
+          <type>work</type>
+          <number>291-0871683</number>
+        </phone-number>
+        <phone-number>
+          <type>mobile</type>
+          <number>636-942-8111</number>
+        </phone-number>
+      </phone-numbers>
+      <im>
+        <username />
+        <provider />
+      </im>
+    </contact>
+    <network-id>15463</network-id>
+    <birth-date />
+    <hire-date />
+    <network-name>Yammertest</network-name>
+    <stats>
+      <updates>0</updates>
+      <followers>0</followers>
+      <following>0</following>
+    </stats>
+    <location>0</location>
+  </User>
+  <User>
+    <type>user</type>
+    <id>95723</id>
+    <name>aaron-uuj-moore</name>
+    <full-name>aaron moore</full-name>
+    <mugshot-url>https://staging.yammer.com/images/no_photo_small.gif</mugshot-url>
+    <url>https://staging.yammer.com/api/v1/users/95723</url>
+    <web-url>https://staging.yammer.com/users/aaron-uuj-moore</web-url>
+    <job-title>administrative</job-title>
+    <contact>
+      <email-addresses>
+        <email-address>
+          <type>primary</type>
+          <address>aaron.uuj.moore@yammertest.com</address>
+        </email-address>
+      </email-addresses>
+      <phone-numbers>
+        <phone-number>
+          <type>work</type>
+          <number>344341-4323</number>
+        </phone-number>
+        <phone-number>
+          <type>mobile</type>
+          <number>602-555-1213</number>
+        </phone-number>
+      </phone-numbers>
+      <im>
+        <username />
+        <provider />
+      </im>
+    </contact>
+    <network-id>15463</network-id>
+    <birth-date />
+    <hire-date />
+    <network-name>Yammertest</network-name>
+    <stats>
+      <updates>0</updates>
+      <followers>0</followers>
+      <following>0</following>
+    </stats>
+    <location>0</location>
+  </User>
+  <User>
+    <type>user</type>
+    <id>95719</id>
+    <name>alfred-hox-hill</name>
+    <full-name>alfred hill</full-name>
+    <mugshot-url>https://staging.yammer.com/images/no_photo_small.gif</mugshot-url>
+    <url>https://staging.yammer.com/api/v1/users/95719</url>
+    <web-url>https://staging.yammer.com/users/alfred-hox-hill</web-url>
+    <job-title>other</job-title>
+    <contact>
+      <email-addresses>
+        <email-address>
+          <type>primary</type>
+          <address>alfred.hox.hill@yammertest.com</address>
+        </email-address>
+      </email-addresses>
+      <phone-numbers>
+        <phone-number>
+          <type>work</type>
+          <number>4448987937</number>
+        </phone-number>
+        <phone-number>
+          <type>mobile</type>
+          <number>310-173-0145</number>
+        </phone-number>
+      </phone-numbers>
+      <im>
+        <username />
+        <provider />
+      </im>
+    </contact>
+    <network-id>15463</network-id>
+    <birth-date />
+    <hire-date />
+    <network-name>Yammertest</network-name>
+    <stats>
+      <updates>0</updates>
+      <followers>0</followers>
+      <following>0</following>
+    </stats>
+    <location>0</location>
+  </User>
+  <User>
+    <type>user</type>
+    <id>95724</id>
+    <name>elias-goy-buck</name>
+    <full-name>elias buck</full-name>
+    <mugshot-url>https://staging.yammer.com/images/no_photo_small.gif</mugshot-url>
+    <url>https://staging.yammer.com/api/v1/users/95724</url>
+    <web-url>https://staging.yammer.com/users/elias-goy-buck</web-url>
+    <job-title>other</job-title>
+    <contact>
+      <email-addresses>
+        <email-address>
+          <type>primary</type>
+          <address>elias.goy.buck@yammertest.com</address>
+        </email-address>
+      </email-addresses>
+      <phone-numbers>
+        <phone-number>
+          <type>work</type>
+          <number>742-8487242</number>
+        </phone-number>
+        <phone-number>
+          <type>mobile</type>
+          <number>814913-4346</number>
+        </phone-number>
+      </phone-numbers>
+      <im>
+        <username />
+        <provider />
+      </im>
+    </contact>
+    <network-id>15463</network-id>
+    <birth-date />
+    <hire-date />
+    <network-name>Yammertest</network-name>
+    <stats>
+      <updates>0</updates>
+      <followers>0</followers>
+      <following>0</following>
+    </stats>
+    <location>0</location>
+  </User>
+  <User>
+    <type>user</type>
+    <id>95728</id>
+    <name>elisabeth-xdj-browning</name>
+    <full-name>elisabeth browning</full-name>
+    <mugshot-url>https://staging.yammer.com/images/no_photo_small.gif</mugshot-url>
+    <url>https://staging.yammer.com/api/v1/users/95728</url>
+    <web-url>https://staging.yammer.com/users/elisabeth-xdj-browning</web-url>
+    <job-title>other</job-title>
+    <contact>
+      <email-addresses>
+        <email-address>
+          <type>primary</type>
+          <address>elisabeth.xdj.browning@yammertest.com</address>
+        </email-address>
+      </email-addresses>
+      <phone-numbers>
+        <phone-number>
+          <type>mobile</type>
+          <number>2789188342</number>
+        </phone-number>
+      </phone-numbers>
+      <im>
+        <username />
+        <provider />
+      </im>
+    </contact>
+    <network-id>15463</network-id>
+    <birth-date />
+    <hire-date />
+    <network-name>Yammertest</network-name>
+    <stats>
+      <updates>0</updates>
+      <followers>0</followers>
+      <following>0</following>
+    </stats>
+    <location>0</location>
+  </User>
+  <User>
+    <type>user</type>
+    <id>95729</id>
+    <name>elizabeth-gvq-pierce</name>
+    <full-name>elizabeth pierce</full-name>
+    <mugshot-url>https://staging.yammer.com/images/no_photo_small.gif</mugshot-url>
+    <url>https://staging.yammer.com/api/v1/users/95729</url>
+    <web-url>https://staging.yammer.com/users/elizabeth-gvq-pierce</web-url>
+    <job-title>executive</job-title>
+    <contact>
+      <email-addresses>
+        <email-address>
+          <type>primary</type>
+          <address>elizabeth.gvq.pierce@yammertest.com</address>
+        </email-address>
+      </email-addresses>
+      <phone-numbers>
+        <phone-number>
+          <type>mobile</type>
+          <number>150-548-9812</number>
+        </phone-number>
+      </phone-numbers>
+      <im>
+        <username />
+        <provider />
+      </im>
+    </contact>
+    <network-id>15463</network-id>
+    <birth-date />
+    <hire-date />
+    <network-name>Yammertest</network-name>
+    <stats>
+      <updates>0</updates>
+      <followers>0</followers>
+      <following>0</following>
+    </stats>
+    <location>0</location>
+  </User>
+  <User>
+    <type>user</type>
+    <id>95730</id>
+    <name>emily-fci-morrison</name>
+    <full-name>emily morrison</full-name>
+    <mugshot-url>https://staging.yammer.com/images/no_photo_small.gif</mugshot-url>
+    <url>https://staging.yammer.com/api/v1/users/95730</url>
+    <web-url>https://staging.yammer.com/users/emily-fci-morrison</web-url>
+    <job-title>executive</job-title>
+    <contact>
+      <email-addresses>
+        <email-address>
+          <type>primary</type>
+          <address>emily.fci.morrison@yammertest.com</address>
+        </email-address>
+      </email-addresses>
+      <phone-numbers>
+        <phone-number>
+          <type>mobile</type>
+          <number>3088293449</number>
+        </phone-number>
+      </phone-numbers>
+      <im>
+        <username />
+        <provider />
+      </im>
+    </contact>
+    <network-id>15463</network-id>
+    <birth-date />
+    <hire-date />
+    <network-name>Yammertest</network-name>
+    <stats>
+      <updates>0</updates>
+      <followers>0</followers>
+      <following>0</following>
+    </stats>
+    <location>0</location>
+  </User>
+  <User>
+    <type>user</type>
+    <id>95731</id>
+    <name>emma-eji-barber</name>
+    <full-name>emma barber</full-name>
+    <mugshot-url>https://staging.yammer.com/images/no_photo_small.gif</mugshot-url>
+    <url>https://staging.yammer.com/api/v1/users/95731</url>
+    <web-url>https://staging.yammer.com/users/emma-eji-barber</web-url>
+    <job-title>other</job-title>
+    <contact>
+      <email-addresses>
+        <email-address>
+          <type>primary</type>
+          <address>emma.eji.barber@yammertest.com</address>
+        </email-address>
+      </email-addresses>
+      <phone-numbers>
+        <phone-number>
+          <type>mobile</type>
+          <number>655-491-7927</number>
+        </phone-number>
+      </phone-numbers>
+      <im>
+        <username />
+        <provider />
+      </im>
+    </contact>
+    <network-id>15463</network-id>
+    <birth-date />
+    <hire-date />
+    <network-name>Yammertest</network-name>
+    <stats>
+      <updates>0</updates>
+      <followers>0</followers>
+      <following>0</following>
+    </stats>
+    <location>0</location>
+  </User>
+  <User>
+    <type>user</type>
+    <id>95742</id>
+    <name>erich-rup-savage</name>
+    <full-name>erich savage</full-name>
+    <mugshot-url>https://staging.yammer.com/images/no_photo_small.gif</mugshot-url>
+    <url>https://staging.yammer.com/api/v1/users/95742</url>
+    <web-url>https://staging.yammer.com/users/erich-rup-savage</web-url>
+    <job-title>other</job-title>
+    <contact>
+      <email-addresses>
+        <email-address>
+          <type>primary</type>
+          <address>erich.rup.savage@yammertest.com</address>
+        </email-address>
+      </email-addresses>
+      <phone-numbers>
+        <phone-number>
+          <type>work</type>
+          <number>1447151527</number>
+        </phone-number>
+        <phone-number>
+          <type>mobile</type>
+          <number>771762-1097</number>
+        </phone-number>
+      </phone-numbers>
+      <im>
+        <username />
+        <provider />
+      </im>
+    </contact>
+    <network-id>15463</network-id>
+    <birth-date />
+    <hire-date />
+    <network-name>Yammertest</network-name>
+    <stats>
+      <updates>0</updates>
+      <followers>0</followers>
+      <following>0</following>
+    </stats>
+    <location>0</location>
+  </User>
+  <User>
+    <type>user</type>
+    <id>95743</id>
+    <name>erick-axr-ball</name>
+    <full-name>erick ball</full-name>
+    <mugshot-url>https://staging.yammer.com/images/no_photo_small.gif</mugshot-url>
+    <url>https://staging.yammer.com/api/v1/users/95743</url>
+    <web-url>https://staging.yammer.com/users/erick-axr-ball</web-url>
+    <job-title>it</job-title>
+    <contact>
+      <email-addresses>
+        <email-address>
+          <type>primary</type>
+          <address>erick.axr.ball@yammertest.com</address>
+        </email-address>
+      </email-addresses>
+      <phone-numbers>
+        <phone-number>
+          <type>work</type>
+          <number>805-1101747</number>
+        </phone-number>
+        <phone-number>
+          <type>mobile</type>
+          <number>286-260-2525</number>
+        </phone-number>
+      </phone-numbers>
+      <im>
+        <username />
+        <provider />
+      </im>
+    </contact>
+    <network-id>15463</network-id>
+    <birth-date />
+    <hire-date />
+    <network-name>Yammertest</network-name>
+    <stats>
+      <updates>0</updates>
+      <followers>0</followers>
+      <following>0</following>
+    </stats>
+    <location>0</location>
+  </User>
+  <User>
+    <type>user</type>
+    <id>95746</id>
+    <name>ericka-omy-green</name>
+    <full-name>ericka green</full-name>
+    <mugshot-url>https://staging.yammer.com/images/no_photo_small.gif</mugshot-url>
+    <url>https://staging.yammer.com/api/v1/users/95746</url>
+    <web-url>https://staging.yammer.com/users/ericka-omy-green</web-url>
+    <job-title>other</job-title>
+    <contact>
+      <email-addresses>
+        <email-address>
+          <type>primary</type>
+          <address>ericka.omy.green@yammertest.com</address>
+        </email-address>
+      </email-addresses>
+      <phone-numbers>
+        <phone-number>
+          <type>work</type>
+          <number>5164572406</number>
+        </phone-number>
+        <phone-number>
+          <type>mobile</type>
+          <number>310-555-1212</number>
+        </phone-number>
+      </phone-numbers>
+      <im>
+        <username />
+        <provider />
+      </im>
+    </contact>
+    <network-id>15463</network-id>
+    <birth-date />
+    <hire-date />
+    <network-name>Yammertest</network-name>
+    <stats>
+      <updates>0</updates>
+      <followers>0</followers>
+      <following>0</following>
+    </stats>
+    <location>0</location>
+  </User>
+  <User>
+    <type>user</type>
+    <id>95741</id>
+    <name>erich-hcy-terrell</name>
+    <full-name>erich terrell</full-name>
+    <mugshot-url>https://staging.yammer.com/images/no_photo_small.gif</mugshot-url>
+    <url>https://staging.yammer.com/api/v1/users/95741</url>
+    <web-url>https://staging.yammer.com/users/erich-hcy-terrell</web-url>
+    <job-title>administrative</job-title>
+    <contact>
+      <email-addresses>
+        <email-address>
+          <type>primary</type>
+          <address>erich.hcy.terrell@yammertest.com</address>
+        </email-address>
+      </email-addresses>
+      <phone-numbers>
+        <phone-number>
+          <type>mobile</type>
+          <number>8844929766</number>
+        </phone-number>
+      </phone-numbers>
+      <im>
+        <username />
+        <provider />
+      </im>
+    </contact>
+    <network-id>15463</network-id>
+    <birth-date />
+    <hire-date />
+    <network-name>Yammertest</network-name>
+    <stats>
+      <updates>0</updates>
+      <followers>0</followers>
+      <following>0</following>
+    </stats>
+    <location>0</location>
+  </User>
+  <User>
+    <type>user</type>
+    <id>95744</id>
+    <name>erick-bfn-montes</name>
+    <full-name>erick montes</full-name>
+    <mugshot-url>https://staging.yammer.com/images/no_photo_small.gif</mugshot-url>
+    <url>https://staging.yammer.com/api/v1/users/95744</url>
+    <web-url>https://staging.yammer.com/users/erick-bfn-montes</web-url>
+    <job-title>administrative</job-title>
+    <contact>
+      <email-addresses>
+        <email-address>
+          <type>primary</type>
+          <address>erick.bfn.montes@yammertest.com</address>
+        </email-address>
+      </email-addresses>
+      <phone-numbers>
+        <phone-number>
+          <type>mobile</type>
+          <number>158-6940309</number>
+        </phone-number>
+      </phone-numbers>
+      <im>
+        <username />
+        <provider />
+      </im>
+    </contact>
+    <network-id>15463</network-id>
+    <birth-date />
+    <hire-date />
+    <network-name>Yammertest</network-name>
+    <stats>
+      <updates>0</updates>
+      <followers>0</followers>
+      <following>0</following>
+    </stats>
+    <location>0</location>
+  </User>
+  <User>
+    <type>user</type>
+    <id>95745</id>
+    <name>erick-slx-jacobson</name>
+    <full-name>erick jacobson</full-name>
+    <mugshot-url>https://staging.yammer.com/images/no_photo_small.gif</mugshot-url>
+    <url>https://staging.yammer.com/api/v1/users/95745</url>
+    <web-url>https://staging.yammer.com/users/erick-slx-jacobson</web-url>
+    <job-title>executive</job-title>
+    <contact>
+      <email-addresses>
+        <email-address>
+          <type>primary</type>
+          <address>erick.slx.jacobson@yammertest.com</address>
+        </email-address>
+      </email-addresses>
+      <phone-numbers>
+        <phone-number>
+          <type>mobile</type>
+          <number>277-9964496</number>
+        </phone-number>
+      </phone-numbers>
+      <im>
+        <username />
+        <provider />
+      </im>
+    </contact>
+    <network-id>15463</network-id>
+    <birth-date />
+    <hire-date />
+    <network-name>Yammertest</network-name>
+    <stats>
+      <updates>0</updates>
+      <followers>0</followers>
+      <following>0</following>
+    </stats>
+    <location>0</location>
+  </User>
+  <User>
+    <type>user</type>
+    <id>95678</id>
+    <name>jtesty</name>
+    <full-name>joe testy</full-name>
+    <mugshot-url>https://staging.yammer.com/images/no_photo_small.gif</mugshot-url>
+    <url>https://staging.yammer.com/api/v1/users/95678</url>
+    <web-url>https://staging.yammer.com/users/jtesty</web-url>
+    <job-title>tester</job-title>
+    <contact>
+      <email-addresses>
+        <email-address>
+          <type>primary</type>
+          <address>jtesty@somemail.com</address>
+        </email-address>
+      </email-addresses>
+      <phone-numbers>
+        <phone-number>
+          <type>work</type>
+          <number>6025551212</number>
+        </phone-number>
+        <phone-number>
+          <type>mobile</type>
+          <number>6025551113</number>
+        </phone-number>
+      </phone-numbers>
+      <im>
+        <username />
+        <provider />
+      </im>
+    </contact>
+    <network-id>15463</network-id>
+    <birth-date />
+    <hire-date />
+    <network-name>Yammertest</network-name>
+    <stats>
+      <updates>0</updates>
+      <followers>0</followers>
+      <following>0</following>
+    </stats>
+    <location>10</location>
+  </User>
+  <User>
+    <type>user</type>
+    <id>95750</id>
+    <name>guy-rnn-ray</name>
+    <full-name>guy ray</full-name>
+    <mugshot-url>https://staging.yammer.com/images/no_photo_small.gif</mugshot-url>
+    <url>https://staging.yammer.com/api/v1/users/95750</url>
+    <web-url>https://staging.yammer.com/users/guy-rnn-ray</web-url>
+    <job-title>executive</job-title>
+    <contact>
+      <email-addresses>
+        <email-address>
+          <type>primary</type>
+          <address>guy.rnn.ray@yammertest.com</address>
+        </email-address>
+      </email-addresses>
+      <phone-numbers>
+        <phone-number>
+          <type>work</type>
+          <number>217621-5419</number>
+        </phone-number>
+        <phone-number>
+          <type>mobile</type>
+          <number>8024375356</number>
+        </phone-number>
+      </phone-numbers>
+      <im>
+        <username />
+        <provider />
+      </im>
+    </contact>
+    <network-id>15463</network-id>
+    <birth-date />
+    <hire-date />
+    <network-name>Yammertest</network-name>
+    <stats>
+      <updates>0</updates>
+      <followers>0</followers>
+      <following>0</following>
+    </stats>
+    <location>0</location>
+  </User>
+  <User>
+    <type>user</type>
+    <id>95755</id>
+    <name>abraham-tmv-cook</name>
+    <full-name>abraham cook</full-name>
+    <mugshot-url>https://staging.yammer.com/images/no_photo_small.gif</mugshot-url>
+    <url>https://staging.yammer.com/api/v1/users/95755</url>
+    <web-url>https://staging.yammer.com/users/abraham-tmv-cook</web-url>
+    <job-title>other</job-title>
+    <contact>
+      <email-addresses>
+        <email-address>
+          <type>primary</type>
+          <address>abraham.tmv.cook@yammertest.com</address>
+        </email-address>
+      </email-addresses>
+      <phone-numbers>
+        <phone-number>
+          <type>work</type>
+          <number>547-093-7902</number>
+        </phone-number>
+        <phone-number>
+          <type>mobile</type>
+          <number>323-419-1112</number>
+        </phone-number>
+      </phone-numbers>
+      <im>
+        <username />
+        <provider />
+      </im>
+    </contact>
+    <network-id>15463</network-id>
+    <birth-date />
+    <hire-date />
+    <network-name>Yammertest</network-name>
+    <stats>
+      <updates>0</updates>
+      <followers>0</followers>
+      <following>0</following>
+    </stats>
+    <location>0</location>
+  </User>
+  <User>
+    <type>user</type>
+    <id>95760</id>
+    <name>adam-zxj-wang</name>
+    <full-name>adam wang</full-name>
+    <mugshot-url>https://staging.yammer.com/images/no_photo_small.gif</mugshot-url>
+    <url>https://staging.yammer.com/api/v1/users/95760</url>
+    <web-url>https://staging.yammer.com/users/adam-zxj-wang</web-url>
+    <job-title>other</job-title>
+    <contact>
+      <email-addresses>
+        <email-address>
+          <type>primary</type>
+          <address>adam.zxj.wang@yammertest.com</address>
+        </email-address>
+      </email-addresses>
+      <phone-numbers>
+        <phone-number>
+          <type>work</type>
+          <number>0891737111</number>
+        </phone-number>
+        <phone-number>
+          <type>mobile</type>
+          <number>323-129-8734</number>
+        </phone-number>
+      </phone-numbers>
+      <im>
+        <username />
+        <provider />
+      </im>
+    </contact>
+    <network-id>15463</network-id>
+    <birth-date />
+    <hire-date />
+    <network-name>Yammertest</network-name>
+    <stats>
+      <updates>0</updates>
+      <followers>0</followers>
+      <following>0</following>
+    </stats>
+    <location>0</location>
+  </User>
+  <User>
+    <type>user</type>
+    <id>95725</id>
+    <name>elijah-ird-o-connor</name>
+    <full-name>elijah o'connor</full-name>
+    <mugshot-url>https://staging.yammer.com/images/no_photo_small.gif</mugshot-url>
+    <url>https://staging.yammer.com/api/v1/users/95725</url>
+    <web-url>https://staging.yammer.com/users/elijah-ird-o-connor</web-url>
+    <job-title>other</job-title>
+    <contact>
+      <email-addresses>
+        <email-address>
+          <type>primary</type>
+          <address>elijah.ird.o'connor@yammertest.com</address>
+        </email-address>
+      </email-addresses>
+      <phone-numbers>
+        <phone-number>
+          <type>work</type>
+          <number>015937-7412</number>
+        </phone-number>
+        <phone-number>
+          <type>mobile</type>
+          <number>2462540276</number>
+        </phone-number>
+      </phone-numbers>
+      <im>
+        <username />
+        <provider />
+      </im>
+    </contact>
+    <network-id>15463</network-id>
+    <birth-date />
+    <hire-date />
+    <network-name>Yammertest</network-name>
+    <stats>
+      <updates>0</updates>
+      <followers>0</followers>
+      <following>0</following>
+    </stats>
+    <location>0</location>
+  </User>
+  <User>
+    <type>user</type>
+    <id>95726</id>
+    <name>elisa-yol-moody</name>
+    <full-name>elisa moody</full-name>
+    <mugshot-url>https://staging.yammer.com/images/no_photo_small.gif</mugshot-url>
+    <url>https://staging.yammer.com/api/v1/users/95726</url>
+    <web-url>https://staging.yammer.com/users/elisa-yol-moody</web-url>
+    <job-title>administrative</job-title>
+    <contact>
+      <email-addresses>
+        <email-address>
+          <type>primary</type>
+          <address>elisa.yol.moody@yammertest.com</address>
+        </email-address>
+      </email-addresses>
+      <phone-numbers>
+        <phone-number>
+          <type>work</type>
+          <number>404-9583020</number>
+        </phone-number>
+        <phone-number>
+          <type>mobile</type>
+          <number>9518842296</number>
+        </phone-number>
+      </phone-numbers>
+      <im>
+        <username />
+        <provider />
+      </im>
+    </contact>
+    <network-id>15463</network-id>
+    <birth-date />
+    <hire-date />
+    <network-name>Yammertest</network-name>
+    <stats>
+      <updates>0</updates>
+      <followers>0</followers>
+      <following>0</following>
+    </stats>
+    <location>0</location>
+  </User>
+</ArrayOfUser>

@@ -1,0 +1,10 @@
+C:\Documents and Settings\Kevin Davie\My Documents\Visual Studio 2008\Projects\YammerFramework\TestConsole\bin\Debug\TestConsole.exe
+C:\Documents and Settings\Kevin Davie\My Documents\Visual Studio 2008\Projects\YammerFramework\TestConsole\bin\Debug\TestConsole.pdb
+C:\Documents and Settings\Kevin Davie\My Documents\Visual Studio 2008\Projects\YammerFramework\TestConsole\bin\Debug\Yammer.dll
+C:\Documents and Settings\Kevin Davie\My Documents\Visual Studio 2008\Projects\YammerFramework\TestConsole\bin\Debug\oAuth.dll
+C:\Documents and Settings\Kevin Davie\My Documents\Visual Studio 2008\Projects\YammerFramework\TestConsole\bin\Debug\oAuth.pdb
+C:\Documents and Settings\Kevin Davie\My Documents\Visual Studio 2008\Projects\YammerFramework\TestConsole\bin\Debug\Yammer.pdb
+C:\Documents and Settings\Kevin Davie\My Documents\Visual Studio 2008\Projects\YammerFramework\TestConsole\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Kevin Davie\My Documents\Visual Studio 2008\Projects\YammerFramework\TestConsole\obj\Debug\TestConsole.exe
+C:\Documents and Settings\Kevin Davie\My Documents\Visual Studio 2008\Projects\YammerFramework\TestConsole\obj\Debug\TestConsole.pdb
+C:\Documents and Settings\Kevin Davie\My Documents\Visual Studio 2008\Projects\YammerFramework\TestConsole\bin\Debug\TestConsole.exe.config
