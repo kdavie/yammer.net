@@ -1,3 +1,9 @@
+This Project is no longer supported. Please Visit the <a href="http://developer.yammer.com/" >Yammer Developer Center</a> for updated guidence on getting started with the API.
+
+
+
+
+
 <h2><span style="color:#4183C4">Usage</span></h2>
 
 <p>Yammer uses <a href="http://oauth.net/" target="_blank">OAuth</a> to authenticate clients. This allows applications to securely access data on a user's behalf without storing or needing the user's password. 
