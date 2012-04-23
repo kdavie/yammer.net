@@ -32,7 +32,8 @@ namespace Yammer
         TAG,
         THREAD,
         GROUP,
-        GUIDE
+        GUIDE,
+        TOPIC
     }
 
     public enum RelationshipType
