@@ -45,6 +45,10 @@ namespace Yammer
         /// </summary>
         public static string YAMMER_MESSAGES_TAGGED_WITH = APP_PATH + "/api/v1/messages/tagged_with/";
         /// <summary>
+        /// Messages including the topic with given ID. Corresponds to the messages on a topic's page on the website.
+        /// </summary>
+        public static string YAMMER_MESSAGES_ABOUT_TOPIC = APP_PATH + "/api/v1/messages/about_topic/";
+        /// <summary>
         /// Messages in the thread with the given ID. Corresponds to the page you'd see when clicking on "in reply to" on the website.
         /// </summary>
         public static string YAMMER_MESSAGES_IN_THREAD = APP_PATH + "/api/v1/messages/in_thread/";
