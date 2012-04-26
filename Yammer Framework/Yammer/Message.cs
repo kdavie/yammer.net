@@ -346,6 +346,58 @@ namespace Yammer
 
         #endregion
 
+        #region Messages About Topic
+
+        /// <summary>
+        /// Messages including the topic with given ID. Corresponds to the messages on a topic's page on the website.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public static List<Message> GetMessagesAboutTopic(int id)
+        {
+            return RetrieveMessages(Yammer.HttpUtility.Get(Resources.YAMMER_MESSAGES_ABOUT_TOPIC + id.ToString() + ".xml"));
+        }
+
+        /// <summary>
+        /// Messages including the topic with given ID. Corresponds to the messages on a topic's page on the website.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public static List<Message> GetMessagesAboutTopic(int id, bool threaded)
+        {
+            NameValueCollection parameters = new NameValueCollection();
+            parameters.Add("threaded", threaded.ToString());
+
+            return RetrieveMessages(Yammer.HttpUtility.Get(Resources.YAMMER_MESSAGES_ABOUT_TOPIC + id.ToString() + ".xml", parameters));
+        }
+
+        /// <summary>
+        /// Messages including the topic with given ID. Corresponds to the messages on a topic's page on the website.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public static List<Message> GetMessagesAboutTopic(PageFlag flag, int id, int pageId)
+        {
+            NameValueCollection parameters = new NameValueCollection();
+            AddPageFlagParam(flag, parameters, pageId);
+            return RetrieveMessages(Yammer.HttpUtility.Get(Resources.YAMMER_MESSAGES_ABOUT_TOPIC + id.ToString() + ".xml", parameters));
+        }
+
+        /// <summary>
+        /// Messages including the topic with given ID. Corresponds to the messages on a topic's page on the website.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public static List<Message> GetMessagesAboutTopic(PageFlag flag, int id, int pageId, bool threaded)
+        {
+            NameValueCollection parameters = new NameValueCollection();
+            parameters.Add("threaded", threaded.ToString());
+            AddPageFlagParam(flag, parameters, pageId);
+            return RetrieveMessages(Yammer.HttpUtility.Get(Resources.YAMMER_MESSAGES_ABOUT_TOPIC + id.ToString() + ".xml", parameters));
+        }
+
+        #endregion
+
         #region Messages in Group
 
         /// <summary>
